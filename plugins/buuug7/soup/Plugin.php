@@ -64,12 +64,11 @@ class Plugin extends PluginBase
      */
     public function registerPermissions()
     {
-        return []; // Remove this line to activate
 
         return [
-            'buuug7.soup.some_permission' => [
+            'buuug7.soup.access_soup' => [
                 'tab' => 'Soup',
-                'label' => 'Some permission'
+                'label' => 'Access Soup'
             ],
         ];
     }
@@ -81,15 +80,28 @@ class Plugin extends PluginBase
      */
     public function registerNavigation()
     {
-        return []; // Remove this line to activate
 
         return [
             'soup' => [
                 'label'       => 'Soup',
-                'url'         => Backend::url('buuug7/soup/mycontroller'),
-                'icon'        => 'icon-leaf',
-                'permissions' => ['buuug7.soup.*'],
-                'order'       => 500,
+                'url'         => Backend::url('buuug7/soup/soups'),
+                'icon'        => 'icon-coffee',
+                'permissions' => ['buuug7.soup.access_soup'],
+                'order'       => 600,
+                'sideMenu' => [
+                   'soups' => [
+                       'label' => 'soups',
+                       'icon' => 'icon-coffee',
+                       'url' => Backend::url('buuug7/soup/soups'),
+                       'permissions' => ['buuug7.soup.access_soup'],
+                   ],
+                    'tags' => [
+                        'label' => 'tags',
+                        'icon' => 'icon-tags',
+                        'url' => Backend::url('buuug7/soup/tags'),
+                        'permissions' => ['buuug7.soup.access_soup'],
+                    ],
+                ],
             ],
         ];
     }

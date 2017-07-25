@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Tag
+
+# Model Form Field configuration
+form: $/buuug7/soup/models/tag/fields.yaml
+
+# Model Class name
+modelClass: Buuug7\Soup\Models\Tag
+
+# Default redirect location
+defaultRedirect: buuug7/soup/tags
+
+# Create page
+create:
+    title: Create Tag
+    redirect: buuug7/soup/tags/update/:id
+    redirectClose: buuug7/soup/tags
+
+# Update page
+update:
+    title: Edit Tag
+    redirect: buuug7/soup/tags
+    redirectClose: buuug7/soup/tags
+
+# Preview page
+preview:
+    title: Preview Tag

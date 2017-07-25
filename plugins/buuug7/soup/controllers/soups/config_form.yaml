@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Soup
+
+# Model Form Field configuration
+form: $/buuug7/soup/models/soup/fields.yaml
+
+# Model Class name
+modelClass: Buuug7\Soup\Models\Soup
+
+# Default redirect location
+defaultRedirect: buuug7/soup/soups
+
+# Create page
+create:
+    title: Create Soup
+    redirect: buuug7/soup/soups/update/:id
+    redirectClose: buuug7/soup/soups
+
+# Update page
+update:
+    title: Edit Soup
+    redirect: buuug7/soup/soups
+    redirectClose: buuug7/soup/soups
+
+# Preview page
+preview:
+    title: Preview Soup

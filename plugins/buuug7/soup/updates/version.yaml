@@ -1,1 +1,5 @@
-1.0.1: First version of Soup
+1.0.1:
+      - First init
+      - create_soups_table.php
+      - create_tags_table.php
+      - create_soups_tags_table.php
