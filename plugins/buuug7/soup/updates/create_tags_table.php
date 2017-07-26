@@ -14,10 +14,20 @@ class CreateTagsTable extends Migration
             $table->string('name');
             $table->string('slug');
         });
+
+        Schema::create('buuug7_soup_soups_tags', function (Blueprint $table) {
+
+            $table->engine = 'innoDB';
+            $table->integer('soup_id');
+            $table->integer('tag_id');
+            $table->primary(['soup_id','tag_id']);
+
+        });
     }
 
     public function down()
     {
         Schema::dropIfExists('buuug7_soup_tags');
+        Schema::dropIfExists('buuug7_soup_soups_tags');
     }
 }

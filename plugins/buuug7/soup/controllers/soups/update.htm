@@ -6,51 +6,67 @@
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
-
-    <?= Form::open(['class' => 'layout']) ?>
-
-        <div class="layout-row">
-            <?= $this->formRender() ?>
+    <?php Block::put('form-contents') ?>
+        <div class="layout-row min-size">
+            <?= $this->formRenderOutsideFields() ?>
         </div>
 
-        <div class="form-buttons">
-            <div class="loading-indicator-container">
-                <button
+        <div class="layout-row">
+            <?= $this->formRenderPrimaryTabs() ?>
+        </div>
+
+    <div class="form-buttons">
+        <div class="loading-indicator-container">
+            <button
                     type="submit"
                     data-request="onSave"
                     data-request-data="redirect:0"
                     data-hotkey="ctrl+s, cmd+s"
                     data-load-indicator="Saving Soup..."
                     class="btn btn-primary">
-                    <u>S</u>ave
-                </button>
-                <button
+                <u>S</u>ave
+            </button>
+            <button
                     type="button"
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
                     data-load-indicator="Saving Soup..."
                     class="btn btn-default">
-                    Save and Close
-                </button>
-                <button
+                Save and Close
+            </button>
+            <button
                     type="button"
                     class="oc-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
                     data-load-indicator="Deleting Soup..."
                     data-request-confirm="Delete this soup?">
-                </button>
-                <span class="btn-text">
-                    or <a href="<?= Backend::url('buuug7/soup/soups') ?>">Cancel</a>
-                </span>
-            </div>
+            </button>
+            <span class="btn-text">or <a href="<?= Backend::url('buuug7/soup/soups') ?>">Cancel</a></span>
         </div>
+    </div>
+    <?php Block::endPut() ?>
 
-    <?= Form::close() ?>
+    <?php Block::put('form-sidebar') ?>
+        <div class="hide-tabs">
+            <?= $this->formRenderSecondaryTabs() ?>
+        </div>
+    <?php Block::endPut() ?>
+
+    <?php Block::put('body') ?>
+        <?= Form::open(['class' => 'layout stretch']) ?>
+            <?= $this->makeLayout('form-with-sidebar') ?>
+        <?= Form::close() ?>
+    <?php Block::endPut() ?>
 
 <?php else: ?>
+    <div class="control-breadcrumb">
+        <?= Block::placeholder('breadcrumb') ?>
+    </div>
 
-    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('buuug7/soup/soups') ?>" class="btn btn-default">Return to soups list</a></p>
+    <div class="padded-container">
+        <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
+        <p><a href="<?= Backend::url('buuug7/soup/soups') ?>" class="btn btn-default">Return to soups list</a></p>
+    </div>
 
 <?php endif ?>

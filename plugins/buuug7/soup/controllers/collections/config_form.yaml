@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Collection
+
+# Model Form Field configuration
+form: $/buuug7/soup/models/collection/fields.yaml
+
+# Model Class name
+modelClass: Buuug7\Soup\Models\Collection
+
+# Default redirect location
+defaultRedirect: buuug7/soup/collections
+
+# Create page
+create:
+    title: Create Collection
+    redirect: buuug7/soup/collections/update/:id
+    redirectClose: buuug7/soup/collections
+
+# Update page
+update:
+    title: Edit Collection
+    redirect: buuug7/soup/collections
+    redirectClose: buuug7/soup/collections
+
+# Preview page
+preview:
+    title: Preview Collection

@@ -1,0 +1,13 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+soups:
+    label: soups
+    view:
+        list: $/buuug7/soup/models/soup/columns.yaml
+    manage:
+        list: $/buuug7/soup/models/soup/columns.yaml
+        form: $/buuug7/soup/models/soup/fields.yaml
+    pivot:
+        form: $/buuug7/soup/models/soup/fields.yaml

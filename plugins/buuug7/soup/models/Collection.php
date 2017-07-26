@@ -3,16 +3,16 @@
 use Model;
 
 /**
- * Tag Model
+ * Collection Model
  */
-class Tag extends Model
+class Collection extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'buuug7_soup_tags';
+    public $table = 'buuug7_soup_collections';
 
     /**
      * @var array Guarded fields
@@ -24,15 +24,13 @@ class Tag extends Model
      */
     protected $fillable = [];
 
-    public $timestamps = false;
-
     /**
      * Validation
      * @var array
      */
     public $rules = [
         'name' => 'required',
-        'slug' => 'required|between:3,64|unique:buuug7_soup_tags',
+        'user_id' => 'required',
     ];
 
     /**
@@ -47,7 +45,7 @@ class Tag extends Model
      */
     public $attributeNames = [
         'name' => '名称',
-        'slug' => '别名',
+        'user_id' => '创建者',
     ];
 
     /**
@@ -55,11 +53,20 @@ class Tag extends Model
      */
     public $hasOne = [];
     public $hasMany = [];
-    public $belongsTo = [];
+    public $belongsTo = [
+        'owner' => [
+            'RainLab\User\Models\User',
+            'key' => 'user_id',
+        ],
+    ];
     public $belongsToMany = [
         'soups' => [
             'Buuug7\Soup\Models\Soup',
-            'table' => 'buuug7_soup_soups_tags',
+            'table' => 'buuug7_soup_collections_soups',
+        ],
+        'collectors' => [
+            'RainLab\User\Models\User',
+            'table' => 'buuug7_soup_collections_users',
         ],
     ];
     public $morphTo = [];
@@ -68,14 +75,7 @@ class Tag extends Model
     public $attachOne = [];
     public $attachMany = [];
 
-    public function afterDelete()
-    {
-        $this->soups()->detach();
+    public function beforeValidate(){
+        trace_log(post());
     }
-
-    public function getSoupCountAttribute()
-    {
-        return $this->soups()->count();
-    }
-
 }

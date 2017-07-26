@@ -2,6 +2,8 @@
 
 use Backend;
 use System\Classes\PluginBase;
+use RainLab\User\Models\User as UserModel;
+use RainLab\User\Controllers\Users as UserController;
 
 /**
  * Soup Plugin Information File
@@ -16,10 +18,10 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'Soup',
+            'name' => 'Soup',
             'description' => 'No description provided yet...',
-            'author'      => 'Buuug7',
-            'icon'        => 'icon-leaf'
+            'author' => 'Buuug7',
+            'icon' => 'icon-leaf'
         ];
     }
 
@@ -40,7 +42,21 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        UserModel::extend(function ($model) {
+            // 用户创建的收藏单
+            $model->hasMany['createdCollections'] = [
+                'Buuug7\Soup\Models\Collection',
+            ];
+            // 用户收藏别人的收藏单
+            $model->belongsToMany['collectCollections']=[
+                'Buuug7\Soup\Models\Collection',
+                'table' => 'buuug7_soup_collections_users',
+            ];
+        });
 
+        UserController::extend(function ($widget) {
+            //TODO:: more features
+        });
     }
 
     /**
@@ -83,22 +99,28 @@ class Plugin extends PluginBase
 
         return [
             'soup' => [
-                'label'       => 'Soup',
-                'url'         => Backend::url('buuug7/soup/soups'),
-                'icon'        => 'icon-coffee',
+                'label' => 'Soup',
+                'url' => Backend::url('buuug7/soup/soups'),
+                'icon' => 'icon-coffee',
                 'permissions' => ['buuug7.soup.access_soup'],
-                'order'       => 600,
+                'order' => 600,
                 'sideMenu' => [
-                   'soups' => [
-                       'label' => 'soups',
-                       'icon' => 'icon-coffee',
-                       'url' => Backend::url('buuug7/soup/soups'),
-                       'permissions' => ['buuug7.soup.access_soup'],
-                   ],
+                    'soups' => [
+                        'label' => 'soups',
+                        'icon' => 'icon-coffee',
+                        'url' => Backend::url('buuug7/soup/soups'),
+                        'permissions' => ['buuug7.soup.access_soup'],
+                    ],
                     'tags' => [
                         'label' => 'tags',
                         'icon' => 'icon-tags',
                         'url' => Backend::url('buuug7/soup/tags'),
+                        'permissions' => ['buuug7.soup.access_soup'],
+                    ],
+                    'collections' => [
+                        'label' => 'collections',
+                        'icon' => 'icon-folder-open',
+                        'url' => Backend::url('buuug7/soup/collections'),
                         'permissions' => ['buuug7.soup.access_soup'],
                     ],
                 ],

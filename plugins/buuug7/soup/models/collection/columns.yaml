@@ -1,0 +1,19 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        labe: 名称
+        searchable: true
+    user_id:
+        label: 创建者
+        relation: owner
+        select: name
+        searchable: true
+    created_at:
+        label: 创建时间
+        invisible: true
+    updated_at:
+        label: 更新时间
+        invisible: true

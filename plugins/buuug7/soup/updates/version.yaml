@@ -2,4 +2,5 @@
       - First init
       - create_soups_table.php
       - create_tags_table.php
-      - create_soups_tags_table.php
+      - create_collections_table.php
+      - seed_all_tables.php

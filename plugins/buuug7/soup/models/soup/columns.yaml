@@ -4,5 +4,24 @@
 
 columns:
     id:
-        label: ID
+      label: ID
+    contributor_id:
+        label: 贡献者
+        relation: contributor
+        select: name
         searchable: true
+    published:
+        label: 发布
+        type: switch
+    published_at:
+        label: 发布时间
+        type: timesince
+    featured:
+        label: 特色
+        type: switch
+    created_at:
+        label: 创建时间
+        invisible: true
+    updated_at:
+        label: 更新时间
+        invisible: true

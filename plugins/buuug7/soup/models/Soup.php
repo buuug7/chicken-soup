@@ -35,7 +35,7 @@ class Soup extends Model
      */
     public $rules = [
         'content' => 'required|min:8',
-        'user_id' => 'required',
+        'contributor_id' => 'required',
     ];
 
     /**
@@ -50,7 +50,7 @@ class Soup extends Model
      */
     public $attributeNames = [
         'content' => '内容',
-        'user_id' => '贡献者',
+        'contributor_id' => '贡献者',
         'published_at' => '发布时间',
     ];
 
@@ -60,14 +60,19 @@ class Soup extends Model
     public $hasOne = [];
     public $hasMany = [];
     public $belongsTo = [
-        'user' => [
+        'contributor' => [
             'RainLab\User\Models\User',
+            'key' => 'contributor_id',
         ],
     ];
     public $belongsToMany = [
         'tags' => [
             'Buuug7\Soup\Models\Tag',
             'table' => 'buuug7_soup_soups_tags',
+        ],
+        'collections' =>[
+            'Buuug7\Soup\Models\Collection',
+            'table' => 'buuug7_soup_collections_soups',
         ],
     ];
     public $morphTo = [];
@@ -107,4 +112,26 @@ class Soup extends Model
         }
     }
 
+    public function previousSoup()
+    {
+        return self::isPublished()->where('id', '<', $this->id)->max('id');
+    }
+
+    public function nextSoup()
+    {
+        return self::isPublished()->where('id', '>', $this->id)->min('id');
+    }
+
+    /**
+     * @param Illuminate\Query\Builder $query
+     * @param array $tags list of tag ids
+     * @return  Illuminate\Query\Builder
+     */
+    public function scopeFilterTags($query, $tags)
+    {
+        return $query->whereHas('tags', function ($q) use ($tags) {
+            $q->whereIn('id', $tags);
+        });
+
+    }
 }
