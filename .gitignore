@@ -20,6 +20,8 @@ composer.lock
 nbproject
 
 # buuug7 added
+/node_modules
+
 /bootstrap
 /config
 /modules

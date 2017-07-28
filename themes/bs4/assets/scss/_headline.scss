@@ -1,0 +1,144 @@
+/*
+|--------------------------------------------------------------------------
+| _headline
+|--------------------------------------------------------------------------
+|
+| Created by puguohong on 27/07/2017.
+| 
+|
+*/
+
+
+.headline {
+    display: block;
+    margin: 30px 0 20px 0;
+    border-bottom: 1px dotted #e4e9f0;
+    h2 {
+        font-size: 22px;
+    }
+    h2, h3, h4 {
+        margin: 0 0 -2px 0;
+        padding-bottom: 5px;
+        display: inline-block;
+        border-bottom: 3px solid $orange;
+        a{
+            color:#333;
+        }
+    }
+}
+
+.headline-primary {
+    h2, h3, h4 {
+        border-bottom: 3px solid $brand-primary;
+    }
+}
+
+.headline-success {
+    h2, h3, h4 {
+        border-bottom: 3px solid $brand-success;
+    }
+}
+
+.headline-info {
+    h2, h3, h4 {
+        border-bottom: 3px solid $brand-info;
+    }
+}
+
+.headline-danger {
+    h2, h3, h4 {
+        border-bottom: 3px solid $brand-danger;
+    }
+}
+
+.headline-warning {
+    h2, h3, h4 {
+        border-bottom: 3px solid $brand-warning;
+    }
+}
+
+//
+// headline v2
+//
+
+.headline-v2 {
+    display: block;
+    background: #fff;
+    padding: 1px 10px;
+    margin: 0 0 20px 0;
+    border-left: 3px solid $brand-warning;
+    h2 {
+        color: #000;
+        margin: 3px 0;
+        font-size: 20px;
+        font-weight: 200;
+    }
+}
+
+.headline-v2-primary {
+    border-left: 3px solid $brand-primary;
+}
+
+.headline-v2-success {
+    border-left: 3px solid $brand-success;
+}
+
+.headline-v2-info {
+    border-left: 3px solid $brand-info;
+}
+
+.headline-v2-warning {
+    border-left: 3px solid $brand-warning;
+}
+
+.headline-v2-danger {
+    border-left: 3px solid $brand-danger;
+}
+
+
+
+//
+// headline v3
+//
+
+.headline-v3 {
+    text-align: center;
+    margin-bottom: 40px;
+    h2 {
+        font-size: 25px;
+        text-transform: uppercase;
+    }
+    p {
+        font-size: 14px;
+    }
+}
+
+.headline-v3-primary{
+    h2,h3,h4{
+        color:$brand-primary;
+    }
+}
+
+.headline-v3-success{
+    h2,h3,h4{
+        color:$brand-success;
+    }
+}
+
+.headline-v3-info{
+    h2,h3,h4{
+        color:$brand-info;
+    }
+}
+
+.headline-v3-danger{
+    h2,h3,h4{
+        color:$brand-danger;
+    }
+}
+
+.headline-v3-warning{
+    h2,h3,h4{
+        color:$brand-warning;
+    }
+}

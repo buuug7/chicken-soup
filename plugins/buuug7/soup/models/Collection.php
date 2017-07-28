@@ -75,7 +75,4 @@ class Collection extends Model
     public $attachOne = [];
     public $attachMany = [];
 
-    public function beforeValidate(){
-        trace_log(post());
-    }
 }

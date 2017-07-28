@@ -1,6 +1,7 @@
 <?php namespace Buuug7\Soup;
 
 use Backend;
+use Carbon\Carbon;
 use System\Classes\PluginBase;
 use RainLab\User\Models\User as UserModel;
 use RainLab\User\Controllers\Users as UserController;
@@ -42,13 +43,14 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        Carbon::setLocale('zh');
         UserModel::extend(function ($model) {
             // 用户创建的收藏单
             $model->hasMany['createdCollections'] = [
                 'Buuug7\Soup\Models\Collection',
             ];
             // 用户收藏别人的收藏单
-            $model->belongsToMany['collectCollections']=[
+            $model->belongsToMany['collectCollections'] = [
                 'Buuug7\Soup\Models\Collection',
                 'table' => 'buuug7_soup_collections_users',
             ];
@@ -127,4 +129,19 @@ class Plugin extends PluginBase
             ],
         ];
     }
+
+    public function registerMarkupTags()
+    {
+        return [
+            'filters' => [
+                'time_diff' => [$this, 'makeTimeDiff'],
+            ],
+        ];
+    }
+
+    public function makeTimeDiff($text)
+    {
+        return Carbon::parse($text)->diffForHumans();
+    }
+
 }

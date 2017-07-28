@@ -36,6 +36,7 @@ class Soup extends Model
     public $rules = [
         'content' => 'required|min:8',
         'contributor_id' => 'required',
+        'reference' => 'required',
     ];
 
     /**
@@ -52,6 +53,7 @@ class Soup extends Model
         'content' => '内容',
         'contributor_id' => '贡献者',
         'published_at' => '发布时间',
+        'reference' => '参考',
     ];
 
     /**

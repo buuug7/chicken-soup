@@ -1,0 +1,26 @@
+
+{% if soup %}
+<div class="card card-soup">
+    <div class="card-header text-center">
+        贡献者 <a href="#">{{ soup.contributor.name }}</a>
+    </div>
+    <div class="card-block">
+        <div class="card-text card-soup__content">
+            {{ soup.content }}
+        </div>
+        <div class="callout callout-warning card-soup__reference">
+            <h4>参考</h4>
+            <p>
+                {{ soup.reference }}
+            </p>
+        </div>
+        <a href="#" class="btn btn-outline-success">收藏(667)</a>
+        <a href="#" class="btn btn-outline-primary">评论(327)</a>
+    </div>
+    <div class="card-footer text-muted">
+        {{ soup.published_at|time_diff }}
+    </div>
+</div>
+{% else %}
+<p>没有数据</p>
+{% endif %}

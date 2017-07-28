@@ -8,6 +8,10 @@ fields:
         type: markdown
         size: huge
         mode: tab
+    reference:
+        label: 参考
+        type: textarea
+        size: tiny
 tabs:
     fields:
         tags:

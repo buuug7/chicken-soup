@@ -1,0 +1,219 @@
+/*
+|--------------------------------------------------------------------------
+| app
+|--------------------------------------------------------------------------
+|
+| Created by puguohong on 27/07/2017.
+| 
+|
+*/
+/*
+|--------------------------------------------------------------------------
+| _variables
+|--------------------------------------------------------------------------
+|
+| Created by puguohong on 27/07/2017.
+| 
+|
+*/
+/*
+|--------------------------------------------------------------------------
+| _common
+|--------------------------------------------------------------------------
+|
+| Created by puguohong on 27/07/2017.
+| 
+|
+*/
+body {
+  background-color: #f7f7f7;
+  color: #616161; }
+
+.card-soup .card-soup__content {
+  font-size: 18px;
+  margin-bottom: 15px; }
+
+/*
+|--------------------------------------------------------------------------
+| _callout
+|--------------------------------------------------------------------------
+|
+| Created by puguohong on 27/07/2017.
+| Copied from October demo theme
+|
+*/
+.callout {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-left: 3px solid #eceeef; }
+  .callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 20px; }
+  .callout p:last-child {
+    margin-bottom: 0; }
+
+.callout-success {
+  background-color: #f9fdf7;
+  border-color: #d0e9c6; }
+  .callout-success h4 {
+    color: #3c763d; }
+
+.callout-info {
+  background-color: #f4f8fa;
+  border-color: #bcdff1; }
+  .callout-info h4 {
+    color: #31708f; }
+
+.callout-warning {
+  background-color: #faf8f0;
+  border-color: #faf2cc; }
+  .callout-warning h4 {
+    color: #8a6d3b; }
+
+.callout-danger {
+  background-color: #fdf7f7;
+  border-color: #ebcccc; }
+  .callout-danger h4 {
+    color: #a94442; }
+
+/*
+|--------------------------------------------------------------------------
+| _headline
+|--------------------------------------------------------------------------
+|
+| Created by puguohong on 27/07/2017.
+| 
+|
+*/
+.headline {
+  display: block;
+  margin: 30px 0 20px 0;
+  border-bottom: 1px dotted #e4e9f0; }
+  .headline h2 {
+    font-size: 22px; }
+  .headline h2, .headline h3, .headline h4 {
+    margin: 0 0 -2px 0;
+    padding-bottom: 5px;
+    display: inline-block;
+    border-bottom: 3px solid #f0ad4e; }
+    .headline h2 a, .headline h3 a, .headline h4 a {
+      color: #333; }
+
+.headline-primary h2, .headline-primary h3, .headline-primary h4 {
+  border-bottom: 3px solid #0275d8; }
+
+.headline-success h2, .headline-success h3, .headline-success h4 {
+  border-bottom: 3px solid #5cb85c; }
+
+.headline-info h2, .headline-info h3, .headline-info h4 {
+  border-bottom: 3px solid #5bc0de; }
+
+.headline-danger h2, .headline-danger h3, .headline-danger h4 {
+  border-bottom: 3px solid #d9534f; }
+
+.headline-warning h2, .headline-warning h3, .headline-warning h4 {
+  border-bottom: 3px solid #f0ad4e; }
+
+.headline-v2 {
+  display: block;
+  background: #fff;
+  padding: 1px 10px;
+  margin: 0 0 20px 0;
+  border-left: 3px solid #f0ad4e; }
+  .headline-v2 h2 {
+    color: #000;
+    margin: 3px 0;
+    font-size: 20px;
+    font-weight: 200; }
+
+.headline-v2-primary {
+  border-left: 3px solid #0275d8; }
+
+.headline-v2-success {
+  border-left: 3px solid #5cb85c; }
+
+.headline-v2-info {
+  border-left: 3px solid #5bc0de; }
+
+.headline-v2-warning {
+  border-left: 3px solid #f0ad4e; }
+
+.headline-v2-danger {
+  border-left: 3px solid #d9534f; }
+
+.headline-v3 {
+  text-align: center;
+  margin-bottom: 40px; }
+  .headline-v3 h2 {
+    font-size: 25px;
+    text-transform: uppercase; }
+  .headline-v3 p {
+    font-size: 14px; }
+
+.headline-v3-primary h2, .headline-v3-primary h3, .headline-v3-primary h4 {
+  color: #0275d8; }
+
+.headline-v3-success h2, .headline-v3-success h3, .headline-v3-success h4 {
+  color: #5cb85c; }
+
+.headline-v3-info h2, .headline-v3-info h3, .headline-v3-info h4 {
+  color: #5bc0de; }
+
+.headline-v3-danger h2, .headline-v3-danger h3, .headline-v3-danger h4 {
+  color: #d9534f; }
+
+.headline-v3-warning h2, .headline-v3-warning h3, .headline-v3-warning h4 {
+  color: #f0ad4e; }
+
+/*
+|--------------------------------------------------------------------------
+| _comment
+|--------------------------------------------------------------------------
+|
+| Created by puguohong on 28/07/2017.
+| use BEM https://en.bem.info/methodology/
+| naming schemes : Two Dashes Stye  'block-name__element_name--mod-name'
+| depend on bootstrap v4 list-group component
+*/
+.comment {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; }
+
+.comment__header {
+  display: flex;
+  flex-direction: row; }
+
+.comment__header-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px; }
+
+.comment__header-author {
+  display: flex;
+  flex-direction: column; }
+
+.comment__content-at {
+  font-size: 1rem; }
+
+.comment__action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.3rem; }
+
+.comment__action-like {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.post-comment {
+  background-color: #fff;
+  padding: 20px;
+  width: 100%; }
+
+.post-comment--no-padding {
+  padding: 0; }
+
+/*# sourceMappingURL=app.css.map */

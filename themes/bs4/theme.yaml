@@ -1,0 +1,10 @@
+name: bs4
+description: 'the theme is build with bootstrap v4'
+author: buuug7
+homepage: 'http://github.com/buuug7'
+code: buuug7-theme-bs4
+form:
+    fields:
+        site_name:
+            labe: Site Name
+            default: 鸡汤文
