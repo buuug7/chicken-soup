@@ -3,7 +3,7 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">{{ this.theme.site_name }}</a>
+    <a class="navbar-brand" href="/">{{ this.theme.site_name }}</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -20,6 +20,10 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="#">登陆/注册</a>
                     <a class="dropdown-item" href="#">用户中心</a>
+                    <a
+                            class="dropdown-item"
+                            data-request="onLogout"
+                            data-request-data="redirect: '/user/login'">登出</a>
                 </div>
             </li>
         </ul>

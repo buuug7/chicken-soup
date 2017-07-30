@@ -1,0 +1,59 @@
+url = '/user/login'
+title = '用户登陆'
+layout = 'default'
+[account]
+==
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    用户登陆
+                </div>
+                <div class="card-block">
+                    <form
+                            data-request="onSignin"
+                            data-request-flash>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        name="login"
+                                        id="userSigninLogin"
+                                        placeholder="电子邮箱">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
+                                <input
+                                        type="password"
+                                        class="form-control"
+                                        name="password"
+                                        id="userSigninPassword"
+                                        placeholder="密码">
+                            </div>
+                        </div>
+                        <button
+                                type="submit"
+                                class="btn btn-outline-primary"
+                                data-attach-loading>登陆
+                        </button>
+                        <hr class="my-3">
+                        <p><a href="/user/register">没有账号? 点我注册</a></p>
+                        <p><a href="/user/forgot-password">忘记密码?</a></p>
+
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
