@@ -60,7 +60,13 @@ class Soup extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'comments' => [
+            'Buuug7\Soup\Models\Comment',
+            'table' => 'buuug7_soup_comments',
+            'order' => 'created_at DESC',
+        ],
+    ];
     public $belongsTo = [
         'contributor' => [
             'RainLab\User\Models\User',

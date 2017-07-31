@@ -1,0 +1,56 @@
+url = '/soup/soup/:id'
+title = '鸡汤'
+layout = 'default'
+[soupSoup]
+==
+
+<div class="container my-5">
+    <div class="row">
+
+        <div class="col-md-8">
+            <p>
+                <a href="javascript:history.go(-1)"><i class="fa fa-long-arrow-left"></i></a>
+            </p>
+
+            {% partial 'soup/card-soup' soup=soup %}
+
+            <div class="headline">
+                <h2>汤友评论 ({{ soup.comments.count }})</h2>
+            </div>
+
+            {% if user %}
+            <div class="post-comment mt-3">
+                <form
+                        data-request="onPostComment"
+                        data-request-data="'soup_id': {{ soup.id }}"
+                        data-request-update="'soup/comment':'^.new-comment'"
+                        data-request-success="$('#ncommentContent').val('')"
+                        data-request-flash>
+                    <div class="form-group">
+                        <textarea
+                                class="form-control"
+                                placeholder="添加评论"
+                                name="content"
+                                id="commentContent"></textarea>
+                    </div>
+                    <div class="form-group mb-0">
+                        <button type="submit" class="btn btn-primary" data-attach-loading>评论</button>
+                    </div>
+                </form>
+            </div>
+            {% else %}
+
+            <div class="post-comment mt-3">
+                <div class="alert alert-warning mb-0" role="alert">
+                    <a href="/user/login">登陆</a> 之后可发布评论
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="list-group comments mt-4">
+                <div class="new-comment"></div>
+                {% partial 'soup/comment' comments=soup.comments %}
+            </div>
+        </div>
+    </div>
+</div>

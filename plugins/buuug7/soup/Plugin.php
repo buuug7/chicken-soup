@@ -68,10 +68,9 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
 
         return [
-            'Buuug7\Soup\Components\MyComponent' => 'myComponent',
+            'Buuug7\Soup\Components\Soup' => 'soupSoup',
         ];
     }
 

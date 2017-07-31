@@ -216,4 +216,22 @@ body {
 .post-comment--no-padding {
   padding: 0; }
 
+/*
+|--------------------------------------------------------------------------
+| _card
+|--------------------------------------------------------------------------
+|
+| Created by puguohong on 31/07/2017.
+| 
+|
+*/
+@media (min-width: 576px) {
+  .card-columns--two-col {
+    column-count: 2;
+    column-gap: 1.25rem; }
+    .card-columns--two-col .card {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 0.75rem; } }
+
 /*# sourceMappingURL=app.css.map */

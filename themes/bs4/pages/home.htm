@@ -4,7 +4,7 @@ meta_description = '你自己的汤文'
 layout = 'default'
 ==
 function onStart(){
-$this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','desc')->limit(2)->get();
+$this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','desc')->limit(10)->get();
 }
 ==
 {% partial 'site/welcome' %}
@@ -12,18 +12,13 @@ $this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_
     <div class="headline headline-primary">
         <h2>最新</h2>
     </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-6">
-            {% for soup in latestSoups %}
-                {% partial 'soup/card-soup' soup=soup %}
-            {% endfor %}
-        </div>
-        <div class="col">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam atque commodi culpa delectus
-            dignissimos error exercitationem expedita explicabo hic ipsum magnam odio, odit omnis qui, ratione sint
-            unde. Officiis.
-        </div>
+
+    <div class="card-columns--two-col">
+        {% for soup in latestSoups %}
+        {% partial 'soup/card-soup' soup=soup %}
+        {% endfor %}
     </div>
+
 
     <div class="headline headline-primary">
         <h2>热门精选</h2>

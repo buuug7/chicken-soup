@@ -3,4 +3,5 @@
       - create_soups_table.php
       - create_tags_table.php
       - create_collections_table.php
+      - create_comments_table.php
       - seed_all_tables.php
