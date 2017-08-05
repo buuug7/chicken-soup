@@ -1,6 +1,7 @@
 <?php namespace Buuug7\Soup\Models;
 
 use Model;
+use RainLab\User\Facades\Auth;
 
 /**
  * Comment Model
@@ -27,17 +28,14 @@ class Comment extends Model
         'user_id',
         'target_user_id',
         'target_comment_id',
-        'like_users',
     ];
-
-    protected $jsonable = ['like_users'];
 
     /**
      * Validation
      * @var array
      */
     public $rules = [
-        'content' => 'required|max:255',
+        'content' => 'required|max:1024',
     ];
 
     /**
@@ -73,11 +71,33 @@ class Comment extends Model
             'table' => 'users',
             'key' => 'target_user_id',
         ],
+        'targetComment' => [
+            'Buuug7\Soup\Models\Comment',
+            'table' => 'buuug7_soup_comments',
+            'key' => 'target_comment_id',
+        ],
     ];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'likeUsers' => [
+            'RainLab\User\Models\User',
+            'table' => 'buuug7_soup_comments_users',
+        ],
+    ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function hasLikeComment()
+    {
+        if (!Auth::check()) {
+            return false;
+        }
+        $user = Auth::getUser();
+        $exists = self::whereHas('likeUsers', function ($query) use ($user) {
+            $query->where('user_id', $user->id)->where('comment_id', $this->id);
+        })->exists();
+        return $exists;
+    }
 }

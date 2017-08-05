@@ -1,8 +1,7 @@
-
 {% for comment in comments %}
 <div class="list-group-item comment">
     <div class="comment__header mb-2">
-        <img src="{{ comment.user.getAvatarThumb(100) }}" alt="" class="comment__header-avatar mr-3">
+        <img src="{{ comment.user.getAvatarThumb(100) }}" alt="userAvatar" class="comment__header-avatar mr-3">
         <div class="comment__header-author">
             <strong>{{ comment.user.name }}</strong>
             <span>{{ comment.created_at|time_diff }}</span>
@@ -10,23 +9,51 @@
     </div>
     <div class="comment__content mb-2">
         <p>{{ comment.content }}</p>
+        {% if comment.targetComment %}
+        <blockquote class="blockquote comment__content-at">
+            <a href="">@{{ comment.targetComment.user.name }} :</a>
+            <p>{{ comment.targetComment.content }}</p>
+        </blockquote>
+        {% endif %}
     </div>
     <div class="comment__action">
 
         <div class="comment__action-like mr-3">
-            <a href="#" class="text-muted mr-1 text-success"><i class="fa fa-thumbs-o-up"></i></a>
-            <span class="text-muted small like-count">437</span>
+            <a
+                    href="#"
+                    data-request="onLikeComment"
+                    data-request-data="'comment_id':{{ comment.id }}"
+                    {% if user %}
+                    data-request-update=" 'soup/comment-like-count':'.like-count-{{ loop.index }}','soup/comment-like-color':'.like-color-{{ loop.index }}' "
+                    {% endif %}
+                    class="text-muted mr-1">
+                <span class="like-color-{{ loop.index }}">
+                    <i class="fa fa-thumbs-o-up {% if comment.hasLikeComment() %}text-success{% endif %}"></i>
+                </span>
+            </a>
+            <span class="text-muted small like-count-{{ loop.index }}">{{ comment.likeUsers.count }}</span>
         </div>
 
         <div class="comment__action-replay">
-            <a href="javascript:void(0);" onclick="$(this).closest('.comment').find('.post-comment').toggle()"><i class="fa fa-reply"></i></a>
+            <a
+                    href="javascript:void(0);"
+                    onclick="$(this).closest('.comment').find('.post-comment').toggle()">
+                <i class="fa fa-reply"></i>
+            </a>
         </div>
     </div>
 
     <div class="post-comment post-comment--no-padding mt-3" style="display: none">
-        <form action="#">
+        <form
+                data-request="onReplyComment"
+                data-request-data="'soup_id':{{ comment.soup.id }},'target_comment_id':{{ comment.id }},'target_user_id':{{ comment.user.id}}"
+                {% if user %}
+                data-request-update="'soup/comment':'.list-group.comments'"
+                {% endif %}
+                data-request-success="$(this).closest('.post-comment').find('textarea').val('');$(this).closest('.post-comment').css('display','none')"
+                data-request-flash>
             <div class="form-group">
-                <textarea class="form-control" placeholder="添加评论"></textarea>
+                <textarea class="form-control" placeholder="添加评论" name="content"></textarea>
             </div>
             <div class="form-group mb-0">
                 <button type="submit" class="btn btn-primary">评论</button>

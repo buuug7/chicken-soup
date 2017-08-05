@@ -16,13 +16,21 @@ class CreateCommentsTable extends Migration
             $table->integer('user_id')->unsigned(); // 用户ID
             $table->integer('target_user_id')->unsigned()->nullable(); // 回复目标用户ID
             $table->integer('target_comment_id')->unsigned()->nullable(); // 回复目标评论ID
-            $table->text('like_users'); //
             $table->timestamps();
+        });
+        
+        Schema::create('buuug7_soup_comments_users', function(Blueprint $table)
+        {
+            $table->integer('comment_id');
+            $table->integer('user_id');
+            $table->primary(['comment_id','user_id']);
+            
         });
     }
 
     public function down()
     {
         Schema::dropIfExists('buuug7_soup_comments');
+        Schema::dropIfExists('buuug7_soup_comments_users');
     }
 }

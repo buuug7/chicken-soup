@@ -19,8 +19,8 @@ layout = 'default'
                 <form
                         data-request="onPostComment"
                         data-request-data="'soup_id': {{ soup.id }}"
-                        data-request-update="'soup/comment':'^.new-comment'"
-                        data-request-success="$('#ncommentContent').val('')"
+                        data-request-update="'soup/comment':'.list-group.comments'"
+                        data-request-success="$('#commentContent').val('')"
                         data-request-flash>
                     <div class="form-group">
                         <textarea

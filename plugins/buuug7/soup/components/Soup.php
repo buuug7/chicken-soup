@@ -44,31 +44,85 @@ class Soup extends ComponentBase
 
     public function onPostComment()
     {
-        if(!Auth::check()){
-            return ;
+        if (!Auth::check()) {
+            return;
         }
-        $user=Auth::getUser();
-        $comment=new Comment([
+        $user = Auth::getUser();
+        $soup = SoupModel::find(post('soup_id'));
+        if (!$soup) {
+            return;
+        }
+        $comment = new Comment([
             'content' => post('content'),
             'user_id' => $user->id,
-            'like_users' => [],
         ]);
-        $soup=SoupModel::find(post('soup_id'));
-        if(!$soup){
-            return ;
-        }
         $soup->comments()->save($comment);
-        $this->page['comments']=[$comment];
-        $this->page['soup']=$soup;
+        $this->page['comments'] = $soup->comments;
+        $this->page['soup'] = $soup;
+        $this->page['user'] = $user;
         Flash::success('成功发表评论');
     }
 
-    public function onReplyComment(){
-        //TODO
+    /**
+     * 回复评论
+     * Reply comments
+     */
+    public function onReplyComment()
+    {
+        if (!Auth::check()) {
+            Flash::info('登陆后可以回复评论');
+            return;
+        }
+        $user = Auth::getUser();
+
+        $soup = SoupModel::find(post('soup_id'));
+        if (!$soup) {
+            return;
+        }
+        $comment = new Comment([
+            'content' => post('content'),
+            'user_id' => $user->id,
+            'target_comment_id' => post('target_comment_id'),
+            'target_user_id' => post('target_user_id'),
+        ]);
+
+        $soup->comments()->save($comment);
+        $this->page['comments'] = $soup->comments;
+        $this->page['soup'] = $soup;
+        $this->page['user'] = $user;
+        Flash::success('成功回复评论');
     }
 
-    public function onLikeComment(){
-        // TODO
+
+    /**
+     * 点赞评论
+     *  thumbs up comment
+     */
+    public function onLikeComment()
+    {
+        if (!Auth::check()) {
+            return;
+        }
+
+        $user = Auth::getUser();
+        $commentId = post('comment_id');
+        $comment = Comment::find($commentId);
+        if (!$comment) {
+            return;
+        }
+
+        $exists = $comment->hasLikeComment();
+
+        if (!$exists) {
+            // if not attach  user
+            $comment->likeUsers()->attach($user);
+        } else {
+            // else detach user
+            $comment->likeUsers()->detach($user);
+        }
+
+        $this->page['comment'] = $comment;
+
     }
 
 

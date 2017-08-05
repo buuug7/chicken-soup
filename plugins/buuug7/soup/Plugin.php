@@ -54,6 +54,11 @@ class Plugin extends PluginBase
                 'Buuug7\Soup\Models\Collection',
                 'table' => 'buuug7_soup_collections_users',
             ];
+            // 用户点赞的别人的评论
+            $model->belongsToMany['likeComments']=[
+                'Buuug7\Soup\Models\Comment',
+                'table' => 'buuug7_soup_comments_users',
+            ];
         });
 
         UserController::extend(function ($widget) {
