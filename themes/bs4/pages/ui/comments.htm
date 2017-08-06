@@ -34,7 +34,7 @@ layout = 'default'
             </div>
 
             <div class="headline">
-                <h2>汤友评论 (327)</h2>
+                <h2 class="comments-count">汤友评论 (327)</h2>
             </div>
 
             <div class="post-comment mt-3">
@@ -84,6 +84,14 @@ layout = 'default'
                         </div>
 
                     </div>
+                    <div class="comment__delete">
+                        <button
+                                type="button"
+                                class="close"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
 
 
@@ -113,7 +121,7 @@ layout = 'default'
                     <div class="comment__action">
 
                         <div class="comment__action-like mr-3">
-                            <a href="#" class="text-muted mr-1 text-success"><i class="fa fa-thumbs-o-up"></i></a>
+                            <a href="#" class="text-muted mr-1 text-primary"><i class="fa fa-thumbs-o-up"></i></a>
                             <span class="text-muted small like-count">1437</span>
                         </div>
 
@@ -121,6 +129,14 @@ layout = 'default'
                             <a href="#"><i class="fa fa-reply"></i></a>
                         </div>
 
+                    </div>
+                    <div class="comment__delete">
+                        <button
+                                type="button"
+                                class="close"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 </div>
 
@@ -142,7 +158,7 @@ layout = 'default'
                     <div class="comment__action">
 
                         <div class="comment__action-like mr-3">
-                            <a href="#" class="text-muted mr-1 text-success"><i class="fa fa-thumbs-o-up"></i></a>
+                            <a href="#" class="text-muted mr-1 text-primary"><i class="fa fa-thumbs-o-up"></i></a>
                             <span class="text-muted small like-count">437</span>
                         </div>
 
@@ -161,6 +177,20 @@ layout = 'default'
                             </div>
                         </form>
                     </div>
+                    <div class="comment__delete">
+                        <button
+                                type="button"
+                                class="close"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="list-group-item comment load-more">
+                    <a href="#" class="btn btn-outline-primary align-self-center">加载更多</a>
+                </div>
+                <div class="list-group-item comment load-more">
+                    <a href="#" class="btn btn-outline-secondary align-self-center disabled">没有了</a>
                 </div>
             </div>
         </div>

@@ -3,12 +3,14 @@
 use Buuug7\Soup\Models\Comment;
 use Cms\Classes\ComponentBase;
 use Buuug7\Soup\Models\Soup as SoupModel;
+use Illuminate\Support\Facades\Redirect;
 use October\Rain\Support\Facades\Flash;
 use RainLab\User\Facades\Auth;
 
 class Soup extends ComponentBase
 {
     public $soup;
+    public $commentsLimit;
 
     public function componentDetails()
     {
@@ -27,12 +29,20 @@ class Soup extends ComponentBase
                 'type' => 'string',
                 'default' => '{{ :id }}',
             ],
+            'commentLimitNumber' => [
+                'title' => 'Comment Limit Number',
+                'description' => 'comment limit number',
+                'type' => 'string',
+                'default' => '10',
+            ],
         ];
     }
 
     public function onRun()
     {
         $this->soup = $this->page['soup'] = $this->loadSoup();
+        $this->page['comments'] = $this->loadComments();
+        $this->page['commentLimitNumber'] = $this->property('commentLimitNumber');
     }
 
     protected function loadSoup()
@@ -40,6 +50,36 @@ class Soup extends ComponentBase
         $id = $this->property('id');
         $soup = SoupModel::where('id', $id)->isPublished()->first();
         return $soup;
+    }
+
+    protected function loadComments()
+    {
+        $id = $this->property('id');
+        $limit = $this->property('commentLimitNumber');
+        $soup = SoupModel::where('id', $id)->isPublished()->first();
+        $comments = $soup->comments()->offset(0)->limit($limit)->get();
+        return $comments;
+    }
+
+    public function onLoadMoreComments()
+    {
+        $offset = post('offset');
+        $id = $this->property('id');
+        $soup = SoupModel::where('id', $id)->isPublished()->first();
+        $count = $soup->comments()->count();
+        if ($count >= $offset) {
+            $comments = $soup->comments()
+                ->offset($offset)
+                ->limit($this->property('commentLimitNumber'))
+                ->get();
+            $this->page['offset'] = $offset + $this->property('commentLimitNumber');
+            $this->page['comments'] = $comments;
+        } else {
+            $this->page['offset'] = $count;
+            $this->page['comments'] = [];
+            $this->page['noMoreComments'] = true;
+        }
+
     }
 
     public function onPostComment()
@@ -57,7 +97,7 @@ class Soup extends ComponentBase
             'user_id' => $user->id,
         ]);
         $soup->comments()->save($comment);
-        $this->page['comments'] = $soup->comments;
+        $this->page['comments'] = [$comment];
         $this->page['soup'] = $soup;
         $this->page['user'] = $user;
         Flash::success('成功发表评论');
@@ -87,7 +127,7 @@ class Soup extends ComponentBase
         ]);
 
         $soup->comments()->save($comment);
-        $this->page['comments'] = $soup->comments;
+        $this->page['comments'] = [$comment];
         $this->page['soup'] = $soup;
         $this->page['user'] = $user;
         Flash::success('成功回复评论');
@@ -101,6 +141,7 @@ class Soup extends ComponentBase
     public function onLikeComment()
     {
         if (!Auth::check()) {
+            flash::info('登陆后可以点赞');
             return;
         }
 
@@ -122,6 +163,17 @@ class Soup extends ComponentBase
         }
 
         $this->page['comment'] = $comment;
+    }
+
+    public function onDeleteComment()
+    {
+        $comment = Comment::find(post('id'));
+        if(!$comment){
+            return Redirect::refresh();
+        }
+        $comment->delete();
+        Flash::success('成功删除评论');
+        return Redirect::refresh();
 
     }
 

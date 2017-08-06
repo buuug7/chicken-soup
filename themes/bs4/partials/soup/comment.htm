@@ -1,5 +1,5 @@
 {% for comment in comments %}
-<div class="list-group-item comment">
+<div class="list-group-item comment {{ comment.id }}">
     <div class="comment__header mb-2">
         <img src="{{ comment.user.getAvatarThumb(100) }}" alt="userAvatar" class="comment__header-avatar mr-3">
         <div class="comment__header-author">
@@ -24,14 +24,15 @@
                     data-request="onLikeComment"
                     data-request-data="'comment_id':{{ comment.id }}"
                     {% if user %}
-                    data-request-update=" 'soup/comment-like-count':'.like-count-{{ loop.index }}','soup/comment-like-color':'.like-color-{{ loop.index }}' "
+                    data-request-update=" 'soup/comment-like-count':'.like-count-{{ comment.id }}','soup/comment-like-color':'.like-color-{{ comment.id }}' "
                     {% endif %}
+                    data-request-flash
                     class="text-muted mr-1">
-                <span class="like-color-{{ loop.index }}">
-                    <i class="fa fa-thumbs-o-up {% if comment.hasLikeComment() %}text-success{% endif %}"></i>
+                <span class="like-color-{{ comment.id }}">
+                    <i class="fa fa-thumbs-o-up {% if comment.hasLikeComment() %}text-primary{% endif %}"></i>
                 </span>
             </a>
-            <span class="text-muted small like-count-{{ loop.index }}">{{ comment.likeUsers.count }}</span>
+            <span class="text-muted small like-count-{{ comment.id }}">{{ comment.likeUsers.count }}</span>
         </div>
 
         <div class="comment__action-replay">
@@ -48,7 +49,7 @@
                 data-request="onReplyComment"
                 data-request-data="'soup_id':{{ comment.soup.id }},'target_comment_id':{{ comment.id }},'target_user_id':{{ comment.user.id}}"
                 {% if user %}
-                data-request-update="'soup/comment':'.list-group.comments'"
+                data-request-update="'soup/comment':'^.new-comment','soup/comments-count':'.comments-count'"
                 {% endif %}
                 data-request-success="$(this).closest('.post-comment').find('textarea').val('');$(this).closest('.post-comment').css('display','none')"
                 data-request-flash>
@@ -59,6 +60,17 @@
                 <button type="submit" class="btn btn-primary">评论</button>
             </div>
         </form>
+    </div>
+    <div class="comment__delete">
+        <button
+                data-request="onDeleteComment"
+                data-request-data="'id':{{ comment.id }}"
+                data-request-confirm="你确定要删除?"
+                type="button"
+                class="close"
+                aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 </div>
 {% endfor %}

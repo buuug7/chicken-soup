@@ -1,0 +1,17 @@
+<a
+        href="#"
+        data-request="onLoadMoreComments"
+        data-request-data="offset:{{ offset }}"
+        data-request-update="'soup/comment':'@.more-comments','soup/load-more-comments-button':'.load-more-comments-button'"
+        {% if noMoreComments %}
+        class="btn btn-outline-secondary align-self-center disabled"
+        {% else %}
+        class="btn btn-outline-primary align-self-center"
+        {% endif %}
+>
+    {% if noMoreComments %}
+    没有了
+    {% else %}
+    加载更多
+    {% endif %}
+</a>
