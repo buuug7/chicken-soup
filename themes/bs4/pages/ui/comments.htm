@@ -25,7 +25,9 @@ layout = 'default'
                             来自网易云音乐评论
                         </p>
                     </div>
-                    <a href="#" class="btn btn-outline-success">收藏(667)</a>
+                    <a class="btn btn-outline-success" data-toggle="modal" data-target="#collection-card">
+                        收藏(667)
+                    </a>
                     <a href="#" class="btn btn-outline-primary">评论(327)</a>
                 </div>
                 <div class="card-footer text-muted">
@@ -197,3 +199,43 @@ layout = 'default'
     </div>
 
 </div>
+
+
+<!--modal collection-->
+<div class="modal fade" id="collection-card" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">添加到收藏单</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <i class="fa fa-plus"></i>&nbsp;新建收藏单
+                    </a>
+                    <a href="#" class="list-group-item justify-content-between list-group-item-action">
+                        Lorem ipsum.
+                        <span class="badge badge-default badge-pill">14</span>
+                    </a>
+                    <a href="#" class="list-group-item justify-content-between list-group-item-action">
+                        Lorem ipsum dolor sit amet.
+                        <span class="badge badge-default badge-pill">22</span>
+                    </a>
+                    <a href="#" class="list-group-item justify-content-between list-group-item-action">
+                        Lorem ipsum dolor.
+                        <span class="badge badge-default badge-pill">0</span>
+                    </a>
+                    <a href="#" class="list-group-item justify-content-between list-group-item-action">
+                        IpSum dolor lorem ..
+                        <span class="badge badge-default badge-pill">7</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div

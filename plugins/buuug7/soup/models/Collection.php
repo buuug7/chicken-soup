@@ -22,7 +22,9 @@ class Collection extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name','user_id'
+    ];
 
     /**
      * Validation
@@ -75,4 +77,12 @@ class Collection extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+    public function hasCollected($soupId)
+    {
+        $exists = self::whereHas('soups', function ($query) use ($soupId) {
+            $query->where('soup_id',$soupId)
+            ->where('collection_id',$this->id);
+        })->exists();
+        return $exists;
+    }
 }

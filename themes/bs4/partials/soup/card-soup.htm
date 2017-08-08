@@ -1,4 +1,3 @@
-
 {% if soup %}
 <div class="card card-soup">
     <div class="card-header text-center">
@@ -14,7 +13,9 @@
                 {{ soup.reference }}
             </p>
         </div>
-        <a href="#" class="btn btn-outline-success">收藏(667)</a>
+        <a href="#" class="btn btn-outline-success" data-toggle="modal" data-target="#collection-list-modal">
+            收藏({{ soup.collections.count() }})
+        </a>
         <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary">评论({{ soup.comments.count }})</a>
     </div>
     <div class="card-footer text-muted">
@@ -24,3 +25,67 @@
 {% else %}
 <p>没有数据</p>
 {% endif %}
+
+<!--收藏单列表-->
+<div class="modal fade" id="collection-list-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">添加到收藏单</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <a
+                            href="#"
+                            class="list-group-item list-group-item-action"
+                            data-toggle="modal"
+                            data-dismiss="modal"
+                            data-target="#new-collection-modal">
+                        <i class="fa fa-plus"></i>&nbsp;新建收藏单
+                    </a>
+                    {% for item in user.createdCollections %}
+                    <a href="#"
+                       data-request="onAddSoupToCollection"
+                       data-request-data="'collection_id':{{ item.id }},'soup_id':{{ soup.id }}"
+                       class="list-group-item justify-content-between list-group-item-action">
+                        {{ item.name }}
+                        <span class="badge badge-default badge-pill">{{ item.soups.count() }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新添加歌单-->
+<div class="modal fade" id="new-collection-modal" tabindex="-2" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">创建新收藏单</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form
+                        data-request="onCreateAndAddToCollection"
+                        data-request-flash>
+                    <input type="hidden" name="soup_id" value="{{ soup.id }}">
+                    <div class="form-group">
+                        <label for="collectionName">歌单名称</label>
+                        <input type="text" class="form-control" id="collectionName" name="name">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

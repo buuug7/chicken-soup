@@ -10,7 +10,6 @@ use RainLab\User\Facades\Auth;
 class Soup extends ComponentBase
 {
     public $soup;
-    public $commentsLimit;
 
     public function componentDetails()
     {

@@ -55,7 +55,7 @@ class Plugin extends PluginBase
                 'table' => 'buuug7_soup_collections_users',
             ];
             // 用户点赞的别人的评论
-            $model->belongsToMany['likeComments']=[
+            $model->belongsToMany['likeComments'] = [
                 'Buuug7\Soup\Models\Comment',
                 'table' => 'buuug7_soup_comments_users',
             ];
@@ -76,6 +76,7 @@ class Plugin extends PluginBase
 
         return [
             'Buuug7\Soup\Components\Soup' => 'soupSoup',
+            'Buuug7\Soup\Components\Collection' => 'soupCollection',
         ];
     }
 
