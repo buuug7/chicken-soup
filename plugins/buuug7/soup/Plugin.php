@@ -45,6 +45,11 @@ class Plugin extends PluginBase
     {
         Carbon::setLocale('zh');
         UserModel::extend(function ($model) {
+            // 用户贡献的soup
+            $model->hasMany['contributeSoups'] = [
+                'Buuug7\Soup\Models\Soup',
+                'key' => 'contributor_id',
+            ];
             // 用户创建的收藏单
             $model->hasMany['createdCollections'] = [
                 'Buuug7\Soup\Models\Collection',

@@ -25,7 +25,9 @@ class Soup extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'content','reference','contributor_id'
+    ];
 
     protected $dates = ['published_at'];
 

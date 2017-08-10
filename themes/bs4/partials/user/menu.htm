@@ -1,0 +1,14 @@
+<ul class="nav nav-pills justify-content-center">
+    <li class="nav-item">
+        <a href="/user/account" class="nav-link {% if viewBag.userActiveMenu == 'account' %}active{% endif %}">账号</a>
+    </li>
+    <li class="nav-item">
+        <a href="/user/contribute" class="nav-link {% if viewBag.userActiveMenu == 'contribute' %}active{% endif %}">贡献</a>
+    </li>
+    <li class="nav-item">
+        <a href="/user/my-contribute-soup" class="nav-link {% if viewBag.userActiveMenu == 'myContributeSoup' %}active{% endif %}">我贡献的</a>
+    </li>
+    <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+    </li>
+</ul>

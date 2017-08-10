@@ -7,8 +7,12 @@
         <hr class="my-3">
         <p>The more you get, the less you have.</p>
         <p class="lead">
+            {% if user %}
+            <a class="btn btn-primary btn-lg" href="/user/account">用户中心</a>
+            {% else %}
             <a class="btn btn-primary btn-lg" href="/user/login">登陆/注册</a>
-            <a class="btn btn-outline-primary btn-lg" href="#" role="button">我要贡献</a>
+            {% endif %}
+            <a class="btn btn-outline-primary btn-lg" href="/user/contribute" role="button">我要贡献</a>
         </p>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <?php namespace Buuug7\Soup\Components;
 
 use Buuug7\Soup\Models\Comment;
+use Carbon\Carbon;
 use Cms\Classes\ComponentBase;
 use Buuug7\Soup\Models\Soup as SoupModel;
 use Illuminate\Support\Facades\Redirect;
@@ -42,6 +43,7 @@ class Soup extends ComponentBase
         $this->soup = $this->page['soup'] = $this->loadSoup();
         $this->page['comments'] = $this->loadComments();
         $this->page['commentLimitNumber'] = $this->property('commentLimitNumber');
+        $this->page['myContributeSoups'] = $this->loadMyContributeSoups();
     }
 
     protected function loadSoup()
@@ -56,7 +58,11 @@ class Soup extends ComponentBase
         $id = $this->property('id');
         $limit = $this->property('commentLimitNumber');
         $soup = SoupModel::where('id', $id)->isPublished()->first();
-        $comments = $soup->comments()->offset(0)->limit($limit)->get();
+        if ($soup) {
+            $comments = $soup->comments()->offset(0)->limit($limit)->get();
+        } else {
+            $comments = null;
+        }
         return $comments;
     }
 
@@ -79,6 +85,15 @@ class Soup extends ComponentBase
             $this->page['noMoreComments'] = true;
         }
 
+    }
+
+    public function loadMyContributeSoups()
+    {
+        if (!Auth::check()) {
+            return;
+        }
+        $user = Auth::getUser();
+        return $user->contributeSoups()->orderBy('published_at','DESC')->get();
     }
 
     public function onPostComment()
@@ -167,13 +182,29 @@ class Soup extends ComponentBase
     public function onDeleteComment()
     {
         $comment = Comment::find(post('id'));
-        if(!$comment){
+        if (!$comment) {
             return Redirect::refresh();
         }
         $comment->delete();
         Flash::success('成功删除评论');
         return Redirect::refresh();
 
+    }
+
+    public function onContributeSoup()
+    {
+        if (!Auth::check()) {
+            return;
+        }
+        $user = Auth::getUser();
+        $soup = SoupModel::create([
+            'content' => post('content'),
+            'reference' => post('reference'),
+            'contributor_id' => $user->id,
+            'created_at' => Carbon::now(),
+        ]);
+        Flash::success('创建成功');
+        return Redirect::refresh();
     }
 
 
