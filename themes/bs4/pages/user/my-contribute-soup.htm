@@ -21,7 +21,7 @@ userActiveMenu = "myContributeSoup"
                             <small class="text-muted">{{ soup.contributor.name }}</small>
                         </div>
                         <p class="mb-1">
-                            {{ soup.content }}
+                            {{ soup.content|md }}
                         </p>
                     </a>
                     {% endfor %}

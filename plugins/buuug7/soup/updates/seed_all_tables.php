@@ -33,7 +33,7 @@ class SeedAllTables extends Seeder
 
         Soup::create([
             'contributor_id' => 1,
-            'content' => '梦见全人类中了一种一说谎就爆炸的病毒，走在大街上，四面噼里啪啦像过年放烟花，我穿越人群轰鸣，来到你家楼下，大声喊着我爱你，终于让你明白我说的不是谎话。你流着泪说我也是，炸成了天边一朵红霞。（SrLdd）',
+            'content' => '梦见全人类中了一种一说谎就爆炸的病毒,走在大街上，四面噼里啪啦像过年放烟花，我穿越人群轰鸣，来到你家楼下，大声喊着我爱你，终于让你明白我说的不是谎话。你流着泪说我也是，炸成了天边一朵红霞.',
             'reference' => '来自网易云音乐评论',
             'published' => true,
             'published_at' => Carbon::now(),
