@@ -1,11 +1,12 @@
-<form data-request="onContributeSoup">
+<form data-request="{{ method }}">
+    <input type="hidden" name="id" value="{{ soup.id }}">
     <div class="form-group">
         <label for="content">内容</label>
-        <textarea name="content" id="content" rows="8"></textarea>
+        <textarea name="content" id="content" rows="8">{{ soup.content }}</textarea>
     </div>
     <div class="form-group">
         <label for="reference">参考</label>
-        <textarea name="reference" id="reference" rows="4" class="form-control"></textarea>
+        <textarea name="reference" id="reference" rows="4" class="form-control">{{ soup.reference }}</textarea>
     </div>
     <div class="form-group">
         <button class="btn btn-outline-primary" type="submit">提交</button>

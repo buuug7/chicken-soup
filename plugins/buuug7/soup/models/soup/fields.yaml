@@ -15,16 +15,24 @@ fields:
 tabs:
     fields:
         tags:
+            tab: 杂项
             label: 标签
             type: relation
             span: left
         contributor:
+            tab: 杂项
             label: 贡献者
             type: relation
             span: auto
             nameFrom: name
+        not_passed_message:
+            tab: 退回消息
+            type: markdown
 secondaryTabs:
     fields:
+        status:
+            label: 状态
+            type: radio
         published:
             label: 发布
             type: checkbox
@@ -33,7 +41,6 @@ secondaryTabs:
             label: 发布日期
             type: datepicker
             mode: date
-            span: auto
             trigger:
                 action: enable
                 field: published
@@ -42,4 +49,3 @@ secondaryTabs:
             label: 特色
             type: checkbox
             span: auto
-

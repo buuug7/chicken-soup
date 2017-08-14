@@ -10,6 +10,9 @@ columns:
         relation: contributor
         select: name
         searchable: true
+    status:
+        label: 状态
+        searchable: true
     published:
         label: 发布
         type: switch

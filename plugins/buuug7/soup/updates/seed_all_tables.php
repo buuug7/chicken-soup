@@ -1,6 +1,7 @@
 <?php namespace Buuug7\Soup\Updates;
 
 use Buuug7\Soup\Models\Soup;
+use Buuug7\Soup\Models\Tag;
 use Carbon\Carbon;
 use October\Rain\Database\Updates\Seeder;
 use RainLab\User\Facades\Auth;
@@ -30,6 +31,27 @@ class SeedAllTables extends Seeder
                 'password_confirmation' => '111111',
             ], true);
         }
+        
+        Tag::create([
+            'name' => '古风',
+            'slug' => 'gu-feng',
+        ]);
+        Tag::create([
+            'name' => '励志',
+            'slug' => 'li-zhi',
+        ]);
+        Tag::create([
+            'name' => '装逼',
+            'slug' => 'zhuang-bi',
+        ]);
+        Tag::create([
+            'name' => '婉约',
+            'slug' => 'wan-yue',
+        ]);
+        Tag::create([
+            'name' => '卖萌',
+            'slug' => 'mai-meng',
+        ]);
 
         Soup::create([
             'contributor_id' => 1,
@@ -37,6 +59,7 @@ class SeedAllTables extends Seeder
             'reference' => '来自网易云音乐评论',
             'published' => true,
             'published_at' => Carbon::now(),
+            'status' => 'passed',
         ]);
 
     }

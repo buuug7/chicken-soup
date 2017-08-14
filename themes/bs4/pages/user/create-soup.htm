@@ -1,0 +1,33 @@
+title = '添加鸡汤'
+url = '/user/soup/create'
+layout= 'default'
+[account]
+[viewBag]
+userActiveMenu = "contribute"
+[soupSoup]
+==
+function onStart(){
+$this->addCss('/themes/bs4/assets/vendor/simplemde/dist/simplemde.min.css');
+$this->addJs('/themes/bs4/assets/vendor/simplemde/dist/simplemde.min.js');
+}
+==
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            {% partial 'user/menu' %}
+            <div class="my-4">
+                {% partial 'user/soup-form' method='onCreateSoup' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% put scripts %}
+<script>
+    var simplemde = new SimpleMDE({
+        element: $('#content')[0],
+        spellChecker: false,
+    });
+    //simplemde.value('汤文就写在这里');
+</script>
+{% endput %}

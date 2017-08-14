@@ -1,5 +1,5 @@
 title = '我贡献的'
-url = '/user/my-contribute-soup'
+url = '/user/soup/my-contribute-soup'
 layout= 'default'
 [account]
 [viewBag]
@@ -13,17 +13,30 @@ userActiveMenu = "myContributeSoup"
             <div class="my-4">
                 <ul class="list-group">
                     {% for soup in myContributeSoups %}
-                    <a href="/soup/soup/{{ soup.id }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="list-group-item flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between mb-3">
                             <small class="text-muted">{{ soup.published_at|time_diff }}</small>
                             <small class="text-muted">被评论 : {{ soup.comments.count() }}</small>
                             <small class="text-muted">被收藏 : {{ soup.collections.count() }}</small>
                             <small class="text-muted">{{ soup.contributor.name }}</small>
+                            <small class="text-muted">状态: {{ soup.status }}</small>
                         </div>
-                        <p class="mb-1">
+                        <p class="">
                             {{ soup.content|md }}
                         </p>
-                    </a>
+                        {% if soup.status == 'not-passed' %}
+                        <div class="bg-faded w-100 p-3">
+                            {{ soup.not_passed_message|md }}
+                        </div>
+                        <p class="mt-3">
+                            <a href="/user/soup/update/{{ soup.id }}/1" class="btn btn-outline-primary">编辑</a>
+                            <a href="#"
+                               data-request="onDeleteSoup"
+                               data-request-confirm="确定要删除?"
+                               class="btn btn-outline-danger">删除</a>
+                        </p>
+                        {% endif %}
+                    </div>
                     {% endfor %}
                 </ul>
             </div>

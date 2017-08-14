@@ -17,6 +17,8 @@ class CreateSoupsTable extends Migration
             $table->boolean('published')->default(false); // 发布
             $table->timestamp('published_at')->nullable(); // 发布时间
             $table->boolean('featured')->default(false); // 特色
+            $table->enum('status',['checking','not-passed','passed'])->default('checking'); // 状态
+            $table->text('not_passed_message')->nullable(); // 未通过消息
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@ layout = 'default'
 
 <div class="container my-5">
     <div class="row">
-
+        {% if soup %}
         <div class="col-md-8">
             {% partial 'soup/card-soup' soup=soup %}
 
@@ -68,5 +68,8 @@ layout = 'default'
                 </div>
             </div>
         </div>
+        {% else %}
+        <p>没有数据</p>
+        {% endif%}
     </div>
 </div>

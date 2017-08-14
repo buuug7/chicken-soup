@@ -35,6 +35,15 @@ class Soup extends ComponentBase
                 'type' => 'string',
                 'default' => '10',
             ],
+
+            // prevent to show un published soups
+            // because of update and show single soup is used same component
+            'canUpdate' => [
+                'title' => 'Update soup',
+                'description' => 'Update soup...',
+                'type' => 'string',
+                'default' => '{{ :canUpdate }}',
+            ],
         ];
     }
 
@@ -49,7 +58,13 @@ class Soup extends ComponentBase
     protected function loadSoup()
     {
         $id = $this->property('id');
-        $soup = SoupModel::where('id', $id)->isPublished()->first();
+        $canUpdate = $this->property('canUpdate');
+        if ($canUpdate) {
+            $soup = SoupModel::where('id', $id)->where('contributor_id', Auth::getUser()->id)->first();
+        } else {
+            $soup = SoupModel::where('id', $id)->isPublished()->first();
+        }
+
         return $soup;
     }
 
@@ -93,7 +108,7 @@ class Soup extends ComponentBase
             return;
         }
         $user = Auth::getUser();
-        return $user->contributeSoups()->orderBy('published_at','DESC')->get();
+        return $user->contributeSoups()->orderBy('published_at', 'DESC')->get();
     }
 
     public function onPostComment()
@@ -191,7 +206,12 @@ class Soup extends ComponentBase
 
     }
 
-    public function onContributeSoup()
+
+    /**
+     * 前台用户创建soup
+     *
+     */
+    public function onCreateSoup()
     {
         if (!Auth::check()) {
             return;
@@ -202,8 +222,39 @@ class Soup extends ComponentBase
             'reference' => post('reference'),
             'contributor_id' => $user->id,
             'created_at' => Carbon::now(),
+            'status' => 'checking',
         ]);
         Flash::success('创建成功');
+        return Redirect::refresh();
+    }
+
+    /**
+     * 前台用户更新soup
+     */
+    public function onUpdateSoup()
+    {
+        if (!Auth::check()) {
+            return;
+        }
+        $user = Auth::getUser();
+
+        $soup = SoupModel::find(post('id'));
+        $soup->fill(post());
+
+        $soup->save();
+        Flash::success('更新成功');
+        return Redirect::to('/user/soup/my-contribute-soup');
+
+    }
+
+    public function onDeleteSoup()
+    {
+        $soup = SoupModel::find(post('id'));
+        if (!$soup) {
+            return Redirect::refresh();
+        }
+        $soup->delete();
+        Flash::success('成功删除!');
         return Redirect::refresh();
     }
 

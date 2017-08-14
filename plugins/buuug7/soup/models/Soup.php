@@ -26,7 +26,10 @@ class Soup extends Model
      * @var array Fillable fields
      */
     protected $fillable = [
-        'content','reference','contributor_id'
+        'content',
+        'reference',
+        'contributor_id',
+        'status'
     ];
 
     protected $dates = ['published_at'];
@@ -39,6 +42,7 @@ class Soup extends Model
         'content' => 'required|min:8',
         'contributor_id' => 'required',
         'reference' => 'required',
+        'status' => 'required',
     ];
 
     /**
@@ -56,6 +60,7 @@ class Soup extends Model
         'contributor_id' => '贡献者',
         'published_at' => '发布时间',
         'reference' => '参考',
+        'status' => '状态',
     ];
 
     /**
@@ -132,6 +137,14 @@ class Soup extends Model
         return self::isPublished()->where('id', '>', $this->id)->min('id');
     }
 
+    public function getStatusOptions(){
+        return [
+            'checking' => '审核中',
+            'not-passed' => '未通过',
+            'passed' => '通过',
+        ];
+    }
+
     /**
      * @param Illuminate\Query\Builder $query
      * @param array $tags list of tag ids
@@ -142,6 +155,5 @@ class Soup extends Model
         return $query->whereHas('tags', function ($q) use ($tags) {
             $q->whereIn('id', $tags);
         });
-
     }
 }

@@ -10,6 +10,9 @@ $this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_
 {% partial 'site/welcome' %}
 <div class="container mt-5 mb-5">
     <div class="headline headline-primary">
+        <h2>热门精选</h2>
+    </div>
+    <div class="headline headline-primary">
         <h2>最新</h2>
     </div>
 
@@ -17,10 +20,5 @@ $this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_
         {% for soup in latestSoups %}
         {% partial 'soup/card-soup' soup=soup %}
         {% endfor %}
-    </div>
-
-
-    <div class="headline headline-primary">
-        <h2>热门精选</h2>
     </div>
 </div>
