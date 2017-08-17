@@ -1,0 +1,18 @@
+title = '收藏'
+url = '/collection/:id'
+layout = 'default'
+==
+<div class="container my-5">
+    <div class="headline-v3 headline-v3-primary">
+        <h2>{{ collection.name }}</h2>
+        <p>
+            <span>Created by <a href="#">{{ collection.owner.name }}</a></span>
+            <span>{{ collection.created_at|time_diff }}</span>
+        </p>
+    </div>
+    <div class="card-columns--two-col">
+        {% for soup in collection.soups %}
+        {% partial 'soup/card-soup' soup=soup %}
+        {% endfor %}
+    </div>
+</div>

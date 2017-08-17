@@ -1,5 +1,8 @@
 <ul class="nav nav-pills justify-content-center">
     <li class="nav-item">
+        <a href="/user/collections" class="nav-link {% if viewBag.userActiveMenu == 'collections' %}active{% endif %}">我的汤单</a>
+    </li>
+    <li class="nav-item">
         <a href="/user/account" class="nav-link {% if viewBag.userActiveMenu == 'account' %}active{% endif %}">账号</a>
     </li>
     <li class="nav-item">

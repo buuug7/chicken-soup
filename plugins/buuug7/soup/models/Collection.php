@@ -65,6 +65,7 @@ class Collection extends Model
         'soups' => [
             'Buuug7\Soup\Models\Soup',
             'table' => 'buuug7_soup_collections_soups',
+            'order' => 'published_at DESC',
         ],
         'collectors' => [
             'RainLab\User\Models\User',
@@ -79,6 +80,7 @@ class Collection extends Model
 
     public function hasCollected($soupId)
     {
+        //trace_sql();
         $exists = self::whereHas('soups', function ($query) use ($soupId) {
             $query->where('soup_id',$soupId)
             ->where('collection_id',$this->id);

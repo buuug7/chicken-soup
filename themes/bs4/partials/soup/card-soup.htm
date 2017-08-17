@@ -1,5 +1,5 @@
 {% if soup %}
-<div class="card card-soup">
+<div class="card card-soup mb-4">
     <div class="card-header text-center">
         贡献者 <a href="#">{{ soup.contributor.name }}</a>
     </div>
@@ -13,7 +13,7 @@
                 {{ soup.reference }}
             </p>
         </div>
-        <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#collection-list-modal">
+        <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#collection-list-modal-{{ soup.id }}">
             收藏({{ soup.collections.count() }})
         </a>
         <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary">评论({{ soup.comments.count }})</a>
@@ -22,12 +22,9 @@
         {{ soup.published_at|time_diff }}
     </div>
 </div>
-{% else %}
-<p>没有数据</p>
-{% endif %}
 
 <!--收藏单列表-->
-<div class="modal fade" id="collection-list-modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="collection-list-modal-{{ soup.id }}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -43,7 +40,7 @@
                             class="list-group-item list-group-item-action"
                             data-toggle="modal"
                             data-dismiss="modal"
-                            data-target="#new-collection-modal">
+                            data-target="#new-collection-modal-{{ soup.id }}">
                         <i class="fa fa-plus"></i>&nbsp;新建收藏单
                     </a>
                     {% for item in user.createdCollections %}
@@ -62,7 +59,7 @@
 </div>
 
 <!--新添加歌单-->
-<div class="modal fade" id="new-collection-modal" tabindex="-2" role="dialog">
+<div class="modal fade" id="new-collection-modal-{{ soup.id }}" tabindex="-2" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,5 +84,8 @@
             </div>
         </div>
     </div>
-
 </div>
+
+{% else %}
+<p>没有数据</p>
+{% endif %}

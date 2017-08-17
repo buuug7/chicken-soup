@@ -1,0 +1,24 @@
+title = '我的汤单'
+url = '/user/collections'
+layout= 'default'
+[account]
+[viewBag]
+userActiveMenu = "collections"
+==
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            {% partial 'user/menu' %}
+            <div class="my-4">
+                <div class="list-group">
+                    {% for item in user.createdCollections %}
+                    <a href="/collection/{{ item.id }}" class="list-group-item justify-content-between">
+                        {{ item.name }}
+                        <span class="badge badge-default">{{ item.soups.count() }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

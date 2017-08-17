@@ -16,6 +16,9 @@ $this->addJs('/themes/bs4/assets/vendor/simplemde/dist/simplemde.min.js');
         <div class="col-md-12">
             {% partial 'user/menu' %}
             <div class="my-4">
+                <div class="callout callout-warning">
+                    在贡献汤文之前,请务必仔细阅读 <a href="#">贡献规则</a>
+                </div>
                 {% partial 'user/soup-form' method='onCreateSoup' %}
             </div>
         </div>
