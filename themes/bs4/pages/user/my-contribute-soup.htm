@@ -26,6 +26,7 @@ userActiveMenu = "myContributeSoup"
                         </p>
                         {% if soup.status == 'not-passed' %}
                         <div class="bg-faded w-100 p-3">
+                            <h4 class="text-danger">回退消息</h4>
                             {{ soup.not_passed_message|md }}
                         </div>
                         <p class="mt-3">
