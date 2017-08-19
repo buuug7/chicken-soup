@@ -309,6 +309,97 @@ class SeedAllTables extends Seeder
             'status' => 'passed',
         ]);
 
+        Soup::create([
+            'contributor_id' => 1,
+            'content' => '
+#### Yesterday once more 昨日重现 中英文
+
++ When I was young I\'d listen to the radio
++ 年少时我喜欢听着收音机
++ Waiting for my favorite songs
++ 等候我喜欢的歌曲轻轻响起
++ When they played I\'d sing along,
++ 我独自为它伴唱, 
++ It make me smile.
++ 这时的我, 心神荡漾.
+
++ Those were such happy times and not so long ago
++ 那些真是快乐的时光, 仿佛就发生在不远的身旁
++ How I wondered where they\'d gone.
++ 我现在多想知道美好的时光（他们）都已去向何方？
++ But they\'re back again just like a long lost friend
++ 然而此时, 他们都又回来了, 象失散的朋友再次回来
++ All the songs I love so well.
++ 所有的歌曲我还是那样喜欢
++ Every shalala every wo\'wo
++ 每一个字,每一句歌词
++ still shines.
++ 仍散发光芒
++ Every shing-a-ling-a-ling that they\'re starting to sing
++ 每一句sing aling aling 他们唱得
++ so fine
++ 还是如此动听
+
++ When they get to the part
++ 每当听到他们离别的时候
++ where he\'s breaking her heart
++ 他伤了她的心的时候
++ It can really make me cry
++ 确实让我哭泣
++ just like before.
++ 就象过去一样
++ It\'s yesterday once more.
++ 一切仿佛昨日重现
++ (Shoobie do lang lang)
++ 无比惆怅.
+
++ Looking back on how it was in years gone by
++ 回头看看走过的岁月
++ And the good times that I had
++ 和曾经美好的时光
++ makes today seem rather sad,
++ 幸福记忆让今天的我很感伤
++ So much has changed.
++ 有太多已经改变
+
++ It was songs of love that I would sing to them
++ 只有那些关于爱的歌曲让我依旧吟唱
++ And I\'d memorize each word.
++ 每句歌词还印在我脑海里
++ Those old melodies still sound so good to me
++ 那些旧的记忆依旧那么美妙
++ As they melt the years away
++ 即便是岁月蹉跎, 颜容消磨.
++ Every shalala every wo\'wo still shines
++ 每一个字,每一句歌词,仍在我心里闪耀
++ Every shing-a-ling-a-ling that they\'re starting to sing
++ 每一个音符, 每一段旋律
++ so fine 令我心中掀起波浪
+
++ All my best memories come back clearly to me
++ 我仿佛又回到了我那最美好的记忆中, 清新而又爽朗
++ Some can even make me cry
++ 过去的一些事情又不禁让我潸然泪下, 暗自悲伤
++ just like before.
++ 就象过去一样, 
++ It\'s yesterday once more.
++ 昨日重现, 岁月如歌, 
++ (Shoobie do lang lang)
++ 如风随形, 飘然忽没.
+
++ Every shalala every wo\'wo still shines.
++ Every shing-a-ling-a-ling that they\'re starting to sing
++ so fine
++ Every shalala every wo\'wo still shines.
++ Every shing-a-ling-a-ling that they\'re starting to sing so fine
+            
+',
+            'reference' => '来自 未知 (-_-',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
 
     }
 
