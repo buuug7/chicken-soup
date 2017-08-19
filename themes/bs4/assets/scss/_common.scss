@@ -7,14 +7,45 @@
 | 
 |
 */
-body{
+
+body {
     background-color: #f7f7f7;
-    color:#616161;
+    color: #616161;
+    font-family: $font-family-sans-serif;
 }
 
-.card-soup{
-    .card-soup__content{
+//
+// card soup
+//
+.card-soup {
+    .card-soup__content {
         font-size: 18px;
         margin-bottom: 15px;
+        position: relative;
+        overflow: hidden;
+        //max-height: 350px;
+    }
+    .card-soup__more {
+        position: absolute;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        bottom: 0;
+        width: 100%;
+        background-image: linear-gradient(
+                        rgba(255, 255, 255, 0.2),
+                        rgba(255, 255, 255, 0.4),
+                        rgba(255, 255, 255, 0.6),
+                        rgba(255, 255, 255, 0.8),
+                        rgba(255, 255, 255, 1)
+        );
+        padding: 40px 0 0 0;
+        > a{
+            color:#616161;
+
+        }
+        > a:hover {
+            text-decoration: none;
+        }
     }
 }

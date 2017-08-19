@@ -41,6 +41,12 @@ description = 'default layout'
 <script src="{{ 'assets/vendor/bootstrap/dist/js/bootstrap.js'|theme }}"></script>
 <script src="{{ 'assets/scripts/app.js'|theme }}"></script>
 {% framework extras %}
+<script>
+    $(function () {
+        $.ChickSoup.init();
+        $.ChickSoup.showMoreContent();
+    });
+</script>
 {% scripts %}
 </body>
 </html>
