@@ -24,15 +24,16 @@
         },
 
         /**
+         * @param contentHeight
          * 添加 查看更多 的按钮
          * 限制单个card内容过长而添加
          */
-        showMoreContent: function () {
+        showMoreContent: function (contentHeight) {
             var cardContent = $('.card-soup__content');
             cardContent.each(function (index, element) {
                 var currentElement = $(element);
-                if (currentElement.height() >= 400) {
-                    currentElement.css({'max-height': '400px'});
+                if (currentElement.height() >= contentHeight) {
+                    currentElement.css({'max-height': contentHeight+'px'});
                     var moreElement = currentElement.find('.card-soup__more');
                     moreElement.css({'display': 'flex'});
                     moreElement.find('a').on('click', function (e) {

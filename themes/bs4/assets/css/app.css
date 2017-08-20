@@ -64,7 +64,8 @@
 body {
   background-color: #f7f7f7;
   color: #616161;
-  font-family: "lato", sans-serif; }
+  font-family: "lato", sans-serif;
+  font-weight: 300; }
 
 .card-soup .card-soup__content {
   font-size: 18px;
