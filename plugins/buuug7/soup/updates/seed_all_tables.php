@@ -400,6 +400,56 @@ class SeedAllTables extends Seeder
             'status' => 'passed',
         ]);
 
+        Soup::create([
+            'contributor_id' => $user02->id,
+            'content' => '
+#### 林深时见鹿
+林深时见鹿  
+海蓝时见鲸  
+梦醒时见你
+',
+            'reference' => '来自 未知 (-_-',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
+
+        Soup::create([
+            'contributor_id' => $user01->id,
+            'content' => '
+#### 赶在忧虑毁灭你之前，改掉忧虑的坏习惯
++ 使自己忙碌
++ 不要为了小事而烦扰
++ 估算你所忧虑事情的概率
++ 接受不可改变的事实
++ 就此打住
++ 不要锯木宵
+',
+            'reference' => '来自 未知 (-_-',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
+        Soup::create([
+            'contributor_id' => $user01->id,
+            'content' => '
+如果你要你家庭有一个幸福美满快乐的生活，那么你只需要做:  
+第一项, 不要喋喋不休  
+第二项, 不要尝试去改变你的伴侣  
+第三项, 不要批评  
+第四项, 给予对方真诚的欣赏  
+第五项, 随时注意琐碎细微的地方  
+第六项, 要有礼貌  
+第七项, 阅读一本有关结婚性生活的好
+',
+            'reference' => '来自 未知 (-_-',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
 
     }
 

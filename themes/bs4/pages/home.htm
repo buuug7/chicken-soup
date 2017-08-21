@@ -4,7 +4,7 @@ meta_description = '你自己的汤文'
 layout = 'default'
 ==
 function onStart(){
-$this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','desc')->limit(10)->get();
+$this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','desc')->limit(100)->get();
 }
 ==
 {% partial 'site/welcome' %}
