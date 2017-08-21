@@ -9,6 +9,7 @@
 + before run `php artisan october:update`,you need run `composer update` first.
 + remove some files, `rm .gitignore README.md`
 + install dependence plugins
+    - install october.drivers `php artisan plugin:install October.Drivers`
     - install rainlab.user `php artisan plugin:install RainLab.User`
 + clone this repository
     - in the project root directory,run 'git init'
@@ -16,4 +17,11 @@
     - run `git pull origin master`
 + after pull complete
     - install buuug7.soup `php artisan plugin:refresh Buuug7.Soup`
+    
+## 文档
++ [1](https://github.com/buuug7/chicken-soup/blob/master/docs/1.md)
++ [2](https://github.com/buuug7/chicken-soup/blob/master/docs/2.md)
++ [3](https://github.com/buuug7/chicken-soup/blob/master/docs/3.md)
++ [4](https://github.com/buuug7/chicken-soup/blob/master/docs/4.md)   
++ [email](https://github.com/buuug7/chicken-soup/blob/master/docs/mail.md) 
             

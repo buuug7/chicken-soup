@@ -54,7 +54,7 @@ class SeedAllTables extends Seeder
         ]);
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user01->id,
             'content' => '
 梦见全人类中了一种一说谎就爆炸的病毒, 走在大街上, 四面噼里啪啦像过年放烟花, 我穿越人群轰鸣, 来到你家楼下, 大声喊着我爱你, 终于让你明白我说的不是谎话. 你流着泪说我也是, 炸成了天边一朵红霞.
 ',
@@ -65,7 +65,7 @@ class SeedAllTables extends Seeder
         ]);
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user01->id,
             'content' => '
 #### 心灵的平静
 心灵的平静是智慧美丽的珍宝, 它来自于长期, 耐心的自我控制. 心灵的安宁意味着一种成熟的经历以及对于事物规律的不同寻常的了解.
@@ -88,7 +88,7 @@ class SeedAllTables extends Seeder
         ]);
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user01->id,
             'content' => '
 #### 清晰的目标
 + 知道自己最需要什么,明白自己目前最需要什么.
@@ -107,7 +107,7 @@ class SeedAllTables extends Seeder
         ]);
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user01->id,
             'content' => '
 #### six imposible things 六件不可能的事
 + one,there\'s a potion that can make you shrink.
@@ -131,7 +131,7 @@ class SeedAllTables extends Seeder
 
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user01->id,
             'content' => '
 #### 生活的艺术
 + 在你穷的时候,要少在家里,多在外面.
@@ -159,7 +159,7 @@ class SeedAllTables extends Seeder
         ]);
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user02->id,
             'content' => '
 #### 出塞
 > 王昌龄
@@ -180,7 +180,7 @@ class SeedAllTables extends Seeder
 
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user02->id,
             'content' => '
 #### 万里长城万里空,百世英雄百世梦
 > 张廷玉
@@ -206,7 +206,7 @@ class SeedAllTables extends Seeder
         ]);
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user02->id,
             'content' => '
 #### 不要在意别人是怎么看你说你的
 不要在意别人在背后怎么看你说你, 因为这些言语改变不了事实, 却可能搅乱你的心. 心如果乱了, 一切就都乱了; 理解你的人, 不需要解释；不理解你的人, 不用你解释. 因为日久不一定生情, 但一定见人心. 人贵在大气, 要学会对自己说. 并请相信, 真正懂你的人, 绝不会因为那些有的、没有的而否定你.
@@ -218,7 +218,7 @@ class SeedAllTables extends Seeder
         ]);
 
         Soup::create([
-            'contributor_id' => 2,
+            'contributor_id' => $user02->id,
             'content' => '
 #### 27岁以上的单身男N条忠告
 
@@ -310,7 +310,7 @@ class SeedAllTables extends Seeder
         ]);
 
         Soup::create([
-            'contributor_id' => 1,
+            'contributor_id' => $user02->id,
             'content' => '
 #### Yesterday once more 昨日重现 中英文
 
