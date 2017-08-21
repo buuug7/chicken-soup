@@ -484,15 +484,29 @@ class SeedAllTables extends Seeder
 
 如果年华与岁月虚度, 志愿时日消磨, 最终就会像枯枝落叶般一天天衰老下去. 这样的人不会为社会所用而有益于社会, 只有悲伤地困守在自己的穷家破舍里, 到那时再悔也来不及了.  
 
-
-
- 
 ',
             'reference' => '来自 未知 (-_-',
             'published' => true,
             'published_at' => Carbon::now(),
             'status' => 'passed',
         ]);
+
+
+
+        Soup::create([
+            'contributor_id' => $user01->id,
+            'content' => '
+寻找完善自己, 而不是埋怨别人  
+
+你选择是因为你喜欢, 你喜欢就不应该抱怨
+
+',
+            'reference' => '来自 未知 (-_-',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
 
 
     }
