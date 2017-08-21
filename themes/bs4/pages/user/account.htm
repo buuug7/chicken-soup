@@ -1,9 +1,14 @@
 title = '账号'
-url = '/user/account'
+url = '/user/account/:code?'
 layout= 'default'
 [account]
 [viewBag]
 userActiveMenu = "account"
+paramCode = 'code'
+==
+function onStart(){
+    if(!Auth::check()) return Redirect::to('/user/login');
+}
 ==
 <div class="container my-5">
     <div class="row">

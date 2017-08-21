@@ -7,6 +7,8 @@ userActiveMenu = "contribute"
 [soupSoup]
 ==
 function onStart(){
+if(!Auth::check()) return Redirect::to('/user/login');
+
 $this->addCss('/themes/bs4/assets/vendor/simplemde/dist/simplemde.min.css');
 $this->addJs('/themes/bs4/assets/vendor/simplemde/dist/simplemde.min.js');
 }
