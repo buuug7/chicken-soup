@@ -509,6 +509,25 @@ class SeedAllTables extends Seeder
 
 
 
+        Soup::create([
+            'contributor_id' => $user01->id,
+            'content' => '
+鸟尽弓藏, 兔死狗烹
+> 鸟没有了, 弓也就藏起来不用了. 野兔死了, 猎狗就要烹煮着吃了. 比喻事情成功之后, 把曾经出过力的人一脚踢开.
+
+
+飞鸟尽, 良弓藏.  
+狡兔死, 走狗烹.  
+敌国破, 谋臣亡.
+
+',
+            'reference' => '来自 未知 (-_-',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
+
     }
 
 }
