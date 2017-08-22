@@ -29,31 +29,31 @@
 
 .headline-primary {
     h2, h3, h4 {
-        border-bottom: 3px solid $brand-primary;
+        border-bottom: 3px solid theme-color("primary");
     }
 }
 
 .headline-success {
     h2, h3, h4 {
-        border-bottom: 3px solid $brand-success;
+        border-bottom: 3px solid theme-color("success");
     }
 }
 
 .headline-info {
     h2, h3, h4 {
-        border-bottom: 3px solid $brand-info;
+        border-bottom: 3px solid theme-color("info");
     }
 }
 
 .headline-danger {
     h2, h3, h4 {
-        border-bottom: 3px solid $brand-danger;
+        border-bottom: 3px solid theme-color("danger");
     }
 }
 
 .headline-warning {
     h2, h3, h4 {
-        border-bottom: 3px solid $brand-warning;
+        border-bottom: 3px solid theme-color("warning");
     }
 }
 
@@ -66,7 +66,7 @@
     background: #fff;
     padding: 1px 10px;
     margin: 0 0 20px 0;
-    border-left: 3px solid $brand-warning;
+    border-left: 3px solid theme-color("warning");
     h2 {
         color: #000;
         margin: 3px 0;
@@ -76,23 +76,23 @@
 }
 
 .headline-v2-primary {
-    border-left: 3px solid $brand-primary;
+    border-left: 3px solid theme-color("primary");
 }
 
 .headline-v2-success {
-    border-left: 3px solid $brand-success;
+    border-left: 3px solid theme-color("success");
 }
 
 .headline-v2-info {
-    border-left: 3px solid $brand-info;
+    border-left: 3px solid theme-color("info");
 }
 
 .headline-v2-warning {
-    border-left: 3px solid $brand-warning;
+    border-left: 3px solid theme-color("warning");
 }
 
 .headline-v2-danger {
-    border-left: 3px solid $brand-danger;
+    border-left: 3px solid theme-color("danger");
 }
 
 
@@ -115,30 +115,30 @@
 
 .headline-v3-primary{
     h2,h3,h4{
-        color:$brand-primary;
+        color:theme-color("primary");
     }
 }
 
 .headline-v3-success{
     h2,h3,h4{
-        color:$brand-success;
+        color:theme-color("success");
     }
 }
 
 .headline-v3-info{
     h2,h3,h4{
-        color:$brand-info;
+        color:theme-color("info");
     }
 }
 
 .headline-v3-danger{
     h2,h3,h4{
-        color:$brand-danger;
+        color:theme-color("danger");
     }
 }
 
 .headline-v3-warning{
     h2,h3,h4{
-        color:$brand-warning;
+        color:theme-color("warning");
     }
 }

@@ -17,10 +17,11 @@ body {
 // Blockquotes
 blockquote {
     padding: 0 $spacer;
+    border-left: 0.25em solid $gray-200;
     margin-bottom: $spacer;
     font-size: 18px;
-    border-left: 0.25em solid $blockquote-border-color;
-    color: lighten(#636c72,10%);
+    color: $gray-500;
+    font-weight: 300;
     >:first-child{
         margin-top: 0;
     }

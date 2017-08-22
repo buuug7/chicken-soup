@@ -16,8 +16,7 @@
     margin-bottom: 20px;
     padding: $callout-padding;
     border-left: 3px solid $callout-border;
-    code, .highlight {
-    }
+    background-color: $gray-100;
     h4 {
         margin-top: 0;
         margin-bottom: 5px;
@@ -29,34 +28,34 @@
 }
 
 .callout-success {
-    background-color: $callout-success-bg;
-    border-color: $callout-success-border;
+    background-color: lighten(theme-color("success"),55%);
+    border-color: lighten(theme-color("success"),45%);
     h4 {
-        color: $callout-success-text;
+        color: theme-color("success");
     }
 }
+
 
 .callout-info {
-    background-color: $callout-info-bg;
-    border-color: $callout-info-border;
+    background-color: lighten(theme-color("info"),55%);
+    border-color: lighten(theme-color("info"),45%);
     h4 {
-        color: $callout-info-text;
+        color: theme-color("info");
     }
 }
-
 .callout-warning {
-    background-color: $callout-warning-bg;
-    border-color: $callout-warning-border;
+    background-color: lighten(theme-color("warning"),45%);
+    border-color: lighten(theme-color("warning"),35%);
     h4 {
-        color: $callout-warning-text;
+        color: theme-color("warning");
     }
 }
 
 
 .callout-danger {
-    background-color: $callout-danger-bg;
-    border-color: $callout-danger-border;
+    background-color: lighten(theme-color("danger"),42%);
+    border-color: lighten(theme-color("danger"),35%);
     h4 {
-        color: $callout-danger-text;
+        color: theme-color("danger");
     }
 }
