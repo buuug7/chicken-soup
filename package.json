@@ -1,8 +1,21 @@
 {
+  "scripts": {
+    "watch": "gulp default",
+    "build": "gulp build"
+  },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
     "font-awesome": "^4.7.0",
     "popper.js": "^1.12.3",
     "simplemde": "^1.11.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1"
   }
 }

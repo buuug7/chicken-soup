@@ -53,9 +53,9 @@
                     <a href="#"
                        data-request="onAddSoupToCollection"
                        data-request-data="'collection_id':{{ item.id }},'soup_id':{{ soup.id }}"
-                       class="list-group-item justify-content-between list-group-item-action">
+                       class="d-flex list-group-item justify-content-between list-group-item-action">
                         {{ item.name }}
-                        <span class="badge badge-default badge-pill">{{ item.soups.count() }}</span>
+                        <span class="badge badge-pill badge-secondary" style="line-height: normal">{{ item.soups.count() }}</span>
                     </a>
                     {% endfor %}
                 </div>
