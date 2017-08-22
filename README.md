@@ -17,6 +17,11 @@
     - run `git pull origin master`
 + after pull complete
     - install buuug7.soup `php artisan plugin:refresh Buuug7.Soup`
+
+## usage
++ bs4 theme
+    - compile scss file with `npm run build`, if watch `npm run watch`    
+    
     
 ## 文档
 + [1](https://github.com/buuug7/chicken-soup/blob/master/docs/1.md)

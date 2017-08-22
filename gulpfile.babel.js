@@ -1,12 +1,12 @@
 /*
-    |--------------------------------------------------------------------------
-    | gulpfile.babel
-    |--------------------------------------------------------------------------
-    |
-    | Created by puguo on 8/22/2017.
-    | 
-    |
-    */
+|--------------------------------------------------------------------------
+| gulpfile.babel
+|--------------------------------------------------------------------------
+|
+| Created by puguo on 8/22/2017.
+|
+|
+*/
 
 import gulp from 'gulp';
 import sass from 'gulp-sass';
@@ -14,9 +14,10 @@ import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'gulp-autoprefixer';
 import del from 'del';
 
+let theme = 'bs4';
 let paths = {
-    stylesFrom: ['themes/bs4/assets/scss/**/*'],
-    stylesTo: 'themes/bs4/assets/css',
+    stylesFrom: [`themes/${theme}/assets/scss/**/*`],
+    stylesTo: `themes/${theme}/assets/css`,
 };
 
 gulp.task('clean', () => {
