@@ -9,7 +9,7 @@
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">收藏集<span class="sr-only">(current)</span></a>
+                <a class="nav-link {% if viewBag.userActiveMenu == 'collections' %}active{% endif %}" href="/collections">收藏集<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">标签</a>

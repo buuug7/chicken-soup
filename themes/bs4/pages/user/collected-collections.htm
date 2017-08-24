@@ -1,0 +1,28 @@
+title = '我收藏的汤单'
+url = '/user/collected-collections'
+layout= 'default'
+[account]
+[viewBag]
+userActiveMenu = "collectedCollections"
+==
+function onStart(){
+if(!Auth::check()) return Redirect::to('/user/login');
+}
+==
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            {% partial 'user/menu' %}
+            <div class="my-4">
+                <div class="list-group">
+                    {% for item in user.collectedCollections %}
+                    <a href="/collection/{{ item.id }}" class="list-group-item d-flex justify-content-between">
+                        {{ item.name }}
+                        <span class="badge badge-secondary">{{ item.soups.count() }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

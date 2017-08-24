@@ -7,7 +7,24 @@ layout = 'default'
         <h2>{{ collection.name }}</h2>
         <p>
             <span>Created by <a href="#">{{ collection.owner.name }}</a></span>
-            <span>{{ collection.created_at|time_diff }}</span>
+            <span class="ml-2">{{ collection.created_at|time_diff }}</span>
+            <a
+                    href="#"
+                    class="ml-2"
+                    data-request="onCollectedCollection"
+                    data-request-data="'collection_id':{{ collection.id}}">
+                <i class="fa fa-plus"></i> 收藏({{ collection.collectors.count() }})
+            </a>
+            {% if user.id == collection.user_id %}
+            <a
+                    href="#"
+                    class="m-2"
+                    data-request="onDeleteCollection"
+                    data-request-data="'collection_id':{{ collection.id }}"
+                    data-request-confirm="你真的要删除?">
+                <i class="fa fa-trash"></i>
+            </a>
+            {% endif %}
         </p>
     </div>
     <div class="card-columns--two-col">

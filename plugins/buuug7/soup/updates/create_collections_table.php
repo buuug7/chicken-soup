@@ -12,6 +12,7 @@ class CreateCollectionsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
+            $table->string('description')->nullable();
             $table->integer('user_id'); // 创建者ID
             $table->timestamps();
         });

@@ -23,7 +23,7 @@ class Collection extends Model
      * @var array Fillable fields
      */
     protected $fillable = [
-        'name','user_id'
+        'name', 'user_id'
     ];
 
     /**
@@ -78,12 +78,21 @@ class Collection extends Model
     public $attachOne = [];
     public $attachMany = [];
 
-    public function hasCollected($soupId)
+    public function hasCollectedSoup($soupId)
     {
         //trace_sql();
         $exists = self::whereHas('soups', function ($query) use ($soupId) {
-            $query->where('soup_id',$soupId)
-            ->where('collection_id',$this->id);
+            $query->where('soup_id', $soupId)
+                ->where('collection_id', $this->id);
+        })->exists();
+        return $exists;
+    }
+
+    public function hasCollector($userId)
+    {
+        $exists = self::whereHas('collectors', function ($query) use ($userId) {
+            $query->where('user_id', $userId)
+                ->where('collection_id', $this->id);
         })->exists();
         return $exists;
     }

@@ -55,7 +55,7 @@ class Plugin extends PluginBase
                 'Buuug7\Soup\Models\Collection',
             ];
             // 用户收藏别人的收藏单
-            $model->belongsToMany['collectCollections'] = [
+            $model->belongsToMany['collectedCollections'] = [
                 'Buuug7\Soup\Models\Collection',
                 'table' => 'buuug7_soup_collections_users',
             ];

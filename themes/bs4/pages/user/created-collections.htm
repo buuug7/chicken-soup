@@ -1,9 +1,9 @@
-title = '我的汤单'
-url = '/user/collections'
+title = '我创建的汤单'
+url = '/user/created-collections'
 layout= 'default'
 [account]
 [viewBag]
-userActiveMenu = "collections"
+userActiveMenu = "createdCollections"
 ==
 function onStart(){
 if(!Auth::check()) return Redirect::to('/user/login');

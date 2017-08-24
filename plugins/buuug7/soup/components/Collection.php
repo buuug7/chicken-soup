@@ -108,6 +108,7 @@ class Collection extends ComponentBase
 
 
     /**
+     * help function
      * add soup to collection
      * @param $collectionId
      * @param $soupId
@@ -116,11 +117,73 @@ class Collection extends ComponentBase
     protected function addSoupToCollection($collectionId, $soupId)
     {
         $collection = CollectionModel::find($collectionId);
-        if ($collection->hasCollected($soupId)) {
+        if ($collection->hasCollectedSoup($soupId)) {
             return false;
         } else {
             $collection->soups()->attach($soupId);
         }
         return true;
+    }
+
+    /**
+     * add collection to user collectionList
+     */
+    public function onCollectedCollection()
+    {
+        if (!Auth::check()) {
+            return;
+        }
+        $user = Auth::getUser();
+
+        $collectonId = post('collection_id');
+        $userId = $user->id;
+
+        if ($this->addOrRemoveCollection($collectonId, $userId)) {
+            Flash::success('收藏成功');
+        } else {
+            Flash::info('成功取消收藏!');
+        }
+        return Redirect::refresh();
+    }
+
+    /**
+     * help function
+     * add collection to user collectionList
+     * @param $collectionId
+     * @param $userId
+     * @return bool
+     */
+    protected function addOrRemoveCollection($collectionId, $userId)
+    {
+        $collection = CollectionModel::find($collectionId);
+        if ($collection->hasCollector($userId)) {
+            $collection->collectors()->detach($userId);
+            return false;
+        } else {
+            $collection->collectors()->attach($userId);
+        }
+        return true;
+    }
+
+
+    /**
+     * delete collection
+     */
+    public function onDeleteCollection()
+    {
+        if (!Auth::check()) {
+            return;
+        }
+        $user = Auth::getUser();
+
+        $collection = CollectionModel::find(post('collection_id'));
+
+        if (!$collection || $collection->user_id != $user->id) {
+            Flash::info('不允许删除');
+            return Redirect::refresh();
+        }
+        $collection->delete();
+        Flash::success('成功删除!');
+        return Redirect::refresh();
     }
 }
