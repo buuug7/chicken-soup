@@ -1,10 +1,5 @@
 <ul class="nav nav-pills justify-content-center">
-    <li class="nav-item">
-        <a href="/user/created-collections" class="nav-link {% if viewBag.userActiveMenu == 'createdCollections' %}active{% endif %}">创建的汤单</a>
-    </li>
-    <li class="nav-item">
-        <a href="/user/collected-collections" class="nav-link {% if viewBag.userActiveMenu == 'collectedCollections' %}active{% endif %}">收藏的汤单</a>
-    </li>
+
     <li class="nav-item">
         <a href="/user/account" class="nav-link {% if viewBag.userActiveMenu == 'account' %}active{% endif %}">账号</a>
     </li>
@@ -12,9 +7,15 @@
         <a href="/user/soup/create" class="nav-link {% if viewBag.userActiveMenu == 'contribute' %}active{% endif %}">贡献</a>
     </li>
     <li class="nav-item">
-        <a href="/user/soup/my-contribute-soup" class="nav-link {% if viewBag.userActiveMenu == 'myContributeSoup' %}active{% endif %}">我贡献的</a>
+        <a href="/user/soup/my-contribute-soup" class="nav-link {% if viewBag.userActiveMenu == 'myContributeSoup' %}active{% endif %}">我贡献的汤文</a>
     </li>
     <li class="nav-item">
-        <a href="#" class="nav-link disabled">Disabled</a>
+        <a href="/user/created-collections" class="nav-link {% if viewBag.userActiveMenu == 'createdCollections' %}active{% endif %}">已创建的汤单</a>
+    </li>
+    <li class="nav-item">
+        <a href="/user/collected-collections" class="nav-link {% if viewBag.userActiveMenu == 'collectedCollections' %}active{% endif %}">已收藏的汤单</a>
+    </li>
+    <li class="nav-item">
+        <a href="/user/like-comments" class="nav-link {% if viewBag.userActiveMenu == 'likeComments' %}active{% endif %}">赞过的评论</a>
     </li>
 </ul>

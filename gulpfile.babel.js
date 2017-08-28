@@ -45,4 +45,3 @@ gulp.task('watch', () => {
 gulp.task('build', ['clean', 'styles']);
 
 gulp.task('default', ['clean', 'watch']);
-
