@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/*
+ |--------------------------------------------------------------------------
+ | _mixins
+ |--------------------------------------------------------------------------
+ |
+ | Created by puguo on 8/28/2017.
+ | 
+ |
+*/
+
+@mixin markdown-code{
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: $gray-100;
+    border-radius: 3px;
+}

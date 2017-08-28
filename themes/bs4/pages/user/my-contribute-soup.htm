@@ -17,7 +17,7 @@ function onStart(){
             <div class="my-4">
                 <ul class="list-group">
                     {% for soup in myContributeSoups %}
-                    <div class="list-group-item flex-column align-items-start">
+                    <div class="list-group-item flex-column align-items-start my-contribute-soup-list">
                         <div class="d-flex w-100 justify-content-between mb-3">
                             <small class="text-muted">{{ soup.published_at|time_diff }}</small>
                             <small class="text-muted">被评论 : {{ soup.comments.count() }}</small>
