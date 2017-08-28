@@ -18,7 +18,11 @@
         position: relative;
         overflow: hidden;
         //max-height: 350px;
+        pre{
+            @include markdown-code;
+        }
     }
+
     .card-soup__more {
         position: absolute;
         display: flex;

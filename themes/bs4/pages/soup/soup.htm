@@ -48,7 +48,7 @@ layout = 'default'
                 {% partial 'soup/comment' comments=comments %}
                 <div class="more-comments"></div>
                 {% if soup.comments.count() %}
-                <div class="list-group-item comment load-more-comments-button">
+                <div class="list-group-item comment load-more-comments-button d-flex">
                     <a
                             href="#"
                             data-request="onLoadMoreComments"
