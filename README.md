@@ -28,5 +28,6 @@
 + [2](https://github.com/buuug7/chicken-soup/blob/master/docs/2.md)
 + [3](https://github.com/buuug7/chicken-soup/blob/master/docs/3.md)
 + [4](https://github.com/buuug7/chicken-soup/blob/master/docs/4.md)   
-+ [email](https://github.com/buuug7/chicken-soup/blob/master/docs/mail.md) 
++ [email](https://github.com/buuug7/chicken-soup/blob/master/docs/email.md)
++ [issue](https://github.com/buuug7/chicken-soup/blob/master/docs/issue.md)  
             
