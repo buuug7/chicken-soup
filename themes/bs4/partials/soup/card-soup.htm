@@ -23,6 +23,18 @@
             收藏({{ soup.collections.count() }})
         </a>
         <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary">评论({{ soup.comments.count }})</a>
+
+        {% if user %}
+        {% if collection.owner.id == user.id %}
+        <a href="#"
+           data-request-flash
+           data-request="onRemoveSoupFromCollection"
+           data-request-data="'soup_id':{{ soup.id }},'collection_id':{{ collection.id }}"
+           class="btn btn-outline-danger">
+            移除
+        </a>
+        {% endif %}
+        {% endif %}
     </div>
     <div class="card-footer text-muted">
         {{ soup.published_at|time_diff }}

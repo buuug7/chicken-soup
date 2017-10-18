@@ -92,7 +92,7 @@ class Collection extends ComponentBase
     {
         if (!Auth::check()) {
             Flash::error('请登录后在收藏!');
-            return ;
+            return;
         }
         $user = Auth::getUser();
 
@@ -106,6 +106,33 @@ class Collection extends ComponentBase
         }
 
         return Redirect::refresh();
+    }
+
+    /*
+     * remove soup from collection
+     * */
+    public function onRemoveSoupFromCollection()
+    {
+        if(!Auth::check()){
+            Flash::error('请登录后在操作');
+            return ;
+        }
+        $user = Auth::getUser();
+        $collectionId = post('collection_id');
+        $soupId = post('soup_id');
+        $collection = CollectionModel::find($collectionId);
+        if($collection){
+            if($collection->hasCollectedSoup($soupId)){
+                $collection->soups()->detach($soupId);
+                Flash::success('成功移出');
+                return Redirect::refresh();
+            }else{
+                //TODO::
+                return Redirect::refresh();
+            }
+        }else{
+            return Redirect::refresh();
+        }
     }
 
 
