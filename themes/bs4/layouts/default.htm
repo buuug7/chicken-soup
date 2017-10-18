@@ -7,6 +7,7 @@ description = 'default layout'
 <head>
     <meta charset="utf-8">
     <title>{{ this.theme.site_name }} | {{ this.page.title }}</title>
+    <meta name="keywords" content="{{ this.theme.keywords }}">
     <meta name="description" content="{{ this.page.meta_description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="{{ 'assets/images/logo.jpg'|theme }}">
@@ -34,6 +35,10 @@ description = 'default layout'
     {% endflash %}
     {% page %}
 </section>
+
+<footer id="layout-footer">
+    {% partial 'site/footer' %}
+</footer>
 
 <!--Scripts-->
 <script src="{{ 'assets/vendor/jquery/jquery.js'|theme }}"></script>

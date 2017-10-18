@@ -34,6 +34,7 @@ $this['latestCollections']= Buuug7\Soup\Models\Collection::orderBy('created_at',
                         {% else %}
                         <a
                                 href="#"
+                                data-request-flash
                                 class="btn btn-outline-primary btn-sm"
                                 data-request="onCollectedCollection"
                                 data-request-data="'collection_id':{{ collection.id}}">

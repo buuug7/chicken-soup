@@ -64,6 +64,7 @@ class Collection extends ComponentBase
     public function onCreateAndAddToCollection()
     {
         if (!Auth::check()) {
+            Flash::error('请登录后在收藏');
             return;
         }
         $user = Auth::getUser();
@@ -90,7 +91,8 @@ class Collection extends ComponentBase
     public function onAddSoupToCollection()
     {
         if (!Auth::check()) {
-            return;
+            Flash::error('请登录后在收藏!');
+            return ;
         }
         $user = Auth::getUser();
 
@@ -131,6 +133,7 @@ class Collection extends ComponentBase
     public function onCollectedCollection()
     {
         if (!Auth::check()) {
+            Flash::error('请登录后点击收藏');
             return;
         }
         $user = Auth::getUser();

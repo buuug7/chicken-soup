@@ -8,3 +8,6 @@ form:
         site_name:
             labe: Site Name
             default: 鸡汤文
+        keywords:
+            label: Keywords
+            default: 鸡汤文,心灵鸡汤

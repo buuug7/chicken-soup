@@ -11,6 +11,7 @@ layout = 'default'
             <a
                     href="#"
                     class="ml-2"
+                    data-request-flash
                     data-request="onCollectedCollection"
                     data-request-data="'collection_id':{{ collection.id}}">
                 <i class="fa fa-plus"></i> 收藏({{ collection.collectors.count() }})

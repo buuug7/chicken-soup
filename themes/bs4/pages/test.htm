@@ -3,25 +3,11 @@ url = '/test'
 layout= 'default'
 ==
 function onStart(){
-$this->addCss('/themes/bs4/assets/vendor/simplemde/dist/simplemde.min.css');
-$this->addJs('/themes/bs4/assets/vendor/simplemde/dist/simplemde.min.js');
+$user = \RainLab\User\Models\User::findByEmail('youpp@126.com');
+\RainLab\User\Facades\Auth::login($user);
 }
 ==
 
 <div class="container my-5">
-    <form>
-        <div class="form-group">
-            <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
-        </div>
-    </form>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid culpa dignissimos molestias nobis, possimus praesentium quae quam voluptatum? Adipisci blanditiis facere ipsam molestiae, molestias necessitatibus nulla obcaecati repudiandae sed suscipit.
 </div>
-
-
-{% put scripts %}
-<script>
-    new SimpleMDE({
-        element: $('#content')[0],
-        spellChecker: false,
-    });
-</script>
-{% endput %}
