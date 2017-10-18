@@ -24,6 +24,8 @@ nbproject
 
 /bootstrap
 /config
+!/config/dev
+!/config/production
 /modules
 /plugins/october
 /plugins/rainlab

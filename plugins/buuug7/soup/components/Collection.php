@@ -187,6 +187,6 @@ class Collection extends ComponentBase
         }
         $collection->delete();
         Flash::success('成功删除!');
-        return Redirect::refresh();
+        return Redirect::to('user/created-collections');
     }
 }
