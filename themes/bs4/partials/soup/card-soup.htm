@@ -1,10 +1,9 @@
-<div class="card card-soup mb-4">
+<div class="card card-soup mb-4 box-shadow rounded-0">
     <div class="card-header text-center">
         贡献者 <a href="#">{{ soup.contributor.name }}</a>
     </div>
     <div class="card-body">
-        <div
-                class="card-text card-soup__content">
+        <div class="card-text card-soup__content">
             {{ soup.content|md }}
             <div class="card-soup__more" style="display: none">
                 <a href="#" class="more-button-{{ soup.id }}">查看全部 <i class="fa fa-angle-down"></i></a>
@@ -16,6 +15,9 @@
                 {{ soup.reference }}
             </p>
         </div>
+        <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary">
+            查看
+        </a>
         <a href="#"
            class="btn btn-outline-primary"
            data-toggle="modal"

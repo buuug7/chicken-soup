@@ -18,6 +18,7 @@
         position: relative;
         overflow: hidden;
         //max-height: 350px;
+        //height:200px;
         pre{
             @include markdown-code;
         }

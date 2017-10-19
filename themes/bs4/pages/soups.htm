@@ -1,0 +1,19 @@
+title = '汤文'
+url = '/soup/soups'
+layout = 'default'
+[viewBag]
+userActiveMenu = "soups"
+==
+function onStart(){
+    $this['soups']= \Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','DESC')->paginate(10);
+}
+==
+
+<div class="container my-5">
+    <div class="card-columns--two-col">
+        {% for soup in soups %}
+        {% partial 'soup/card-soup' soup=soup %}
+        {% endfor %}
+    </div>
+    {{ soups.render|raw }}
+</div>

@@ -4,21 +4,32 @@ meta_description = '你自己的汤文'
 layout = 'default'
 ==
 function onStart(){
-$this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','desc')->limit(100)->get();
+$this['latestSoups']=Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','desc')->limit(6)->get();
+$this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc')->limit(4)->get();
 }
 ==
 {% partial 'site/welcome' %}
 <div class="container mt-5 mb-5">
-<!--    <div class="headline headline-primary">
-        <h2>热门精选</h2>
-    </div>-->
     <div class="headline headline-primary">
-        <h2>最新</h2>
+        <h2>热门汤单</h2>
+    </div>
+    <div class="row">
+        {% for collection in collections %}
+        <div class="col-lg-4 col-sm-6">
+            {% partial 'soup/collection/collection' collection = collection %}
+        </div>
+        {% endfor %}
     </div>
 
-    <div class="card-columns--two-col">
+    <div class="headline headline-primary">
+        <h2>最新鸡汤</h2>
+    </div>
+
+    <div class="row">
         {% for soup in latestSoups %}
-        {% partial 'soup/card-soup' soup=soup %}
+        <div class="col-lg-4 col-md-6">
+            {% partial 'soup/card-soup' soup=soup limitContent=true %}
+        </div>
         {% endfor %}
     </div>
 </div>

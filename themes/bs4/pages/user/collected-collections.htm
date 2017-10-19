@@ -15,7 +15,7 @@ if(!Auth::check()) return Redirect::to('/user/login');
             <div class="my-4">
                 <div class="list-group">
                     {% for item in user.collectedCollections %}
-                    <a href="/collection/{{ item.id }}" class="list-group-item d-flex justify-content-between">
+                    <a href="/soup/collection/{{ item.id }}" class="list-group-item d-flex justify-content-between">
                         {{ item.name }}
                         <span class="badge badge-secondary">{{ item.soups.count() }}</span>
                     </a>

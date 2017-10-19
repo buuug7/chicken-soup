@@ -11,3 +11,7 @@ fields:
         span: auto
         type: relation
         nameFrom: email
+    description:
+        label: 描述
+        type: textarea
+        size: tiny
