@@ -1,9 +1,9 @@
 <div class="card card-collection bg-light mb-3">
     <div class="card-header">created by <a href="#">{{ collection.owner.name }}</a></div>
     <div class="card-body">
-        <h4 class="card-title">{{ collection.name }}</h4>
-        <p class="card-text " style="height: 70px;overflow: hidden;">
-            {{ collection.description }}
+        <h4 class="card-title mb-4" style="height: 4rem;line-height: 1.5;overflow: hidden">{{ collection.name }}</h4>
+        <p class="card-text text-muted" style="height:5rem;line-height: 1.3;overflow: hidden;">
+            {{ str_limit(collection.description,80) }}
         </p>
         <p>
             <a href="/soup/collection/{{ collection.id }}" class="btn btn-outline-primary">详情</a>

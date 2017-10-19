@@ -11,8 +11,14 @@ description = 'default layout'
     <meta name="description" content="{{ this.page.meta_description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="{{ 'assets/images/logo.jpg'|theme }}">
+    <!-- bootstrap -->
     <link rel="stylesheet" href="{{ 'assets/vendor/bootstrap/dist/css/bootstrap.css'|theme }}">
+    <!-- font-awesome -->
     <link rel="stylesheet" href="{{ 'assets/vendor/font-awesome/css/font-awesome.css'|theme }}">
+    <!--slick-->
+    <link rel="stylesheet" href="{{ 'assets/vendor/slick-carousel/slick/slick.css'|theme }}">
+    <link rel="stylesheet" href="{{ 'assets/vendor/slick-carousel/slick/slick-theme.css'|theme }}">
+
     <link rel="stylesheet" href="{{ 'assets/css/app.css'|theme }}">
     {% styles %}
 </head>
@@ -41,9 +47,16 @@ description = 'default layout'
 </footer>
 
 <!--Scripts-->
+<!-- jquery  -->
 <script src="{{ 'assets/vendor/jquery/jquery.js'|theme }}"></script>
+
+<!-- popper.js and bootstrap -->
 <script src="{{ 'assets/vendor/popper.js/dist/umd/popper.min.js'|theme }}"></script>
 <script src="{{ 'assets/vendor/bootstrap/dist/js/bootstrap.js'|theme }}"></script>
+
+<!-- slick -->
+<script src="{{ 'assets/vendor/slick-carousel/slick/slick.js'|theme }}"></script>
+
 <script src="{{ 'assets/scripts/app.js'|theme }}"></script>
 {% framework extras %}
 <script>
