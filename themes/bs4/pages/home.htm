@@ -14,7 +14,7 @@ $this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc'
         <h2>热门汤单</h2>
         <p>The present you are wasting is just the tomorrow which the dead once looked forword to.</p>
     </div>
-    <div class="slick-home-collections">
+    <div class="slick-home-collections mb-5">
         {% for collection in collections %}
             {% partial 'soup/collection/collection' collection = collection %}
         {% endfor %}
