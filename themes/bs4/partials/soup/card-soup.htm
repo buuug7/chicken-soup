@@ -24,7 +24,7 @@
            data-target="#collection-list-modal-{{ soup.id }}">
             收藏({{ soup.collections.count() }})
         </a>
-        <a href="javascript:void(0);" class="btn btn-outline-primary">评论({{ soup.comments.count }})</a>
+        <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary">评论({{ soup.comments.count }})</a>
 
         {% if user %}
         {% if collection.owner.id == user.id %}
