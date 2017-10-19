@@ -3,3 +3,5 @@
 + 收藏汤单中添加移除方法
 + 收藏表collections添加description字段,前后台录入description字段
 + 全站搜索功能
++ 前台用户上传头像
++ 增加社交登陆
