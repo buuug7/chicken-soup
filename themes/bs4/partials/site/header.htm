@@ -1,50 +1,53 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">
-        <i class="fa fa-pencil"></i> {{ this.theme.site_name }}
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarToggle">
+<nav class="navbar navbar-expand-md navbar-white bg-white">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="fa fa-pencil"></i> {{ this.theme.site_name }}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
 
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link {% if viewBag.userActiveMenu == 'soups' %}active{% endif %}" href="/soup/soups">汤文</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {% if viewBag.userActiveMenu == 'collections' %}active{% endif %}" href="/soup/collections">汤单</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {% if viewBag.userActiveMenu == 'tags' %}active{% endif %}" href="/soup/tags">标签</a>
-            </li>
-            {% if user %}
-            <li class="nav-item dropdown">
-                <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="navbarDropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                    {{ user.name }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/user/account">用户中心</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if viewBag.userActiveMenu == 'soups' %}active{% endif %}" href="/soup/soups">汤文</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if viewBag.userActiveMenu == 'collections' %}active{% endif %}" href="/soup/collections">汤单</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if viewBag.userActiveMenu == 'tags' %}active{% endif %}" href="/soup/tags">标签</a>
+                </li>
+                {% if user %}
+                <li class="nav-item dropdown">
                     <a
-                            class="dropdown-item"
-                            data-request="onLogout"
-                            data-request-data="redirect: '/user/login'">登出</a>
-                </div>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="/user/login">登陆/注册</a>
-            </li>
-            {% endif %}
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="搜索">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">搜索</button>
-        </form>
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdownMenuLink"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        <img src="{{ user.getAvatarThumb(25) }}" alt="">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/user/account">用户中心</a>
+                        <a
+                                class="dropdown-item"
+                                data-request="onLogout"
+                                data-request-data="redirect: '/user/login'">登出</a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/login">登陆/注册</a>
+                </li>
+                {% endif %}
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="搜索">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">搜索</button>
+            </form>
+        </div>
+
     </div>
 </nav>
