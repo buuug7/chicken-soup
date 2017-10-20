@@ -11,7 +11,7 @@
     .navbar-nav {
         .nav-link {
             color: $navbar-light-color;
-
+            font-size: 1.1rem;
             @include hover-focus {
                 color: $navbar-light-hover-color;
             }
