@@ -8,6 +8,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarToggle">
 
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="搜索">
+            </form>
+
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link {% if viewBag.userActiveMenu == 'soups' %}active{% endif %}" href="/soup/soups">汤文</a>
@@ -18,6 +22,8 @@
                 <li class="nav-item">
                     <a class="nav-link {% if viewBag.userActiveMenu == 'tags' %}active{% endif %}" href="/soup/tags">标签</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav">
                 {% if user %}
                 <li class="nav-item dropdown">
                     <a
@@ -43,10 +49,6 @@
                 </li>
                 {% endif %}
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="搜索">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">搜索</button>
-            </form>
         </div>
 
     </div>
