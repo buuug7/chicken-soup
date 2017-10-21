@@ -2,9 +2,7 @@
 ## install
 + install october CMS `composer create-project october/october chicken-soup`
 + make `storage` and `themes` directory is writable `chmod -R 777 storage themes`
-+ setting `disabledCoreUpdates=>true` in `config/cms.php` file
 + run `php artisan october:install` in project root directory
-+ run `php artisan october:env` generate a `.env` file for common config
 + make `storage` and `themes` directory writable.
 + before run `php artisan october:update`,you need run `composer update` first.
 + remove some files, `rm .gitignore README.md`
@@ -20,7 +18,8 @@
     - config your email
         * default the configuration is under `config/dev/mail.php`
         * email config detail [email](https://github.com/buuug7/chicken-soup/blob/master/docs/mail.md) 
++ run `php artisan october:env` generate a `.env` file for common config
         
 ## usage
 + bs4 theme
-    - compile SCSS file with `npm run build`, if watch use `npm run watch`           
+    - compile SCSS file with `npm run build`, if watch use `npm run watch`          
