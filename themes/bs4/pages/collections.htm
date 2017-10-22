@@ -5,8 +5,10 @@ layout = 'default'
 userActiveMenu = "collections"
 ==
 function onStart(){
-$this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc')->paginate(4);
+$this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc')->paginate(2);
 }
+
+
 ==
 
 <div class="container my-4">
@@ -17,5 +19,22 @@ $this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc'
         </div>
         {% endfor %}
     </div>
-    {{ collections.render|raw }}
+
+    {% if collections.hasPages() %}
+    <ul class="pagination">
+        <!-- Previous page link -->
+        {% if collections.onFirstPage() %}
+            <li class="page-item disabled"><span class="page-link"><i class="fa fa-angle-double-left"></i></span></li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="{{ collections.previousPageUrl() }}" rel="prev"><i class="fa fa-angle-double-left"></i></a></li>
+        {% endif %}
+
+        <!-- Next page link -->
+        {% if collections.hasMorePages() %}
+            <li class="page-item"><a class="page-link" href="{{ collections.nextPageUrl() }}" rel="next"><i class="fa fa-angle-double-right"></i></a></li>
+        {% else %}
+            <li class="page-item disabled"><span class="page-link"><i class="fa fa-angle-double-right"></i></span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
 </div>

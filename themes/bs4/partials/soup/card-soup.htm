@@ -1,4 +1,4 @@
-<div class="card card-soup mb-4 {% if boxShadow %} box-shadow rounded-0 {% endif %}">
+<div class="card card-soup mb-4 {% if boxShadow %} box-shadow rounded-0 border-0{% endif %}">
     <div class="card-header text-center">
         贡献者 <a href="#">{{ soup.contributor.name }}</a>
     </div>
@@ -15,16 +15,19 @@
                 {{ soup.reference }}
             </p>
         </div>
-        <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary">
+        <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary btn-sm">
             查看
         </a>
         <a href="#"
-           class="btn btn-outline-primary"
+           class="btn btn-outline-primary btn-sm"
            data-toggle="modal"
            data-target="#collection-list-modal-{{ soup.id }}">
             收藏({{ soup.collections.count() }})
         </a>
-        <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary">评论({{ soup.comments.count }})</a>
+        <a href="/soup/soup/{{ soup.id }}"
+           class="btn btn-outline-primary btn-sm">
+            评论({{ soup.comments.count }})
+        </a>
 
         {% if user %}
         {% if collection.owner.id == user.id %}
@@ -32,7 +35,7 @@
            data-request-flash
            data-request="onRemoveSoupFromCollection"
            data-request-data="'soup_id':{{ soup.id }},'collection_id':{{ collection.id }}"
-           class="btn btn-outline-danger">
+           class="btn btn-outline-danger btn-sm">
             移除
         </a>
         {% endif %}

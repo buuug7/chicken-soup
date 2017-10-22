@@ -1,4 +1,4 @@
-<div class="card card-collection bg-light mb-3">
+<div class="card card-collection bg-light mb-3 {% if boxShadow %} box-shadow rounded-0 border-0{% endif %}">
     <div class="card-header">created by <a href="#">{{ collection.owner.name }}</a></div>
     <div class="card-body">
         <h4 class="card-title mb-4" style="height: 4rem;line-height: 1.5;overflow: hidden">{{ collection.name }}</h4>
@@ -6,11 +6,12 @@
             {{ str_limit(collection.description,80) }}
         </p>
         <p>
-            <a href="/soup/collection/{{ collection.id }}" class="btn btn-outline-primary">详情</a>
+            <a href="/soup/collection/{{ collection.id }}"
+               class="btn btn-outline-primary btn-sm">详情</a>
             {% if collection.hasCollector(user.id) %}
             <a
                     href="#"
-                    class="btn btn-outline-primary"
+                    class="btn btn-outline-primary btn-sm"
                     data-request="onCollectedCollection"
                     data-request-data="'collection_id':{{ collection.id}}"
                     data-request-confirm="你真的要取消收藏？">
@@ -20,7 +21,7 @@
             <a
                     href="#"
                     data-request-flash
-                    class="btn btn-outline-primary"
+                    class="btn btn-outline-primary btn-sm"
                     data-request="onCollectedCollection"
                     data-request-data="'collection_id':{{ collection.id}}">
                 收藏({{ collection.collectors.count() }})

@@ -5,7 +5,7 @@ layout = 'default'
 userActiveMenu = "soups"
 ==
 function onStart(){
-    $this['soups']= \Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','DESC')->paginate(10);
+    $this['soups']= \Buuug7\Soup\Models\Soup::isPublished()->orderBy('published_at','DESC')->paginate(8);
 }
 ==
 
@@ -15,5 +15,23 @@ function onStart(){
         {% partial 'soup/card-soup' soup=soup %}
         {% endfor %}
     </div>
-    {{ soups.render|raw }}
+
+    {% if soups.hasPages() %}
+    <ul class="pagination">
+        <!-- Previous page link -->
+        {% if soups.onFirstPage() %}
+            <li class="page-item disabled"><span class="page-link"><i class="fa fa-angle-double-left"></i></span></li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="{{ soups.previousPageUrl() }}" rel="prev"><i class="fa fa-angle-double-left"></i></a></li>
+        {% endif %}
+
+        <!-- Next page link -->
+        {% if soups.hasMorePages %}
+            <li class="page-item"><a class="page-link" href="{{ soups.nextPageUrl() }}" rel="next"><i class="fa fa-angle-double-right"></i></a></li>
+        {% else %}
+            <li class="page-item disabled"><span class="page-link"><i class="fa fa-angle-double-right"></i></span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+
 </div>

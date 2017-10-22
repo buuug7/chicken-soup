@@ -16,7 +16,7 @@ $this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc'
     </div>
     <div class="slick-home-collections mb-5">
         {% for collection in collections %}
-            {% partial 'soup/collection/collection' collection = collection %}
+            {% partial 'soup/collection/collection' collection = collection boxShadow=true %}
         {% endfor %}
     </div>
 

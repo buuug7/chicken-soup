@@ -37,6 +37,12 @@ class SeedOther extends Seeder
         ]);
 
         Collection::create([
+            'name' => '你走的那么远，只为摆脱怀旧的负重',
+            'description' => '怀念前任、故友、旧事、积极的、消极的影响都有...',
+            'user_id' => $user01->id,
+        ]);
+
+        Collection::create([
             'name' => '重温经典, 往事等你回来',
             'description' => '老汤文可能经典，但是或许你已经看腻了，那就不如来再次来尝尝味道。',
             'user_id' => $user01->id,
@@ -688,6 +694,15 @@ The moment you are getting rid of is to be a past tense which you can never revi
 
 ',
             'reference' => '来自 未知 (-_-',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
+        Soup::create([
+            'contributor_id' => $user02->id,
+            'content' => ' 怕自己不能负担对你的深情，所以不敢靠你太近。',
+            'reference' => '来自 其实你不懂我的心 歌曲 (-_-',
             'published' => true,
             'published_at' => Carbon::now(),
             'status' => 'passed',
