@@ -7,7 +7,7 @@ layout = 'default'
         <h2>{{ collection.name }}</h2>
         <p>{{ collection.description }}</p>
         <p>
-            <span>Created by <a href="#">{{ collection.owner.name }}</a></span>
+            <span>Created by <a href="/user/{{ collection.owner.id }}/activities">{{ collection.owner.name }}</a></span>
             <span class="ml-2">{{ collection.created_at|time_diff }}</span>
             <a
                     href="#"

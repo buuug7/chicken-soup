@@ -1,0 +1,39 @@
+title = '用户动态'
+url = '/user/:id/activities'
+layout = 'default'
+==
+function onStart(){
+    $this['thatUser'] = \RainLab\User\Models\User::find($this->param('id'));
+}
+==
+<div class="container my-4">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="user-widget">
+                <div class="user-widget__header">
+                    <div class="user-widget__img">
+                        <img src="{{ thatUser.getAvatarThumb(100) }}" alt="">
+                    </div>
+                    <div class="user-widget__user-name">{{ thatUser.name }}</div>
+                    <div class="user-widget__user-email">{{ thatUser.email }}</div>
+                </div>
+                <div class="user-widget__footer">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="#" class="user-widget__text">27</a>
+                            <div class="user-widget__text">汤文</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="#" class="user-widget__text">8</a>
+                            <div class="user-widget__text">汤单</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="#" class="user-widget__text">126</a>
+                            <div class="user-widget__text">关注</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
