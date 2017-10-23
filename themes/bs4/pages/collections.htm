@@ -5,7 +5,7 @@ layout = 'default'
 userActiveMenu = "collections"
 ==
 function onStart(){
-$this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc')->paginate(2);
+$this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc')->paginate(3);
 }
 
 

@@ -195,6 +195,26 @@ class Collection extends ComponentBase
         return true;
     }
 
+    /*
+     * update collection
+     * */
+    public function onUpdateCollection(){
+        if(!Auth::check()){
+            return ;
+        }
+        $user = Auth::getUser();
+        $collection = CollectionModel::find(post('collectionId'));
+        if(!$collection || $collection->user_id != $user->id){
+            Flash::info('你没有权限更新');
+            Return Redirect::refresh();
+        }
+        $collection->name = post('collectionName');
+        $collection->description = post('collectionDescription');
+        $collection->save();
+        Flash::success('更新成功');
+        Return Redirect::to('/soup/collection/'.$collection->id);
+    }
+
 
     /**
      * delete collection
@@ -209,7 +229,7 @@ class Collection extends ComponentBase
         $collection = CollectionModel::find(post('collection_id'));
 
         if (!$collection || $collection->user_id != $user->id) {
-            Flash::info('不允许删除');
+            Flash::info('你没有权限删除');
             return Redirect::refresh();
         }
         $collection->delete();

@@ -15,3 +15,7 @@ fields:
         label: 描述
         type: textarea
         size: tiny
+    featured:
+        label: 特色
+        type: checkbox
+        span: auto

@@ -14,6 +14,7 @@ class CreateCollectionsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->integer('user_id'); // 创建者ID
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
 

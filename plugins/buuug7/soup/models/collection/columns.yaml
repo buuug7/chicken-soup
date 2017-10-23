@@ -11,6 +11,9 @@ columns:
         relation: owner
         select: name
         searchable: true
+    featured:
+        label: 特色
+        type: switch
     created_at:
         label: 创建时间
         invisible: true

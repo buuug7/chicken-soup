@@ -1,0 +1,26 @@
+title = '更新汤单'
+url = '/soup/collection/:id/update'
+layout = 'default'
+==
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h3 class="mb-5">更新汤单</h3>
+            <form 
+                    data-request="onUpdateCollection"
+            >
+                <input type="hidden" name="collectionId" id="CollectionId" value="{{ collection.id }}">
+                <div class="form-group">
+                    <label for="collectionName">名称</label>
+                    <input type="text"
+                           class="form-control" name="collectionName" id="collectionName"  value="{{ collection.name }}">
+                </div>
+                <div class="form-group">
+                    <label for="collectionDescription">简介/描述</label>
+                    <textarea class="form-control" name="collectionDescription" id="collectionDescription" rows="3">{{ collection.description }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">确认</button>
+            </form>
+        </div>
+    </div>
+</div>

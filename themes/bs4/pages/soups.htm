@@ -10,9 +10,11 @@ function onStart(){
 ==
 
 <div class="container my-5">
-    <div class="card-columns--two-col">
+    <div class="row">
         {% for soup in soups %}
-        {% partial 'soup/card-soup' soup=soup %}
+        <div class="col-lg-6">
+            {% partial 'soup/card-soup' soup=soup %}
+        </div>
         {% endfor %}
     </div>
 

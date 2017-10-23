@@ -1,7 +1,7 @@
 # TODO
 + 状态为checking的soup不能在前台再次更新
-+ 收藏汤单中添加移除方法
-+ 收藏表collections添加description字段,前后台录入description字段
++ ~~收藏汤单中添加移除方法~~
++ ~~收藏表collections添加description字段,前后台录入description字段~~
 + 全站搜索功能
 + 前台用户上传头像
 + 增加社交登陆
@@ -9,3 +9,4 @@
 + 修复前台更新的bug
 + 用户主页
 + ~~完善分页样式~~
++ ~~汤单`collections`表增加featured字段~~

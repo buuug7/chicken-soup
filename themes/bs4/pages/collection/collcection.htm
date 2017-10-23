@@ -5,6 +5,7 @@ layout = 'default'
 <div class="container my-5">
     <div class="headline-v3">
         <h2>{{ collection.name }}</h2>
+        <p>{{ collection.description }}</p>
         <p>
             <span>Created by <a href="#">{{ collection.owner.name }}</a></span>
             <span class="ml-2">{{ collection.created_at|time_diff }}</span>
@@ -17,6 +18,9 @@ layout = 'default'
                 <i class="fa fa-plus"></i> 收藏({{ collection.collectors.count() }})
             </a>
             {% if user.id == collection.user_id %}
+            <a href="/soup/collection/{{ collection.id }}/update"
+               class="m-2"
+            ><i class="fa fa-pencil"></i></a>
             <a
                     href="#"
                     class="m-2"
