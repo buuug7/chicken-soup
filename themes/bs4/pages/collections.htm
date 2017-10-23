@@ -7,8 +7,6 @@ userActiveMenu = "collections"
 function onStart(){
 $this['collections']= Buuug7\Soup\Models\Collection::orderBy('created_at','desc')->paginate(3);
 }
-
-
 ==
 
 <div class="container my-4">

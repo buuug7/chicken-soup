@@ -23,7 +23,7 @@ class Collection extends Model
      * @var array Fillable fields
      */
     protected $fillable = [
-        'name', 'user_id'
+        'name','description', 'user_id'
     ];
 
     /**

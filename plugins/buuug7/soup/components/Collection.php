@@ -52,6 +52,7 @@ class Collection extends ComponentBase
         $user = Auth::getUser();
         $user->createdCollections()->add(new CollectionModel([
             'name' => post('name'),
+            'description' => post('description'),
         ]));
         Flash::success('成功创建收藏夹');
         return Redirect::refresh();
@@ -71,6 +72,7 @@ class Collection extends ComponentBase
 
         $collection = $user->createdCollections()->create([
             'name' => post('name'),
+            'description' => post('description'),
             'user_id' => $user->id,
         ]);
         $soupId = post('soup_id');
