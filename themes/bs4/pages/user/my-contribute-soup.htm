@@ -32,6 +32,7 @@ function onStart(){
                             <h4 class="text-danger">回退消息</h4>
                             {{ soup.not_passed_message|md }}
                         </div>
+                        {% endif %}
                         <p class="mt-3">
                             <a href="/user/soup/update/{{ soup.id }}/1" class="btn btn-outline-primary">编辑</a>
                             <a href="#"
@@ -39,7 +40,6 @@ function onStart(){
                                data-request-confirm="确定要删除?"
                                class="btn btn-outline-danger">删除</a>
                         </p>
-                        {% endif %}
                     </div>
                     {% endfor %}
                 </ul>
