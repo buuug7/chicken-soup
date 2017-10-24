@@ -44,9 +44,10 @@ class Collection extends ComponentBase
      * 创建集合
      * create collection
      */
-    public function onCreateSoupCollection()
+    public function onCreateCollection()
     {
         if (!Auth::check()) {
+            Flash::error('请登录后在操作');
             return;
         }
         $user = Auth::getUser();
@@ -55,7 +56,7 @@ class Collection extends ComponentBase
             'description' => post('description'),
         ]));
         Flash::success('成功创建收藏夹');
-        return Redirect::refresh();
+        return Redirect::to('user/created-collections');
     }
 
     /**
@@ -202,6 +203,7 @@ class Collection extends ComponentBase
      * */
     public function onUpdateCollection(){
         if(!Auth::check()){
+            Flash::error('请登录后在操作');
             return ;
         }
         $user = Auth::getUser();
@@ -224,6 +226,7 @@ class Collection extends ComponentBase
     public function onDeleteCollection()
     {
         if (!Auth::check()) {
+            Flash::error('请登录后在操作');
             return;
         }
         $user = Auth::getUser();
