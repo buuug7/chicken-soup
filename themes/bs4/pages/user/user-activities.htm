@@ -4,6 +4,9 @@ layout = 'default'
 ==
 function onStart(){
     $this['thatUser'] = \RainLab\User\Models\User::find($this->param('id'));
+    if(!$this['thatUser']){
+        return Redirect::to('/');
+    }
     $this['events'] = $this['thatUser']->timelineEvents()->orderBy('created_at','desc')->paginate(5);
 }
 ==
