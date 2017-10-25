@@ -32,9 +32,11 @@ layout = 'default'
             {% endif %}
         </p>
     </div>
-    <div class="card-columns--two-col">
+    <div class="row">
         {% for soup in collection.soups %}
-        {% partial 'soup/card-soup' soup=soup %}
+        <div class="col-lg-6">
+            {% partial 'soup/card-soup' soup=soup %}
+        </div>
         {% endfor %}
     </div>
 </div>
