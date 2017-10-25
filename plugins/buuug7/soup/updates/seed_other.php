@@ -708,6 +708,69 @@ The moment you are getting rid of is to be a past tense which you can never revi
             'status' => 'passed',
         ]);
 
+        Soup::create([
+            'contributor_id' => $user02->id,
+            'content' => '
+## 朝圣者
+我常颠扑于途，  
+寻庙烧香，  
+我一无所获，  
+苦乐皆同过场。  
+我曾懵然于流浪的意义和归宿，  
+千百次，  
+我跌倒，  
+又把余勇鼓起我寻找的，  
+正是爱之星，  
+它如此圣洁如此遥远，  
+垂于苍冥。  
+当我还不识归宿，  
+游兴正浓，  
+我曾及时行乐，  
+也曾屡拔先筹。  
+如今我认得了我的星，  
+却为时已晚，  
+他已背我驰去，  
+遗我晨雨弥漫。  
+繁华世界就此别过，  
+我曾爱之弥深， 
+即使我无所获，  
+我仍感不虚此行。            
+            ',
+            'reference' => '未知',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
+
+
+        Soup::create([
+            'contributor_id' => $user02->id,
+            'content' => '
+## 雾中  
+在雾中散步真是奇妙！  
+一木一石都很孤独，  
+没有一棵树看到别棵树，  
+棵棵都很孤独。  
+当我生活得开朗之时，  
+我在世上有很多友人；  
+如今，由于大雾弥漫，  
+再也看不到任何人。  
+确实，不认识黑暗的人，  
+决不能称为明智之士，  
+难摆脱的黑暗悄悄地把他跟一切人隔离。  
+在雾中散步真是奇妙！  
+人生就是孑然孤独的样子。  
+独处。  
+没有一个人了解别人，  
+人人都很孤独。                        
+            ',
+            'reference' => '未知',
+            'published' => true,
+            'published_at' => Carbon::now(),
+            'status' => 'passed',
+        ]);
+
     }
 
 }

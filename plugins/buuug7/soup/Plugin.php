@@ -64,6 +64,11 @@ class Plugin extends PluginBase
                 'Buuug7\Soup\Models\Comment',
                 'table' => 'buuug7_soup_comments_users',
             ];
+            // 用户时间轴事件
+            $model->hasMany['timelineEvents']=[
+                'Buuug7\Soup\Models\TimelineEvent',
+                'table'=>'buuug7_soup_timeline_events'
+            ];
         });
 
         UserController::extend(function ($widget) {

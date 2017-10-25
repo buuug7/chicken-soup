@@ -44,17 +44,20 @@
     }
 }
 .user-widget__footer{
-    padding:3.5rem 15px 5px 15px;
-    .row .col-sm-4{
-        border-right: 1px solid #f4f4f4;
-        margin-bottom: 1rem;
+    padding:3.5rem 15px 15px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.user-widget__block{
+    text-align: center;
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    >a{
+        color:rgba(0,0,0,0.7);
     }
-}
-.user-widget__text{
-    text-align: center;
-}
-a.user-widget__text{
-    text-align: center;
-    display: block;
-    color:rgba(0,0,0,0.7);
 }

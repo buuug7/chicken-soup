@@ -99,6 +99,21 @@ class Soup extends Model
     public function afterDelete()
     {
         DB::table('buuug7_soup_soups_tags')->where('soup_id', $this->id)->delete();
+        DB::table('buuug7_soup_collections_soups')->where('soup_id',$this->id)->delete();
+    }
+
+    public function afterCreate(){
+        TimelineEvent::create([
+            'user_id' => $this->contributor_id,
+            'category' => TimelineEvent::CATEGORY_USER,
+            'event' => TimelineEvent::EVENT_SOUP,
+            'data' => [
+                'model_id' => $this->id,
+                'method' => 'create',
+                'message' =>str_limit($this->content,100),
+            ],
+            'created_at' => Carbon::now(),
+        ]);
     }
 
     public function scopeIsPublished($query)

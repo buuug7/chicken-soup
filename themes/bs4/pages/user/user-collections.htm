@@ -1,0 +1,22 @@
+title = '用户汤单'
+url = '/user/:id/collections'
+layout = 'default'
+==
+function onStart(){
+$this['thatUser'] = \RainLab\User\Models\User::find($this->param('id'));
+$this['collections'] = $this['thatUser']->createdCollections()->orderBy('created_at','desc')->paginate(4);
+}
+==
+<div class="container my-5">
+    <div class="headline-v3">
+        <h2>{{ thatUser.name }}创建的汤单</h2>
+    </div>
+    <div class="row">
+        {% for collection in collections %}
+        <div class="col-md-4 col-sm-6">
+            {% partial 'soup/collection/collection' collection = collection %}
+        </div>
+        {% endfor %}
+    </div>
+
+</div>

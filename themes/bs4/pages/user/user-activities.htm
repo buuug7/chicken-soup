@@ -4,6 +4,7 @@ layout = 'default'
 ==
 function onStart(){
     $this['thatUser'] = \RainLab\User\Models\User::find($this->param('id'));
+    $this['events'] = $this['thatUser']->timelineEvents()->orderBy('created_at','desc')->paginate(5);
 }
 ==
 <div class="container my-4">
@@ -18,22 +19,73 @@ function onStart(){
                     <div class="user-widget__user-email">{{ thatUser.email }}</div>
                 </div>
                 <div class="user-widget__footer">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <a href="#" class="user-widget__text">27</a>
-                            <div class="user-widget__text">汤文</div>
+                        <div class="user-widget__block">
+                            <a href="/user/{{ thatUser.id }}/soups">{{ thatUser.contributeSoups.count }}</a>
+                            <span>汤文</span>
                         </div>
-                        <div class="col-sm-4">
-                            <a href="#" class="user-widget__text">8</a>
-                            <div class="user-widget__text">汤单</div>
+                        <div class="user-widget__block">
+                            <a href="/user/{{ thatUser.id }}/collections">{{ thatUser.createdCollections.count }}</a>
+                            <span>汤单</span>
                         </div>
-                        <div class="col-sm-4">
-                            <a href="#" class="user-widget__text">126</a>
-                            <div class="user-widget__text">关注</div>
+                        <div class="user-widget__block">
+                            <a href="#">126</a>
+                            <span>关注</span>
                         </div>
-                    </div>
                 </div>
             </div>
+            <!--timeline Event-->
+
+            <ul class="timeline">
+                {% for event in events %}
+
+                <li class="timeline__date">
+                    <span>{{ event.created_at|date('Y-m-d') }}</span>
+                </li>
+                <li>
+                    <span class="timeline__label"><i class="fa fa-tag"></i></span>
+                    <div class="timeline__item">
+                        <div class="timeline__item-time"><i class="fa fa-clock-o"></i> {{ event.created_at|date('H:i') }}</div>
+                        {% if event.event == 'soup' %}
+                        <div class="timeline__item-header">
+                            {% if event.data['method'] == 'create' %}
+                            发布了新汤文
+                            {% endif %}
+                        </div>
+                        <div class="timeline__item-body">
+                            {{ event.data['message']|md }}
+                        </div>
+                        <div class="timeline__item-footer">
+                            <a class="btn btn-outline-primary btn-sm" href="/soup/soup/{{ event.data['model_id'] }}">查看</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+
+                <!--timeline end-->
+                <li>
+                    <span class="timeline__label" style="background-color: rgba(0,0,0,0.4);">
+                        <i class="fa fa-clock-o"></i>
+                    </span>
+                </li>
+            </ul>
+            {% if events.hasPages() %}
+            <ul class="pagination justify-content-center">
+                <!-- Previous page link -->
+                {% if events.onFirstPage() %}
+                <li class="page-item disabled"><span class="page-link"><i class="fa fa-angle-double-left"></i></span></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="{{ events.previousPageUrl() }}" rel="prev"><i class="fa fa-angle-double-left"></i></a></li>
+                {% endif %}
+
+                <!-- Next page link -->
+                {% if events.hasMorePages %}
+                <li class="page-item"><a class="page-link" href="{{ events.nextPageUrl() }}" rel="next"><i class="fa fa-angle-double-right"></i></a></li>
+                {% else %}
+                <li class="page-item disabled"><span class="page-link"><i class="fa fa-angle-double-right"></i></span></li>
+                {% endif %}
+            </ul>
+            {% endif %}
         </div>
     </div>
 </div>

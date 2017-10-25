@@ -1,0 +1,40 @@
+title = '用户汤文'
+url = '/user/:id/soups'
+layout = 'default'
+==
+function onStart(){
+    $this['thatUser'] = \RainLab\User\Models\User::find($this->param('id'));
+    $this['soups'] = $this['thatUser']->contributeSoups()->isPublished()->orderBy('published_at','desc')->paginate(4);
+}
+==
+
+<div class="container my-5">
+    <div class="headline-v3">
+        <h2>{{ thatUser.name }}贡献的汤文</h2>
+    </div>
+    <div class="row">
+        {% for soup in soups %}
+        <div class="col-lg-6">
+            {% partial 'soup/card-soup' soup=soup %}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if soups.hasPages() %}
+    <ul class="pagination">
+        <!-- Previous page link -->
+        {% if soups.onFirstPage() %}
+        <li class="page-item disabled"><span class="page-link"><i class="fa fa-angle-double-left"></i></span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="{{ soups.previousPageUrl() }}" rel="prev"><i class="fa fa-angle-double-left"></i></a></li>
+        {% endif %}
+
+        <!-- Next page link -->
+        {% if soups.hasMorePages %}
+        <li class="page-item"><a class="page-link" href="{{ soups.nextPageUrl() }}" rel="next"><i class="fa fa-angle-double-right"></i></a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link"><i class="fa fa-angle-double-right"></i></span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>

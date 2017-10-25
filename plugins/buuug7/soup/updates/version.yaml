@@ -4,5 +4,8 @@
       - create_tags_table.php
       - create_collections_table.php
       - create_comments_table.php
+1.0.2:
+      - add timeline event
+      - create_timeline_events_table.php
       - seed_user.php
       - seed_other.php
