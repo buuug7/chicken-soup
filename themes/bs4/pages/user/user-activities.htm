@@ -14,10 +14,13 @@ function onStart(){
     <div class="row">
         <div class="col-lg-8">
             <div class="user-widget">
-                <div class="user-widget__header">
+                <div class="user-widget__header" style="background-image: url('/themes/bs4/assets/images/bg/bg04.jpg')">
                     <div class="user-widget__img">
                         <img src="{{ thatUser.getAvatarThumb(100) }}" alt="">
                     </div>
+                    <a href="javascript:void(0);" class="btn user-widget__editor-btn btn-sm">
+                        <i class="fa fa-camera"></i> 编辑封面
+                    </a>
                     <div class="user-widget__user-name">{{ thatUser.name }}</div>
                     <div class="user-widget__user-email">{{ thatUser.email }}</div>
                 </div>

@@ -16,7 +16,10 @@
 .user-widget__header{
     padding:1.5rem;
     height:9rem;
-    background: url("/themes/bs4/assets/images/bg/bg04.jpg") no-repeat center center;
+    //background: url("/themes/bs4/assets/images/bg/bg04.jpg") no-repeat center center;
+    background: deepskyblue;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     color:#fff;
     position: relative;
@@ -41,6 +44,20 @@
         border-radius: 50%;
         width:90px;
         height:90px;
+    }
+}
+.user-widget__editor-btn{
+    color: rgba(255,255,255,0.7);
+    background-color: transparent;
+    border-color: rgba(255,255,255,0.7);
+    position: absolute;
+    right:1rem;
+    top:1rem;
+    border-radius: 0;
+    &:hover,&:focus,&:visited{
+        color:#fff;
+        border-color: rgba(255,255,255,1);
+        outline: none;
     }
 }
 .user-widget__footer{

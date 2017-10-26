@@ -1,0 +1,13 @@
+title = '上传头像'
+url = '/user/upload-avatar'
+layout = 'default'
+[b7ImageUploader]
+==
+<div class="container my-4">
+
+    <form method="post" data-request-files data-request="onUploadImage" enctype="multipart/form-data">
+        <label for="file">FIle</label>
+        <input type="file" id="file" name="file">
+        <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+</div>
