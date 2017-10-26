@@ -4,7 +4,10 @@
         <a href="/user/account" class="nav-link {% if viewBag.userActiveMenu == 'account' %}active{% endif %}">账号</a>
     </li>
     <li class="nav-item">
-        <a href="/soup/soup/create" class="nav-link {% if viewBag.userActiveMenu == 'contribute' %}active{% endif %}">贡献</a>
+        <a href="/soup/soup/create" class="nav-link {% if viewBag.userActiveMenu == 'newSoup' %}active{% endif %}">新建汤文</a>
+    </li>
+    <li class="nav-item">
+        <a href="/soup/collection/create" class="nav-link {% if viewBag.userActiveMenu == 'newCollection' %}active{% endif %}">新建汤单</a>
     </li>
     <li class="nav-item">
         <a href="/user/soup/my-contribute-soup" class="nav-link {% if viewBag.userActiveMenu == 'myContributeSoup' %}active{% endif %}">我贡献的汤文</a>
@@ -17,6 +20,9 @@
     </li>
     <li class="nav-item">
         <a href="/user/like-comments" class="nav-link {% if viewBag.userActiveMenu == 'likeComments' %}active{% endif %}">赞过的评论</a>
+    </li>
+    <li class="nav-item">
+        <a href="/user/upload-avatar" class="nav-link {% if viewBag.userActiveMenu == 'avatar' %}active{% endif %}">头像</a>
     </li>
     <li class="nav-item">
         <a href="/user/{{ user.id }}/activities" class="nav-link">动态</a>
