@@ -3,11 +3,40 @@ url = '/user/upload-avatar'
 layout = 'default'
 [b7ImageUploader]
 ==
+function onStart(){
+    $this->addCss('/themes/bs4/assets/vendor/cropperjs/dist/cropper.css');
+    $this->addJs('/themes/bs4/assets/vendor/cropperjs/dist/cropper.js');
+}
+==
 <div class="container my-4">
+
+    
 
     <form method="post" data-request-files data-request="onUploadImage" enctype="multipart/form-data">
         <label for="file">FIle</label>
         <input type="file" id="file" name="file">
-        <button type="submit" class="btn btn-primary">submit</button>
+        <button type="submit" class="btn btn-outline-primary">submit</button>
     </form>
+
+
+    <img src="{{ user.avatar.getPath() }}" alt="" id="image">
+    
 </div>
+
+{% put scripts %}
+<script>
+    var image = document.getElementById('image');
+    var cropper = new Cropper(image,{
+        aspectRatio:1 / 1,
+        crop:function (e) {
+            console.log(e.detail.x);
+            console.log(e.detail.y);
+            console.log(e.detail.width);
+            console.log(e.detail.height);
+            console.log(e.detail.rotate);
+            console.log(e.detail.scaleX);
+            console.log(e.detail.scaleY);
+        }
+    });
+</script>
+{% endput %}
