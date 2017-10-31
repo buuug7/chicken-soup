@@ -1,42 +1,14 @@
 title = '上传头像'
-url = '/user/upload-avatar'
+url = '/user/upload-avatar/:id'
 layout = 'default'
 [b7ImageUploader]
 ==
-function onStart(){
-    $this->addCss('/themes/bs4/assets/vendor/cropperjs/dist/cropper.css');
-    $this->addJs('/themes/bs4/assets/vendor/cropperjs/dist/cropper.js');
-}
-==
 <div class="container my-4">
+    <div class="row">
+        <div class="col-lg-8">
 
-    
+            {% component 'b7ImageUploader' %}
 
-    <form method="post" data-request-files data-request="onUploadImage" enctype="multipart/form-data">
-        <label for="file">FIle</label>
-        <input type="file" id="file" name="file">
-        <button type="submit" class="btn btn-outline-primary">submit</button>
-    </form>
-
-
-    <img src="{{ user.avatar.getPath() }}" alt="" id="image">
-    
+        </div>
+    </div>
 </div>
-
-{% put scripts %}
-<script>
-    var image = document.getElementById('image');
-    var cropper = new Cropper(image,{
-        aspectRatio:1 / 1,
-        crop:function (e) {
-            console.log(e.detail.x);
-            console.log(e.detail.y);
-            console.log(e.detail.width);
-            console.log(e.detail.height);
-            console.log(e.detail.rotate);
-            console.log(e.detail.scaleX);
-            console.log(e.detail.scaleY);
-        }
-    });
-</script>
-{% endput %}

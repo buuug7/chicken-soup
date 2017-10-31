@@ -1,58 +1,146 @@
 <?php namespace Buuug7\Uploader\Components;
 
 use Cms\Classes\ComponentBase;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Redirect;
+use October\Rain\Database\Attach\Resizer;
 use October\Rain\Exception\ApplicationException;
-use RainLab\User\Facades\Auth;
 use System\Models\File;
 
 class ImageUploader extends ComponentBase
 {
+    public $imageWidth;
+    public $imageHeight;
+    public $model;
+    public $attribute;
+
     public function componentDetails()
     {
         return [
-            'name'        => 'ImageUploader Component',
-            'description' => 'No description provided yet...'
+            'name' => 'ImageUploader Component',
+            'description' => 'Upload an image and crop'
         ];
     }
 
     public function defineProperties()
     {
-        return [];
+        return [
+            'modelClass' => [
+                'title' => 'Model class',
+                'description' => 'model class to bind',
+                'type' => 'string',
+                'default' => '\Rainlab\User\Models\User',
+            ],
+            'modelField' => [
+                'title' => 'Model Field',
+                'description' => 'model field to bind',
+                'type' => 'string',
+                'default' => 'avatar',
+            ],
+
+            'identifierValue' => [
+                'title' => 'Identifier value',
+                'description' => 'identifier value to load the record from the database.',
+                'type' => 'string',
+                'default' => '{{ :id }}',
+            ],
+
+            'imageWidth' => [
+                'title' => 'Image width',
+                'description' => 'Enter an amount in pixels, eg: 100',
+                'default' => '100',
+                'type' => 'string',
+            ],
+
+            'imageHeight' => [
+                'title' => 'Image height',
+                'description' => 'Enter an amount in pixels, eg: 100',
+                'default' => '100',
+                'type' => 'string',
+            ],
+
+        ];
     }
 
-    public function onUploadImage(){
+    public function init()
+    {
+        $this->imageWidth = $this->property('imageWidth');
+        $this->imageHeight = $this->property('imageHeight');
+        $this->bindModel();
+    }
 
-        if(!Input::hasFile('file')){
+    /*
+     * bind model
+     * parse className and bind to $this->model
+     * */
+    public function bindModel()
+    {
+        $className = $this->property('modelClass');
+        $modelField = $this->property('modelField');
+        $identifierValue = $this->property('identifierValue');
+
+        $model = new $className();
+        $model = $model->where('id', $identifierValue)->first();
+
+        if (!$model) {
+            throw new ApplicationException('bind model error!');
+        }
+
+        $this->model = $model;
+        $this->attribute = $modelField;
+    }
+
+    public function onRun()
+    {
+        $this->addCss('assets/vendor/cropperjs/dist/cropper.min.css');
+        $this->addJs('assets/vendor/cropperjs/dist/cropper.min.js');
+        $this->addJs('assets/js/image-upload-crop.js');
+    }
+
+    public function onUploadAndCrop()
+    {
+        $uploadFile = post('uploadFile');
+
+        $cropDetail = post('cropDetail');
+
+        $base64 = explode(',', $uploadFile);
+
+        if (!$uploadFile) {
             throw new ApplicationException('File miss from request');
         }
-        $uploadFile = Input::file('file');
 
-        $validation = Validator::make(
-            ['file' => $uploadFile,],
-            ['file' => 'mimes:jpeg,png',]
-        );
+        $file = new File();
 
-        if($validation->fails()){
-            throw new ValidationException($validation);
-        }
+        $file->fromData(base64_decode($base64[1]), 'avatar.png');
 
-        $file = new File;
-        $file->data= $uploadFile;
-        $file->is_public = true;
-        $file->save();
-        $user = Auth::getUser();
-        $user->avatar()->add($file);
+        $this->model->{$this->attribute}()->save($file);
+
+        $userOriginAvatarPath = $this->model->{$this->attribute}->getLocalPath();
+
+        Resizer::open($userOriginAvatarPath)->crop(
+            $cropDetail['x'],
+            $cropDetail['y'],
+            $cropDetail['width'],
+            $cropDetail['height']
+        )->save($userOriginAvatarPath);
+
+        Resizer::open($userOriginAvatarPath)
+            ->resize($this->imageWidth, $this->imageHeight, [
+                'mode' => 'crop',
+                'offset' => [0, 0],
+                'sharpen' => 0,
+                'interlace' => false,
+                'quality' => 90
+            ])->save($userOriginAvatarPath);
+
+        return Redirect::refresh();
     }
 
-    public function onRemoveImage(){
-        $file_id =post('file_id');
-        $user = Auth::getUser();
-        if($file_id && ($file =File::find($file_id))){
-            $user->avatar()->remove($file);
+    public function onRemoveImage()
+    {
+        $id = post('id');
+
+        if ($id && ($file = File::find($id))) {
+            $this->model->{$this->attribute}()->remove($file);
         }
     }
 }

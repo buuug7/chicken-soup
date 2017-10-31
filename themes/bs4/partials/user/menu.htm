@@ -22,7 +22,7 @@
         <a href="/user/like-comments" class="nav-link {% if viewBag.userActiveMenu == 'likeComments' %}active{% endif %}">赞过的评论</a>
     </li>
     <li class="nav-item">
-        <a href="/user/upload-avatar" class="nav-link {% if viewBag.userActiveMenu == 'avatar' %}active{% endif %}">头像</a>
+        <a href="/user/upload-avatar/{{ user.id }}" class="nav-link {% if viewBag.userActiveMenu == 'avatar' %}active{% endif %}">头像</a>
     </li>
     <li class="nav-item">
         <a href="/user/{{ user.id }}/activities" class="nav-link">动态</a>

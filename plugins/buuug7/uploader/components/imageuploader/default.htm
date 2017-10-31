@@ -1,3 +1,28 @@
-<p>This is the default markup for component ImageUploader</p>
+{% if __SELF__.model[__SELF__.attribute] %}
+<div class="image">
+    <img src="{{ __SELF__.model[__SELF__.attribute].getPath() }}" alt="">
+    <button type="button" class="close" aria-label="Close"
+            data-request="onRemoveImage"
+            data-request-confirm="Are you sure to delete ?"
+            data-request-data="'id':{{ __SELF__.model[__SELF__.attribute].id }}"
+    >
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% else %}
+<div class="image-upload-crop">
 
-<small>You can delete this file if you want</small>
+    <div class="image-upload-crop__upload-preview">
+        <img src="" alt="upload preview image">
+    </div>
+
+    <form class="image-upload-crop__form">
+        <input type="file" id="image-file" name="image-file">
+    </form>
+
+    <a href="#" class="image-upload-crop__crop-button">cropped</a>
+
+    <div class="image-upload-crop__img-preview"></div>
+
+</div>
+{% endif %}
