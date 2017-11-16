@@ -1,13 +1,15 @@
 {% if __SELF__.model[__SELF__.attribute] %}
-<div class="image">
-    <img src="{{ __SELF__.model[__SELF__.attribute].getPath() }}" alt="">
-    <button type="button" class="close" aria-label="Close"
-            data-request="onRemoveImage"
-            data-request-confirm="Are you sure to delete ?"
-            data-request-data="'id':{{ __SELF__.model[__SELF__.attribute].id }}"
-    >
-        <span aria-hidden="true">&times;</span>
-    </button>
+<div class="image-upload-crop">
+    <div class="image-upload-crop__uploaded-image">
+        <img src="{{ __SELF__.model[__SELF__.attribute].getPath() }}" alt="">
+        <a  href="#" class="image-upload-crop__close-button"
+                data-request="onRemoveImage"
+                data-request-confirm="Are you sure to delete ?"
+                data-request-data="'id':{{ __SELF__.model[__SELF__.attribute].id }}"
+        >
+            <span>&times;</span>
+        </a>
+    </div>
 </div>
 {% else %}
 <div class="image-upload-crop">

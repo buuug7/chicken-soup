@@ -1,0 +1,53 @@
+<div class="navbar-v2">
+    <div class="navbar-v2__toggle">
+        <a href="#" id="toggleButton"><i class="fa fa-bars"></i></a>
+    </div>
+    <div class="navbar-v2__brand">
+        <div class="navbar-v2__brand-description">首页</div>
+        <div class="navbar-v2__brand-logo">
+            <a href="/">云诗词</a>
+        </div>
+    </div>
+    <div class="navbar-v2__search">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="搜索">
+    </div>
+    <div class="navbar-v2__placeholder"></div>
+    <div class="navbar-v2__links">
+        <div class="navbar-v2__links-item search">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+
+        <div class="navbar-v2__links-item">
+            <a href="#"><i class="fa fa-th"></i></a>
+        </div>
+
+        {% if user %}
+        <div class="navbar-v2__links-item">
+            <a href="#"><i class="fa fa-bell"></i></a>
+        </div>
+        <div class="navbar-v2__links-item">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="userPanelDropdown">
+                    <img src="{{ user.getAvatarThumb(30) }}" alt="">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/user/account">用户中心</a>
+                    <a class="dropdown-item" href="/soup/soup/create">新建汤文 action</a>
+                    <a
+                            class="dropdown-item"
+                            href="/soup/collection/create">新建收藏单</a>
+                    <a
+                            class="dropdown-item"
+                            data-request="onLogout"
+                            data-request-data="redirect: '/user/login'">登出</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="navbar-v2__links-item">
+            <a href="/user/login" class="btn btn-primary text-white">登陆</a>
+        </div>
+        {% endif %}
+    </div>
+</div>

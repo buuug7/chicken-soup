@@ -26,11 +26,28 @@ description = 'default layout'
 
 <!--Header-->
 <header id="layout-header">
-    {% partial 'site/header' %}
+    {% partial 'site/header-v2' %}
 </header>
 
+<div class="sidebar">
+    <div class="sidebar__top-item">
+        <a href="#" class="sidebar__item"><i class="fa fa-fw fa-home"></i><span>首页</span></a>
+        <a href="#" class="sidebar__item"><i class="fa fa-fw fa-coffee"></i><span>汤文</span></a>
+        <a href="#" class="sidebar__item"><i class="fa fa-fw fa-folder-open"></i><span>汤单</span></a>
+        <a href="#" class="sidebar__item"><i class="fa fa-fw fa-tags "></i><span>标签</span></a>
+        <a href="#" class="sidebar__item"><i class="fa fa-fw fa-user-circle "></i><span>用户中心</span></a>
+        <div class="sidebar__divider"></div>
+        <a href="#" class="sidebar__item second-item"><span>设置</span></a>
+        <a href="#" class="sidebar__item second-item"><span>反馈问题</span></a>
+        <a href="#" class="sidebar__item second-item"><span>帮助</span></a>
+    </div>
+    <div class="sidebar__copyrights">
+        <i class="fa fa-copyright"></i>2017 All Rights Reserved <a href="#" class="footer__autor">buuug7</a>
+    </div>
+</div>
+
 <!--Content-->
-<section id="layout-content">
+<section id="layout-content" style="padding-top: 70px;">
     {% flash %}
     <div class="">
         <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
@@ -41,10 +58,6 @@ description = 'default layout'
     {% endflash %}
     {% page %}
 </section>
-
-<footer id="layout-footer">
-    {% partial 'site/footer' %}
-</footer>
 
 <!--Scripts-->
 <!-- jquery  -->
@@ -63,6 +76,32 @@ description = 'default layout'
     $(function () {
         $.ChickSoup.init();
         $.ChickSoup.showMoreContent(150);
+    });
+
+    var flag = false;
+
+    $('#toggleButton').on('click', function (e) {
+        var $sideBar = $('.sidebar');
+        var layoutContent = $('#layout-content');
+        flag = !flag;
+        if (flag) {
+            layoutContent.css({
+                marginLeft:210,
+                transition:'margin 0.3s'
+
+            });
+            $sideBar.css({
+                'transform':'translate(210px,0)'
+            });
+        }else{
+            layoutContent.css({
+                marginLeft:0,
+                transition:'margin 0.3s'
+            });
+            $sideBar.css({
+                'transform':'translate(-210px,0)'
+            });
+        }
     });
 </script>
 {% scripts %}

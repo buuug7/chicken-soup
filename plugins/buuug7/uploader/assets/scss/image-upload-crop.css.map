@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,kCAAkC;EAC9B,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,gBAAgB,EAAE,KAAmB;;AAEzC,gCAAgC;EAC5B,UAAU,EAAC,iBAAiB;EAC5B,OAAO,EAAC,KAAK;EACb,KAAK,EAAC,IAAI;EACV,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM",
+"sources": ["image-upload-crop.scss"],
+"names": [],
+"file": "image-upload-crop.css"
+}

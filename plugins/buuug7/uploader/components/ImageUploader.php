@@ -92,6 +92,7 @@ class ImageUploader extends ComponentBase
     public function onRun()
     {
         $this->addCss('assets/vendor/cropperjs/dist/cropper.min.css');
+        $this->addCss('assets/scss/image-upload-crop.css');
         $this->addJs('assets/vendor/cropperjs/dist/cropper.min.js');
         $this->addJs('assets/js/image-upload-crop.js');
     }
@@ -125,11 +126,12 @@ class ImageUploader extends ComponentBase
 
         Resizer::open($userOriginAvatarPath)
             ->resize($this->imageWidth, $this->imageHeight, [
-                'mode' => 'crop',
+                'mode' => 'auto',
                 'offset' => [0, 0],
                 'sharpen' => 0,
-                'interlace' => false,
-                'quality' => 90
+                'interlace' => true,
+                'quality' => 90,
+                'extension' => 'auto',
             ])->save($userOriginAvatarPath);
 
         return Redirect::refresh();
@@ -142,5 +144,6 @@ class ImageUploader extends ComponentBase
         if ($id && ($file = File::find($id))) {
             $this->model->{$this->attribute}()->remove($file);
         }
+        return Redirect::refresh();
     }
 }
