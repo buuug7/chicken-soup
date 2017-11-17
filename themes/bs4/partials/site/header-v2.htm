@@ -18,29 +18,37 @@
             <a href="#"><i class="fa fa-search"></i></a>
         </div>
 
-        <div class="navbar-v2__links-item">
-            <a href="#"><i class="fa fa-th"></i></a>
-        </div>
-
         {% if user %}
         <div class="navbar-v2__links-item">
             <a href="#"><i class="fa fa-bell"></i></a>
         </div>
         <div class="navbar-v2__links-item">
             <div class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="userPanelDropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-offset="200px;">
                     <img src="{{ user.getAvatarThumb(30) }}" alt="">
                 </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/user/account">用户中心</a>
-                    <a class="dropdown-item" href="/soup/soup/create">新建汤文 action</a>
-                    <a
-                            class="dropdown-item"
-                            href="/soup/collection/create">新建收藏单</a>
-                    <a
-                            class="dropdown-item"
-                            data-request="onLogout"
-                            data-request-data="redirect: '/user/login'">登出</a>
+                <div class="dropdown-menu">
+                    <div class="user-panel">
+                        <div class="user-header">
+                            <img src="{{ user.getAvatarThumb(90) }}" alt="">
+                            <div class="user-description">
+                                <div>{{ user.name }} - {{ user.email }}</div>
+                                <small>{{ user.created_at|time_diff }}</small>
+                            </div>
+                        </div>
+                        <div class="user-body">
+                            <a href="/user/{{ thatUser.id }}/soups">汤文</a>
+                            <a href="/user/{{ thatUser.id }}/collections">汤单</a>
+                            <a href="#">关注</a>
+                        </div>
+                        <div class="user-footer">
+                            <a href="/user/account" class="btn btn-outline-secondary btn-sm">个人资料</a>
+                            <a
+                                    class="btn btn-outline-secondary btn-sm"
+                                    data-request="onLogout"
+                                    data-request-data="redirect: '/user/login'">登出</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
