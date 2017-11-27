@@ -1,6 +1,6 @@
 ## before install
-+ if you use composer, you need install `apt-get install zip unzip`
-+  your need install php extensions `mbstring dom curl` determined whitch version of you php, e.g php7.0, install with `apt-get install php7.0-mbstring`.
++ if you use composer, the `zip` and `unzip` must be installed. `apt-get install zip unzip`
++  your need install php extensions `mbstring dom curl` determined which version of you php, e.g. if you use php7.0, installed extensions like this `apt-get install php7.0-mbstring`.
 
 ## install
 + install october CMS `composer create-project october/october chicken-soup`
