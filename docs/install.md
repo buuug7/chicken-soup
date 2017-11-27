@@ -1,3 +1,6 @@
+## before install
++ if you use composer, you need install `apt-get install zip unzip`
++  your need install php extensions `mbstring dom curl` determined whitch version of you php, e.g php7.0, install with `apt-get install php7.0-mbstring`.
 
 ## install
 + install october CMS `composer create-project october/october chicken-soup`
@@ -22,4 +25,4 @@
         
 ## usage
 + bs4 theme
-    - compile SCSS file with `npm run build`, if watch use `npm run watch`          
+    - compile SCSS file with `npm run build`, if watch use `npm run watch`         
