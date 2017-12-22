@@ -19,7 +19,7 @@ description = 'default layout'
     <link rel="stylesheet" href="{{ 'assets/vendor/slick-carousel/slick/slick.css'|theme }}">
     <link rel="stylesheet" href="{{ 'assets/vendor/slick-carousel/slick/slick-theme.css'|theme }}">
 
-    <link rel="stylesheet" href="{{ 'assets/css/app.css'|theme }}">
+    <link rel="stylesheet" href="{{ 'assets/styles/css/app.bundle.css'|theme }}">
     {% styles %}
 </head>
 <body>
@@ -57,13 +57,9 @@ description = 'default layout'
 <!-- slick -->
 <script src="{{ 'assets/vendor/slick-carousel/slick/slick.js'|theme }}"></script>
 
-<script src="{{ 'assets/scripts/app.js'|theme }}"></script>
+<script src="{{ 'assets/scripts/app.bundle.js'|theme }}"></script>
 {% framework extras %}
 <script>
-    $(function () {
-        $.ChickSoup.init();
-        $.ChickSoup.showMoreContent(150);
-    });
 
     var flag = false;
 
