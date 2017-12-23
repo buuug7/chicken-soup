@@ -8,67 +8,85 @@
 |
 */
 
-.sidebar{
+.sidebar {
     display: flex;
     flex-direction: column;
-    width:210px;
+    width: 210px;
     margin-left: -210px;
     position: fixed;
-    top:64px;
+    top: 64px;
     bottom: 0;
     left: 0;
     max-width: 100%;
-    padding-top:24px;
+    padding-top: 24px;
     justify-content: flex-start;
     transition: transform .3s;
     overflow: hidden;
     //background-color: rgba(0,0,0,0.05);
-    .sidebar__top-item{
+    .sidebar__top-item {
         flex-grow: 1;
     }
-    .sidebar__item{
+    .sidebar__item {
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 0 12px 0 20px;
         font-size: 18px;
-        height:48px;
+        height: 48px;
         line-height: 50px;
-        color:rgba(0,0,0,0.87);
-        transition:background-color .3s cubic-bezier(0,0,0.2,1);
+        color: rgba(0, 0, 0, 0.87);
+        transition: background-color .3s cubic-bezier(0, 0, 0.2, 1);
         opacity: 0.85;
         overflow: hidden;
         cursor: pointer;
-        i.fa{
+        i.fa {
             padding-right: 32px;
         }
-        span{
+        span {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             word-break: break-all;
         }
-        &:hover{
+        &:hover {
             background-color: #e7e7e7;
             text-decoration: none;
         }
     }
-    .sidebar__item.second-item{
-        color:rgba(0,0,0,0.54);
-        height:40px;
+    .sidebar__item.second-item {
+        color: rgba(0, 0, 0, 0.54);
+        height: 40px;
     }
-    .sidebar__divider{
-        height:1px;
+    .sidebar__divider {
+        height: 1px;
         border-bottom: 1px solid #ddd;
-        margin-top:8px;
-        margin-bottom:8px;
+        margin-top: 8px;
+        margin-bottom: 8px;
     }
-    .sidebar__copyrights{
-        margin:5px 16px 24px 24px;
+    .sidebar__copyrights {
+        margin: 5px 16px 24px 24px;
         font-size: 13px;
-        color:#aaa;
-        a{
-            color:#aaa;
+        color: #aaa;
+        a {
+            color: #aaa;
         }
     }
+}
+
+.sidebar.on {
+    transform: translate(210px, 0);
+}
+
+#layout-content.sidebar-on {
+    margin-left: 210px;
+    transition: margin 0.3s;
+}
+
+.sidebar.off {
+    transform: translate(-210px, 0);
+}
+
+#layout-content.sidebar-off {
+    margin-left: 0;
+    transition: margin 0.3s;
 }

@@ -1,30 +1,15 @@
-{% if __SELF__.model[__SELF__.attribute] %}
-<div class="image-upload-crop">
-    <div class="image-upload-crop__uploaded-image">
-        <img src="{{ __SELF__.model[__SELF__.attribute].getPath() }}" alt="">
-        <a  href="#" class="image-upload-crop__close-button"
-                data-request="onRemoveImage"
-                data-request-confirm="Are you sure to delete ?"
-                data-request-data="'id':{{ __SELF__.model[__SELF__.attribute].id }}"
-        >
-            <span>&times;</span>
-        </a>
-    </div>
-</div>
-{% else %}
 <div class="image-upload-crop">
 
-    <div class="image-upload-crop__upload-preview">
-        <img src="" alt="upload preview image">
-    </div>
-
-    <form class="image-upload-crop__form">
+    <a href="javascript:;"
+       class="image-upload-crop__upload-file"
+       style="background-image: url('{{ __SELF__.model[__SELF__.attribute].getPath() }}')">
+        <i class="fa fa-plus"></i>
         <input type="file" id="image-file" name="image-file">
-    </form>
-
-    <a href="#" class="image-upload-crop__crop-button">cropped</a>
-
-    <div class="image-upload-crop__img-preview"></div>
+        <input type="hidden" id="model-id" name="model-id" value="{{ __SELF__.model[__SELF__.attribute].id }}">
+    </a>
+    <div class="image-upload-crop__upload-preview"></div>
+    <div>
+        <a href="#" class="btn btn-default image-upload-crop__crop-button">确定</a>
+    </div>
 
 </div>
-{% endif %}

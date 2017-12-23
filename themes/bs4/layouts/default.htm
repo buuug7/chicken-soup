@@ -59,34 +59,6 @@ description = 'default layout'
 
 <script src="{{ 'assets/scripts/app.bundle.js'|theme }}"></script>
 {% framework extras %}
-<script>
-
-    var flag = false;
-
-    $('#toggleButton').on('click', function (e) {
-        var $sideBar = $('.sidebar');
-        var layoutContent = $('#layout-content');
-        flag = !flag;
-        if (flag) {
-            layoutContent.css({
-                marginLeft:210,
-                transition:'margin 0.3s'
-
-            });
-            $sideBar.css({
-                'transform':'translate(210px,0)'
-            });
-        }else{
-            layoutContent.css({
-                marginLeft:0,
-                transition:'margin 0.3s'
-            });
-            $sideBar.css({
-                'transform':'translate(-210px,0)'
-            });
-        }
-    });
-</script>
 {% scripts %}
 </body>
 </html>

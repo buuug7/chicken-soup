@@ -16,11 +16,22 @@ import styles from '../../styles/scss/app.scss';
 
 // import js
 import init from './init';
-import showMoreContent from './show-more-content';
-
+import cardShowMoreContent from './card-show-more-content';
+import sidebarToggle from './sidebarToggle';
+import navbarSearch from './navbar-search';
 
 // main
 $(function ($) {
+
     init();
-    showMoreContent(150);
+
+    // car show more content
+    cardShowMoreContent(150);
+
+    // sidebar toggle
+    sidebarToggle();
+
+    // navbar search
+    navbarSearch();
+
 });

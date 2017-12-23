@@ -99,23 +99,33 @@ class ImageUploader extends ComponentBase
 
     public function onUploadAndCrop()
     {
-        $uploadFile = post('uploadFile');
+        $uploadImage = post('uploadImage');
 
-        $cropDetail = post('cropDetail');
+        $cropDetail = post('cropperDetail');
 
-        $base64 = explode(',', $uploadFile);
+        $oldFileId = post('fileId');
 
-        if (!$uploadFile) {
+        $base64 = explode(',', $uploadImage);
+
+        if (!$uploadImage) {
             throw new ApplicationException('File miss from request');
         }
 
+        // delete if existed old one
+        if ($oldFileId && ($oldFile = File::find($oldFileId))) {
+            $ttt = $this->model->{$this->attribute}()->remove($oldFile);
+
+        }
+
+
         $file = new File();
 
-        $file->fromData(base64_decode($base64[1]), 'avatar.png');
+        $file = $file->fromData(base64_decode($base64[1]), 'avatar.png');
 
-        $this->model->{$this->attribute}()->save($file);
+        $file = $this->model->{$this->attribute}()->save($file);
 
-        $userOriginAvatarPath = $this->model->{$this->attribute}->getLocalPath();
+
+        $userOriginAvatarPath = $file->getLocalPath();
 
         Resizer::open($userOriginAvatarPath)->crop(
             $cropDetail['x'],
