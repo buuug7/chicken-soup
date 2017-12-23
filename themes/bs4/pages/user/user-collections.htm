@@ -3,8 +3,10 @@ url = '/user/:id/collections'
 layout = 'default'
 ==
 function onStart(){
-$this['thatUser'] = \RainLab\User\Models\User::find($this->param('id'));
-$this['collections'] = $this['thatUser']->createdCollections()->orderBy('created_at','desc')->paginate(4);
+    if(!Auth::check()) return Redirect::to('/user/login');
+
+    $this['thatUser'] = \RainLab\User\Models\User::find($this->param('id'));
+    $this['collections'] = $this['thatUser']->createdCollections()->orderBy('created_at','desc')->paginate(4);
 }
 ==
 <div class="container my-5">

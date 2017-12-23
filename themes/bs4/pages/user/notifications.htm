@@ -1,0 +1,12 @@
+title = '通知'
+url = '/user/notifications'
+layout = 'default'
+==
+function onStart(){
+    if(!Auth::check()) return Redirect::to('/user/login');
+}
+==
+
+<div class="container my-5">
+    <h4>即将来临...</h4>
+</div>

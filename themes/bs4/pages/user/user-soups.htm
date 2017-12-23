@@ -3,6 +3,8 @@ url = '/user/:id/soups'
 layout = 'default'
 ==
 function onStart(){
+    if(!Auth::check()) return Redirect::to('/user/login');
+
     $this['thatUser'] = \RainLab\User\Models\User::find($this->param('id'));
     $this['soups'] = $this['thatUser']->contributeSoups()->isPublished()->orderBy('published_at','desc')->paginate(4);
 }

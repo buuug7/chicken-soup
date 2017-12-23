@@ -4,6 +4,10 @@ layout = 'default'
 [viewBag]
 userActiveMenu = "likeComments"
 ==
+function onStart(){
+    if(!Auth::check()) return Redirect::to('/user/login');
+}
+==
 
 <div class="container my-5">
     <div class="row">
