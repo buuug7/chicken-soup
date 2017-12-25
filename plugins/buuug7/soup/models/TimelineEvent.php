@@ -5,22 +5,29 @@ use Model;
 
 /**
  * TimelineEvent Model
- * event: signup soup collection
- * data: ['foo'=>'bar']
+ *
+ *
+ * one event like this
+ *
+ * /////////////////////////////////////////////////////
+ * id: 1
+ * user_id : 1
+ * event_type: 'RainLab\User\Models\User',
+ * event_id: 1
+ * data: { method:'create', message:'some message' }
+ * created_at: '2017-12-22 07:28:03'
+ * /////////////////////////////////////////////////////
+ *
+ *
  */
 class TimelineEvent extends Model
 {
-    const CATEGORY_USER = 'user';
-    const EVENT_SIGNUP = 'signup';
-    const EVENT_SOUP = 'soup';
-    const EVENT_COLLECTION = 'collection';
-
     /**
      * @var string The database table used by the model.
      */
     public $table = 'buuug7_soup_timeline_events';
 
-    public $timestamps =false;
+    public $timestamps = false;
 
     /**
      * @var array Guarded fields
@@ -32,8 +39,8 @@ class TimelineEvent extends Model
      */
     protected $fillable = [
         'user_id',
-        'category',
-        'event',
+        'event_type',
+        'event_id',
         'data'
     ];
 
@@ -42,14 +49,14 @@ class TimelineEvent extends Model
     protected $casts = [
         'data' => 'array',
     ];
-    
+
     public $rules = [
         'user_id' => 'required',
-        'category' => 'required',
-        'event' => 'required',
+        'event_type' => 'required',
+        'event_id' => 'required',
         'data' => 'required',
     ];
-    
+
 
     /**
      * @var array Relations
@@ -68,4 +75,18 @@ class TimelineEvent extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function afterFetch()
+    {
+
+        // parse event type as object for use
+
+        $eventTypeClass = $this->event_type;
+
+        $target = $eventTypeClass::find($this->event_id);
+
+        if ($target) {
+            $this['target'] = $target;
+        }
+    }
 }

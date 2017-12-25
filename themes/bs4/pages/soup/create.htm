@@ -28,11 +28,126 @@ $this->addJs('/themes/bs4/assets/vendor/simplemde/dist/simplemde.min.js');
 
 {% put scripts %}
 <script>
-    var simplemde = new SimpleMDE({
-        element: $('#content')[0],
-        spellChecker: false,
-    });
-    //simplemde.value('汤文就写在这里');
+    $(function () {
+        var simplemde = new SimpleMDE({
+            element: $('#content')[0],
+            spellChecker: false,
+            toolbar: [
+                {
+                    name: "bold",
+                    action: SimpleMDE.toggleBold,
+                    className: "fa fa-bold",
+                    title: "Bold",
+                },
+                {
+                    name: "italic",
+                    action: SimpleMDE.toggleItalic,
+                    className: "fa fa-italic",
+                    title: "Italic",
+                },
+                {
+                    name: "strikethrough",
+                    action: SimpleMDE.toggleStrikethrough,
+                    className: "fa fa-strikethrough",
+                    title: "Strikethrough",
+                },
+                {
+                    name: "heading",
+                    action: SimpleMDE.toggleHeadingSmaller,
+                    className: "fa fa-header",
+                    title: "Heading",
+                },
+                {
+                    name: "code",
+                    action: SimpleMDE.toggleCodeBlock,
+                    className: "fa fa-code",
+                    title: "Code",
+                },
+                {
+                    name: "quote",
+                    action: SimpleMDE.toggleBlockquote,
+                    className: "fa fa-quote-left",
+                    title: "Quote",
+                },
+                {
+                    name: "unordered-list",
+                    action: SimpleMDE.toggleUnorderedList,
+                    className: "fa fa-list-ul",
+                    title: "Generic List",
+                },
+                {
+                    name: "ordered-list",
+                    action: SimpleMDE.toggleOrderedList,
+                    className: "fa fa-list-ol",
+                    title: "Numbered List",
+                },
+                {
+                    name: "link",
+                    action: SimpleMDE.drawLink,
+                    className: "fa fa-link",
+                    title: "Create Link",
+                },
+                {
+                    name: "image",
+                    action: SimpleMDE.drawImage,
+                    className: "fa fa-picture-o",
+                    title: "Insert Image",
+                },
+                {
+                    name: "table",
+                    action: SimpleMDE.drawTable,
+                    className: "fa fa-table",
+                    title: "Insert Table",
+                },
+                {
+                    name: "horizontal-rule",
+                    action: SimpleMDE.drawHorizontalRule,
+                    className: "fa fa-minus",
+                    title: "Insert Horizontal Line",
+                },
+                {
+                    name: "preview",
+                    action: SimpleMDE.togglePreview,
+                    className: "fa fa-eye no-disable",
+                    title: "Toggle Preview",
+                },
+                {
+                    name: "side-by-side",
+                    action: function () {
+                        var header = $('#layout-header');
+                        if (header.is(':visible')) {
+                            header.hide();
+                        }
+                        simplemde.toggleSideBySide();
+                    },
+                    className: "fa fa-columns no-disable no-mobile",
+                    title: "Toggle Side by Side",
+                },
+                {
+                    name: "fullscreen",
+                    action: function () {
+                        var header = $('#layout-header');
+                        if (header.is(':hidden')) {
+                            header.show();
+                        } else {
+                            header.hide();
+                        }
 
+                        simplemde.toggleFullScreen();
+                    },
+                    className: "fa fa-arrows-alt no-disable no-mobile",
+                    title: "Toggle Fullscreen",
+                },
+                {
+                    name: "guide",
+                    action: 'https://simplemde.com/markdown-guide',
+                    className: "fa fa-question-circle",
+                    title: "Markdown Guide",
+                },
+            ],
+        });
+        //simplemde.value('汤文就写在这里');
+
+    });
 </script>
 {% endput %}

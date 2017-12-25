@@ -35,10 +35,12 @@ function onStart(){
                         {% endif %}
                         <p class="mt-3">
                             <a href="/soup/soup/update/{{ soup.id }}/1" class="btn btn-outline-primary">编辑</a>
+                            <a href="/soup/soup/{{ soup.id }}" class="btn btn-outline-primary">浏览</a>
                             <a href="#"
                                data-request="onDeleteSoup"
                                data-request-confirm="确定要删除?"
                                class="btn btn-outline-danger">删除</a>
+
                         </p>
                     </div>
                     {% endfor %}

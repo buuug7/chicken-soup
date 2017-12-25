@@ -29,7 +29,9 @@ class Soup extends Model
         'content',
         'reference',
         'contributor_id',
-        'status'
+        'status',
+        'published',
+        'published_at'
     ];
 
     protected $dates = ['published_at'];
@@ -85,7 +87,7 @@ class Soup extends Model
             'Buuug7\Soup\Models\Tag',
             'table' => 'buuug7_soup_soups_tags',
         ],
-        'collections' =>[
+        'collections' => [
             'Buuug7\Soup\Models\Collection',
             'table' => 'buuug7_soup_collections_soups',
         ],
@@ -99,18 +101,30 @@ class Soup extends Model
     public function afterDelete()
     {
         DB::table('buuug7_soup_soups_tags')->where('soup_id', $this->id)->delete();
-        DB::table('buuug7_soup_collections_soups')->where('soup_id',$this->id)->delete();
+        DB::table('buuug7_soup_collections_soups')->where('soup_id', $this->id)->delete();
     }
 
-    public function afterCreate(){
+    public function afterCreate()
+    {
         TimelineEvent::create([
             'user_id' => $this->contributor_id,
-            'category' => TimelineEvent::CATEGORY_USER,
-            'event' => TimelineEvent::EVENT_SOUP,
+            'event_type' => self::class,
+            'event_id' => $this->id,
             'data' => [
-                'model_id' => $this->id,
                 'method' => 'create',
-                'message' =>str_limit($this->content,100),
+            ],
+            'created_at' => Carbon::now(),
+        ]);
+    }
+
+    public function afterUpdate()
+    {
+        TimelineEvent::create([
+            'user_id' => $this->contributor_id,
+            'event_type' => self::class,
+            'event_id' => $this->id,
+            'data' => [
+                'method' => 'update',
             ],
             'created_at' => Carbon::now(),
         ]);
@@ -152,7 +166,8 @@ class Soup extends Model
         return self::isPublished()->where('id', '>', $this->id)->min('id');
     }
 
-    public function getStatusOptions(){
+    public function getStatusOptions()
+    {
         return [
             'checking' => '审核中',
             'not-passed' => '未通过',

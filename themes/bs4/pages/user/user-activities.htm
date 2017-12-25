@@ -7,7 +7,9 @@ function onStart(){
     if(!$this['thatUser']){
         return Redirect::to('/');
     }
-    $this['events'] = $this['thatUser']->timelineEvents()->orderBy('created_at','desc')->paginate(5);
+
+    $this['timelines'] = $this['thatUser']->timelineEvents()->orderBy('created_at','desc')->paginate(5);
+
 }
 ==
 <div class="container my-4">
@@ -42,26 +44,29 @@ function onStart(){
             <!--timeline Event-->
 
             <ul class="timeline">
-                {% for event in events %}
+                {% for timeline in timelines %}
 
                 <li class="timeline__date">
-                    <span>{{ event.created_at|date('Y-m-d') }}</span>
+                    <span>{{ timeline.created_at|date('Y-m-d') }}</span>
                 </li>
                 <li>
                     <span class="timeline__label"><i class="fa fa-tag"></i></span>
                     <div class="timeline__item">
-                        <div class="timeline__item-time"><i class="fa fa-clock-o"></i> {{ event.created_at|date('H:i') }}</div>
-                        {% if event.event == 'soup' %}
+                        <div class="timeline__item-time"><i class="fa fa-clock-o"></i> {{ timeline.created_at|date('H:i') }}</div>
+                        {% if timeline.event_type == 'Buuug7\\Soup\\Models\\Soup' %}
+
                         <div class="timeline__item-header">
-                            {% if event.data['method'] == 'create' %}
+                            {% if timeline.data['method'] == 'create' %}
                             发布了新汤文
+                            {% elseif timeline.data['method'] == 'update'  %}
+                            更新了汤文
                             {% endif %}
                         </div>
                         <div class="timeline__item-body">
-                            {{ event.data['message']|md }}
+                            {{ str_limit(timeline.target.content,200)|md }}
                         </div>
                         <div class="timeline__item-footer">
-                            <a class="btn btn-outline-primary btn-sm" href="/soup/soup/{{ event.data['model_id'] }}">查看</a>
+                            <a class="btn btn-outline-primary btn-sm" href="/soup/soup/{{ timeline.event_id }}">查看更多</a>
                         </div>
                         {% endif %}
                     </div>

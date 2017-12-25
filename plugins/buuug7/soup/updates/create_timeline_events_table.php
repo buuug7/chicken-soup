@@ -12,9 +12,9 @@ class CreateTimelineEventsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id'); // 触发事件的用户id
-            $table->string('category'); //事件分类
-            $table->string('event'); // 事件名称
-            $table->text('data'); // 事件包含的信息
+            $table->string('event_type'); // 事件类型
+            $table->integer('event_id'); // 事件类型对应的id
+            $table->text('data'); // 事件包含的额外信息
             $table->timestamp('created_at'); //
         });
     }

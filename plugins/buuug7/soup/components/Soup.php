@@ -222,10 +222,12 @@ class Soup extends ComponentBase
             'reference' => post('reference'),
             'contributor_id' => $user->id,
             'created_at' => Carbon::now(),
-            'status' => 'checking',
+            'status' => 'passed',
+            'published' => true,
+            'published_at' => Carbon::now(),
         ]);
         Flash::success('创建成功');
-        return Redirect::refresh();
+        return Redirect::to('/soup/soup/' . $soup->id);
     }
 
     /**
@@ -243,7 +245,7 @@ class Soup extends ComponentBase
 
         $soup->save();
         Flash::success('更新成功');
-        return Redirect::to('/user/soup/my-contribute-soup');
+        return Redirect::to('/soup/soup/' . $soup->id);
 
     }
 
