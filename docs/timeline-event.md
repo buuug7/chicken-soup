@@ -1,4 +1,4 @@
-## timeline event
+## timeline event 时间轴事件
 暂时支持`Buuug7\Soup\Models\Soup`类型的一些事件
 
 
