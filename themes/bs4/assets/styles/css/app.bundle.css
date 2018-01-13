@@ -114,7 +114,7 @@ img {
 |--------------------------------------------------------------------------
 |
 | Created by puguohong on 27/07/2017.
-| 
+|
 |
 */
 .headline {
@@ -196,6 +196,12 @@ img {
 
 .headline-v3-warning h2, .headline-v3-warning h3, .headline-v3-warning h4 {
   color: #ffc107; }
+
+.headline-v4 {
+  margin-top: 5px;
+  color: #888;
+  text-align: left;
+  font-size: 14px; }
 
 /*
 |--------------------------------------------------------------------------
@@ -426,13 +432,56 @@ img {
     padding-top: 15px;
     padding-bottom: 15px; } }
 
+.navbar-v2__search-bar {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 8px 24px 8px 24px;
+  transition: all 0.3s;
+  overflow: hidden; }
+  .navbar-v2__search-bar .search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+    .navbar-v2__search-bar .search-bar > a {
+      display: block;
+      height: 46px;
+      line-height: 46px; }
+    .navbar-v2__search-bar .search-bar > input {
+      display: flex;
+      flex-grow: 1;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      width: 100%;
+      height: 46px;
+      line-height: 46px;
+      margin: 0 20px; }
+  .navbar-v2__search-bar .search-panel {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    padding-bottom: 15px; }
+
+.navbar-v2__search-bar.on {
+  display: flex; }
+
+.navbar-v2__search-bar.off {
+  display: none; }
+
 /*
 |--------------------------------------------------------------------------
 | _sidebar
 |--------------------------------------------------------------------------
 |
 | Created by puguohong on 16/11/2017.
-| 
+|
 |
 */
 .sidebar {

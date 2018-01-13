@@ -36,6 +36,37 @@ class SeedOther extends Seeder
             'slug' => 'mai-meng',
         ]);
 
+        Tag::create([
+            'name' => '中二',
+            'slug' => 'zhong-er',
+        ]);
+
+        Tag::create([
+            'name' => '幽默',
+            'slug' => 'you-mo',
+        ]);
+
+        Tag::create([
+            'name' => '萌宠',
+            'slug' => 'meng-chong',
+        ]);
+
+        Tag::create([
+            'name' => '前任',
+            'slug' => 'qian-ren',
+        ]);
+
+        Tag::create([
+            'name' => '怀旧',
+            'slug' => 'huai-jiu',
+        ]);
+
+        Tag::create([
+            'name' => '前女友',
+            'slug' => 'qian-nv-you',
+        ]);
+
+
         Collection::create([
             'name' => '你走的那么远，只为摆脱怀旧的负重',
             'description' => '怀念前任、故友、旧事、积极的、消极的影响都有...',

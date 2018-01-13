@@ -78,6 +78,11 @@ class Collection extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+    public function afterDelete()
+    {
+
+    }
+
     public function hasCollectedSoup($soupId)
     {
         //trace_sql();

@@ -100,8 +100,9 @@ class Soup extends Model
 
     public function afterDelete()
     {
-        DB::table('buuug7_soup_soups_tags')->where('soup_id', $this->id)->delete();
-        DB::table('buuug7_soup_collections_soups')->where('soup_id', $this->id)->delete();
+        $this->tags()->detach();
+        $this->collections()->detach();
+        $this->comments()->delete();
     }
 
     public function afterCreate()
@@ -185,5 +186,14 @@ class Soup extends Model
         return $query->whereHas('tags', function ($q) use ($tags) {
             $q->whereIn('id', $tags);
         });
+    }
+
+    public function scopeSearch($query, $search, $size = 5)
+    {
+        if (!$search) {
+            return;
+        }
+        $searchableFileds = ['content'];
+        return $query->isPublished()->searchWhere($search, $searchableFileds)->paginate($size);
     }
 }

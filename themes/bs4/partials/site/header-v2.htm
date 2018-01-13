@@ -10,11 +10,11 @@
     </div>
     <div class="navbar-v2__search" id="navbarSearchLarge">
         <i class="fa fa-search"></i>
-        <input type="text" placeholder="搜索">
+        <input type="text" name="q" data-request="onSearch" placeholder="搜索">
     </div>
     <div class="navbar-v2__placeholder"></div>
     <div class="navbar-v2__links">
-        <div class="navbar-v2__links-item search">
+        <div class="navbar-v2__links-item search" id="openSearchBar">
             <a href="#"><i class="fa fa-search"></i></a>
         </div>
 
@@ -58,4 +58,36 @@
         </div>
         {% endif %}
     </div>
+</div>
+
+<div class="navbar-v2__search-bar off" id="searchBar">
+    <div class="search-bar">
+        <a href="javascript:;"><i class="fa fa-search"></i></a>
+        <input type="text" name="q" data-request="onSearch" placeholder="搜索">
+        <a href="#" class="close-button"><i class="fa fa-close"></i></a>
+    </div>
+    <div class="search-panel">
+        <div class="headline-v4">热搜</div>
+        <div>
+            <a href="#" class="badge badge-danger">装逼段子</a>
+            <a href="#" class="badge badge-danger">大虎逼</a>
+            <a href="#" class="badge badge-danger">lol台词</a>
+        </div>
+
+        <div class="headline-v4">标签</div>
+        <div>
+            <a href="#" class="badge badge-primary">古风</a>
+            <a href="#" class="badge badge-primary">励志</a>
+            <a href="#" class="badge badge-primary">装逼</a>
+            <a href="#" class="badge badge-primary">婉约</a>
+            <a href="#" class="badge badge-primary">卖萌</a>
+            <a href="#" class="badge badge-primary">中二</a>
+            <a href="#" class="badge badge-primary">幽默</a>
+            <a href="#" class="badge badge-primary">萌宠</a>
+            <a href="#" class="badge badge-primary">前任</a>
+            <a href="#" class="badge badge-primary">怀旧</a>
+            <a href="#" class="badge badge-primary">前女友</a>
+        </div>
+    </div>
+
 </div>

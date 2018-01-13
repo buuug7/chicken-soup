@@ -4,7 +4,7 @@
 |--------------------------------------------------------------------------
 |
 | Created by puguohong on 27/07/2017.
-| 
+|
 |
 */
 
@@ -140,4 +140,14 @@
     h2,h3,h4{
         color:theme-color("warning");
     }
+}
+
+
+// headline v4
+.headline-v4{
+    margin-top: 5px;
+    //margin-bottom: 5px;
+    color: #888;
+    text-align: left;
+    font-size: 14px;
 }

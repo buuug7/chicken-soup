@@ -1,0 +1,25 @@
+title = '搜索'
+url = '/soup/soup/search'
+layout = 'default'
+==
+function onEnd(){
+    $q = Session::get('q');
+    $soups = Buuug7\Soup\Models\Soup::search($q,9);
+    $this['soups'] = $soups;
+}
+==
+<div class="container my-5">
+    <div class="callout callout-warning">
+        <p>总共搜索到了 {{ soups.total() }} 信息</p>
+    </div>
+    <div class="row">
+        {% for soup in soups %}
+        <div class="col-lg-4 col-md-6">
+            {% partial 'soup/card-soup' soup=soup boxShadow=true %}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% partial 'paginate' soups = soups %}
+
+</div>

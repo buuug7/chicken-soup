@@ -2,9 +2,11 @@
 
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use October\Rain\Support\Facades\Flash;
 use RainLab\User\Facades\Auth;
 use Buuug7\Soup\Models\Collection as CollectionModel;
+use Buuug7\Soup\Models\Soup;
 
 class Collection extends ComponentBase
 {
@@ -116,24 +118,24 @@ class Collection extends ComponentBase
      * */
     public function onRemoveSoupFromCollection()
     {
-        if(!Auth::check()){
+        if (!Auth::check()) {
             Flash::error('请登录后在操作');
-            return ;
+            return;
         }
         $user = Auth::getUser();
         $collectionId = post('collection_id');
         $soupId = post('soup_id');
         $collection = CollectionModel::find($collectionId);
-        if($collection){
-            if($collection->hasCollectedSoup($soupId)){
+        if ($collection) {
+            if ($collection->hasCollectedSoup($soupId)) {
                 $collection->soups()->detach($soupId);
                 Flash::success('成功移出');
                 return Redirect::refresh();
-            }else{
+            } else {
                 //TODO::
                 return Redirect::refresh();
             }
-        }else{
+        } else {
             return Redirect::refresh();
         }
     }
@@ -201,14 +203,15 @@ class Collection extends ComponentBase
     /*
      * update collection
      * */
-    public function onUpdateCollection(){
-        if(!Auth::check()){
+    public function onUpdateCollection()
+    {
+        if (!Auth::check()) {
             Flash::error('请登录后在操作');
-            return ;
+            return;
         }
         $user = Auth::getUser();
         $collection = CollectionModel::find(post('collectionId'));
-        if(!$collection || $collection->user_id != $user->id){
+        if (!$collection || $collection->user_id != $user->id) {
             Flash::info('你没有权限更新');
             Return Redirect::refresh();
         }
@@ -216,7 +219,7 @@ class Collection extends ComponentBase
         $collection->description = post('collectionDescription');
         $collection->save();
         Flash::success('更新成功');
-        Return Redirect::to('/soup/collection/'.$collection->id);
+        Return Redirect::to('/soup/collection/' . $collection->id);
     }
 
 
@@ -240,5 +243,15 @@ class Collection extends ComponentBase
         $collection->delete();
         Flash::success('成功删除!');
         return Redirect::to('user/created-collections');
+    }
+
+    /*
+     * search soups
+     * */
+    public function onSearch()
+    {
+        $q = post('q');
+        Session::put('q',$q);
+        return Redirect::to('/soup/soup/search');
     }
 }
