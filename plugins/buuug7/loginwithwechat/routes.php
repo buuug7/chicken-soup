@@ -16,6 +16,7 @@ Route::middleware(['web'])->group(function () {
             'redirect_uri' => Config::get('buuug7.loginwithwechat::wechat.redirect_uri'),
             'response_type' => 'code',
             'scope' => 'snsapi_login',
+            'state' => Str::random(16),
         ]);
 
         $authorize_uri = 'https://open.weixin.qq.com/connect/qrconnect?' . $query;
