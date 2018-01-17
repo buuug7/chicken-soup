@@ -1,1 +1,4 @@
-1.0.1: First version of LoginWithGithub
+1.0.1:
+    - First version of LoginWithGithub
+    - users_table_add_social_avatar_column.php
+    - users_table_add_github_id_column.php

@@ -22,7 +22,9 @@
     - config your email
         * default the configuration is under `config/dev/mail.php`
         * email config detail [email](https://github.com/buuug7/chicken-soup/blob/master/docs/mail.md) 
-+ run `php artisan october:env` generate a `.env` file for common config
+
++ install dependencies
+    + `composer require guzzlehttp/guzzle`
         
 ## usage
 + bs4 theme
